@@ -152,13 +152,13 @@ The frame, nav, filters, archive, and media use square corners. The contact invi
 
 ### Header and Navigation
 
-The header is a clean, ruled band with a compact nameplate, Work/About/Experience/Contact links, and GitHub. Active and hovered links brighten against a quiet cyan-tinted surface. At 760px and below, expose the Menu/Close control and its expanded state; preserve Escape-to-close and visible keyboard focus.
+The header is a clean, ruled band with a compact nameplate, Projects/About/Experience/Contact links, and GitHub. Active and hovered links brighten against a quiet cyan-tinted surface. At 760px and below, expose the Menu/Close control and its expanded state; preserve Escape-to-close and visible keyboard focus.
 
 ### Hero Current and Name Strip
 
 The SVG current field spans the viewport above a bordered title strip. Its lines drift and respond to pointer movement. Keep the full name as the dominant typographic element; the hero includes a short work link and Sydney location metadata.
 
-The Projects and Games indexes use the shared index surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). Its gradient ID is unique per SVG, and the pointer-transparent backdrop leaves filters and project links usable. Opaque ocean panels keep card copy and filters readable; individual project details retain their plain ocean background. The hero's appearance and pointer response remain unchanged.
+The Projects and Games indexes use a shared ocean surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). Topic headings sit directly on the currents; compact ocean backplates fit the project titles instead of filling each card's width. Filters retain their readable surfaces. A quieter shared field runs behind the home About, work, Experience, and Contact sections. Its transparent section surfaces reveal the same current language without adding an animation instance to each section. Individual project details retain their plain ocean background.
 
 ### About Panel
 
@@ -178,7 +178,7 @@ Use four compact ruled rows with period, role, and organization. Keep the row st
 
 ### Motion and Accessibility
 
-The current SVG updates while visible, pauses when hidden or outside view, and returns to its static path with reduced motion. The Projects and Games index field stays fixed to the viewport while scrolling; it has no pointer-driven effect. Gallery transforms follow scroll position; they are cleared for reduced motion and on mobile. The contact reveal responds to hover and keyboard focus. Keep media in normal document flow and preserve focus outlines, the skip link, and semantic navigation.
+The current SVG updates while its surface is visible, pauses when hidden or outside view, and returns to its static path with reduced motion. The index field stays fixed to the viewport; the home field uses a sticky viewport layer below the hero. Both respond to mouse movement through passive observation, leaving links, filters, touch scrolling, and text selection available. Pointer coordinates follow the SVG transform, including the hero's cropped view. Pointer energy fades after leaving the surface, scrolling, or losing focus. Gallery transforms follow scroll position; they are cleared for reduced motion and on mobile. The contact reveal responds to hover and keyboard focus. Keep media in normal document flow and preserve focus outlines, the skip link, and semantic navigation.
 
 ## Do's and Don'ts
 

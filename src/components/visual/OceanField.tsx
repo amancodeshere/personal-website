@@ -10,8 +10,12 @@ const INDEX_WIDTH = 1200;
 const INDEX_HEIGHT = 800;
 const INDEX_LINE_COUNT = 43;
 const INDEX_SAMPLE_COUNT = 33;
+const HOME_WIDTH = 1200;
+const HOME_HEIGHT = 800;
+const HOME_LINE_COUNT = 35;
+const HOME_SAMPLE_COUNT = 29;
 
-type OceanFieldMode = "hero" | "index";
+type OceanFieldMode = "hero" | "index" | "home";
 
 type OceanGeometry = {
   width: number;
@@ -57,22 +61,28 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
   const gradientId = useId().replace(/:/g, "");
   const geometry = useMemo<OceanGeometry>(
     () =>
-      mode === "index"
+      mode === "hero"
         ? {
-            width: INDEX_WIDTH,
-            height: INDEX_HEIGHT,
-            lineCount: INDEX_LINE_COUNT,
-            sampleCount: INDEX_SAMPLE_COUNT,
-          }
-        : {
             width: WIDTH,
             height: HEIGHT,
             lineCount: LINE_COUNT,
             sampleCount: SAMPLE_COUNT,
-          },
+          }
+        : mode === "index"
+          ? {
+              width: INDEX_WIDTH,
+              height: INDEX_HEIGHT,
+              lineCount: INDEX_LINE_COUNT,
+              sampleCount: INDEX_SAMPLE_COUNT,
+            }
+          : {
+              width: HOME_WIDTH,
+              height: HOME_HEIGHT,
+              lineCount: HOME_LINE_COUNT,
+              sampleCount: HOME_SAMPLE_COUNT,
+            },
     [mode],
   );
-  const interactive = mode === "hero";
   const root = useRef<SVGSVGElement>(null);
   const paths = useRef<(SVGPathElement | null)[]>([]);
   const pointer = useRef({
@@ -93,6 +103,12 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
     const svg = root.current;
     if (!svg) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    pointer.current = {
+      x: geometry.width / 2,
+      y: geometry.height / 2,
+      active: false,
+      energy: 0,
+    };
 
     let visible = false;
     let frame = 0;
@@ -116,8 +132,10 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
       }
       frame = requestAnimationFrame(tick);
     };
+    const surface = svg.closest<HTMLElement>("[data-ocean-surface]");
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
+      if (!visible) pointer.current.active = false;
       if (visible && !frame && !document.hidden && !reduced.matches)
         frame = requestAnimationFrame(tick);
       else if (!visible && frame) {
@@ -125,8 +143,60 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
         frame = 0;
       }
     });
-    observer.observe(svg);
+    observer.observe(surface ?? svg);
+
+    const containsPoint = (element: Element, x: number, y: number) => {
+      const rect = element.getBoundingClientRect();
+      return (
+        x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+      );
+    };
+    const clearPointer = () => {
+      pointer.current.active = false;
+    };
+    const onPointerMove = (event: PointerEvent) => {
+      if (
+        event.pointerType !== "mouse" ||
+        !visible ||
+        document.hidden ||
+        reduced.matches
+      )
+        return;
+      const x = event.clientX;
+      const y = event.clientY;
+      if (
+        !containsPoint(svg, x, y) ||
+        (surface && !containsPoint(surface, x, y))
+      ) {
+        clearPointer();
+        return;
+      }
+      const matrix = svg.getScreenCTM();
+      if (!matrix) {
+        clearPointer();
+        return;
+      }
+      const point = new DOMPoint(x, y).matrixTransform(matrix.inverse());
+      pointer.current = {
+        x: point.x,
+        y: point.y,
+        active: true,
+        energy: 1,
+      };
+    };
+    const onScroll = () => clearPointer();
+    const onPointerOut = (event: PointerEvent) => {
+      if (!event.relatedTarget) clearPointer();
+    };
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerout", onPointerOut, { passive: true });
+    window.addEventListener("blur", clearPointer);
+    document.addEventListener("scroll", onScroll, {
+      passive: true,
+      capture: true,
+    });
     const onVisibility = () => {
+      if (document.hidden) clearPointer();
       if (document.hidden && frame) {
         cancelAnimationFrame(frame);
         frame = 0;
@@ -135,6 +205,8 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
     };
     const onMotionPreference = () => {
       if (reduced.matches) {
+        pointer.current.active = false;
+        pointer.current.energy = 0;
         if (frame) cancelAnimationFrame(frame);
         frame = 0;
         paths.current.forEach((path, index) =>
@@ -148,25 +220,15 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
     reduced.addEventListener("change", onMotionPreference);
     return () => {
       observer.disconnect();
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerout", onPointerOut);
+      window.removeEventListener("blur", clearPointer);
+      document.removeEventListener("scroll", onScroll, true);
       document.removeEventListener("visibilitychange", onVisibility);
       reduced.removeEventListener("change", onMotionPreference);
       if (frame) cancelAnimationFrame(frame);
     };
   }, [geometry]);
-
-  function move(event: React.PointerEvent<SVGSVGElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    pointer.current = {
-      x: ((event.clientX - rect.left) / rect.width) * geometry.width,
-      y: ((event.clientY - rect.top) / rect.height) * geometry.height,
-      active: true,
-      energy: 1,
-    };
-  }
-
-  function leave() {
-    pointer.current.active = false;
-  }
 
   return (
     <svg
@@ -176,24 +238,28 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
       preserveAspectRatio={mode === "index" ? "none" : "xMidYMid slice"}
       data-ocean-mode={mode}
       aria-hidden="true"
-      onPointerMove={interactive ? move : undefined}
-      onPointerLeave={interactive ? leave : undefined}
     >
       <defs>
         <linearGradient id={gradientId} x1="0" x2="1" y1="0" y2="1">
           <stop
             stopColor="#8fe5ec"
-            stopOpacity={mode === "index" ? ".48" : ".24"}
+            stopOpacity={
+              mode === "index" ? ".48" : mode === "home" ? ".3" : ".24"
+            }
           />
           <stop
             offset=".48"
             stopColor="#67d4e2"
-            stopOpacity={mode === "index" ? ".96" : ".84"}
+            stopOpacity={
+              mode === "index" ? ".96" : mode === "home" ? ".68" : ".84"
+            }
           />
           <stop
             offset="1"
             stopColor="#b9f1f4"
-            stopOpacity={mode === "index" ? ".52" : ".28"}
+            stopOpacity={
+              mode === "index" ? ".52" : mode === "home" ? ".34" : ".28"
+            }
           />
         </linearGradient>
       </defs>
@@ -213,7 +279,9 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
             opacity={
               mode === "index"
                 ? 0.48 + (index % 7) * 0.065
-                : 0.23 + (index % 7) * 0.075
+                : mode === "home"
+                  ? 0.18 + (index % 7) * 0.035
+                  : 0.23 + (index % 7) * 0.075
             }
           />
         ))}

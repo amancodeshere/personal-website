@@ -36,8 +36,21 @@ for (const [path, evidence] of cases) {
       /<figcaption[\s>]/,
       "Project image caption bars must not render",
     );
+    if (path === "/") {
+      assert.match(html, /data-ocean-surface="home"/);
+      assert.match(html, /data-ocean-mode="home"/);
+    } else {
+      assert.doesNotMatch(
+        html,
+        /data-ocean-mode="home"/,
+        "The ambient home field must stay on the landing page",
+      );
+    }
     if (path === "/projects" || path === "/projects/games") {
-      assert.match(html, /class="project-index-backdrop" aria-hidden="true"/);
+      assert.match(
+        html,
+        /class="[^"]*\bproject-index-backdrop\b[^"]*" aria-hidden="true"/,
+      );
       assert.match(html, /data-ocean-mode="index"/);
     } else if (path.startsWith("/projects/")) {
       assert.doesNotMatch(
