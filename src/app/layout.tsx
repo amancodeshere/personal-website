@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import controls from "../components/layout/InteractiveControls.module.css";
 import { SiteHeader } from "../components/layout/SiteHeader";
 import { SiteFooter } from "../components/layout/SiteFooter";
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={controls.controls}>
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
