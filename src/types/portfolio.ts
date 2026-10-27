@@ -1,8 +1,10 @@
+import type { ProjectCategory } from "../content/project-categories";
+
 export type Project = {
   slug: string;
   title: string;
   shortTitle: string;
-  category: "Software engineering" | "Machine learning" | "Research";
+  category: ProjectCategory;
   summary: string;
   description: string[];
   technologies: string[];
@@ -14,7 +16,19 @@ export type Project = {
   status?: string;
   role: string;
   visual:
-    "forge" | "trade" | "nlp" | "medical" | "quiz" | "recipe" | "research";
+    | "forge"
+    | "trade"
+    | "nlp"
+    | "medical"
+    | "quiz"
+    | "recipe"
+    | "research"
+    | "music"
+    | "security"
+    | "battlecode"
+    | "botfluencer"
+    | "block"
+    | "pinball";
 };
 
 export type Experience = {

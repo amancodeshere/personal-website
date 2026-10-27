@@ -1,3 +1,4 @@
+import { additionalProjects } from "./additional-projects";
 import type { Experience, Project } from "../types/portfolio";
 
 export const profile = {
@@ -332,6 +333,7 @@ export const projects: Project[] = [
     role: "Honours thesis researcher · Supervisor: Dr Aditya Joshi",
     visual: "research",
   },
+  ...additionalProjects,
 ];
 
 export const experiences: Experience[] = [
