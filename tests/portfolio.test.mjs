@@ -98,7 +98,8 @@ test("project image assets ship with the standalone application", async () => {
   );
 });
 
-const newProjects = [
+const categorizedProjects = [
+  ["jobforge", "AI", "JobForge"],
   ["music-rec", "Machine learning", "Music-Rec"],
   [
     "data-exfiltration-prevention",
@@ -111,13 +112,16 @@ const newProjects = [
   ["midnight-run", "Games", "pinball"],
 ];
 
-test("new projects have the requested categories and exact source links", async () => {
+test("projects have the requested categories and exact source links", async () => {
   await Promise.all(
-    newProjects.map(async ([slug, category, repository]) => {
+    categorizedProjects.map(async ([slug, category, repository]) => {
       const html = await (
         await fetch(new URL(`/projects/${slug}`, base))
       ).text();
-      assert.ok(html.includes(category), `${slug}: missing category`);
+      assert.ok(
+        html.includes(`<span>${category}</span>`),
+        `${slug}: missing category`,
+      );
       assert.ok(
         html.includes(`href="https://github.com/amancodeshere/${repository}"`),
         `${slug}: missing source`,
@@ -128,7 +132,7 @@ test("new projects have the requested categories and exact source links", async 
 
 test("archive exposes the new discipline sections and all 13 project links", async () => {
   const html = await (await fetch(new URL("/projects", base))).text();
-  for (const category of ["Cyber security", "Competitions", "Games"]) {
+  for (const category of ["AI", "Cyber security", "Competitions", "Games"]) {
     assert.ok(
       html.includes(`>${category}</h2>`),
       `Missing category section: ${category}`,

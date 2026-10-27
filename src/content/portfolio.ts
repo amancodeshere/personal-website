@@ -20,7 +20,7 @@ export const projects: Project[] = [
     slug: "jobforge",
     title: "JobForge",
     shortTitle: "JobForge",
-    category: "Software engineering",
+    category: "AI",
     summary:
       "An agent-oriented job discovery and application platform that connects candidate evidence to ranked roles and tailored application materials.",
     description: [

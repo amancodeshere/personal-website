@@ -1,6 +1,6 @@
 # Aman Sharma — Portfolio
 
-A modular Next.js / React portfolio in TypeScript, with an ocean-blue visual system inspired by wodniack.dev. It includes 13 project case studies across software engineering, machine learning, research, cyber security, competitions, and games, a filterable archive, experience, education, and contact.
+A modular Next.js / React portfolio in TypeScript, with an ocean-blue visual system inspired by wodniack.dev. It includes 13 project case studies across software engineering, AI, machine learning, research, cyber security, competitions, and games, a filterable archive, experience, education, and contact.
 
 ## Development
 

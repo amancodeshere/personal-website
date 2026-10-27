@@ -1,5 +1,6 @@
 export const projectCategories = [
   "Software engineering",
+  "AI",
   "Machine learning",
   "Research",
   "Cyber security",
