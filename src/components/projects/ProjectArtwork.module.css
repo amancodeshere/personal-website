@@ -311,22 +311,36 @@
   background: white;
 }
 .recipePhoto {
+  position: relative;
   width: 100%;
   aspect-ratio: 1.35 / 1;
   flex: none;
   overflow: hidden;
+  container-type: size;
+}
+/* Isolate one square dish from the triptych, then center a tighter crop.
+   The square follows the larger frame dimension so neighboring dishes never enter. */
+.recipePhoto::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(118cqw, 118cqh);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
   background-image: var(--photo-source);
-  background-size: 300% auto;
+  background-size: 300% 100%;
+  background-position: var(--dish-position) center;
   background-repeat: no-repeat;
 }
 .tomato {
-  background-position: left center;
+  --dish-position: -0.75%;
 }
 .greens {
-  background-position: center center;
+  --dish-position: 50%;
 }
 .noodles {
-  background-position: right center;
+  --dish-position: 99.25%;
 }
 .recipeCards article > b {
   display: block;
@@ -616,7 +630,10 @@
     height: 100%;
     min-height: 100px;
     aspect-ratio: auto;
-    background-size: auto 100%;
+  }
+  .recipePhoto::before {
+    /* Thumbnail rows retain a 100px minimum height even in very narrow cards. */
+    min-width: 118px;
   }
   .recipeCards article > b {
     grid-column: 2;

@@ -32,3 +32,5 @@ The built-in ImageGen tool generated the image, saved in this project as `public
 - **Midnight Run:** `public/projects/midnight-run.webp`, captured by rendering the public pinball frontend locally. The original playfield is visible in a started, unlaunched game; the score service was absent. Only public frontend files were served, without the backend or database. Source: https://github.com/amancodeshere/pinball
 
 All additions use the shared caption-free artwork wrapper. New authored study styles are isolated in `AdditionalProjectArtwork.module.css`; breakpoint decisions follow the artwork container width.
+
+Recipe dish framing isolates one square panel of the food triptych before applying a centered 118% crop. Each dish has its own focal position; narrow 100px thumbnails retain a 118px crop floor so neighbouring dishes and empty edges cannot enter the frame.
