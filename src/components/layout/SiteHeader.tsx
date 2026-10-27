@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { profile } from "../../content/portfolio";
 
 const links = [
-  { href: "/#work", label: "Work" },
+  { href: "/#work", label: "Projects" },
   { href: "/#about", label: "About" },
   { href: "/experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },
@@ -59,7 +59,7 @@ export function SiteHeader() {
               key={link.label}
               href={link.href}
               aria-current={
-                (link.label === "Work" && pathname.startsWith("/projects")) ||
+                (link.href === "/#work" && pathname.startsWith("/projects")) ||
                 (link.label === "Experience" && pathname === "/experience")
                   ? "page"
                   : undefined
