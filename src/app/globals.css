@@ -464,6 +464,10 @@ svg {
   padding: 13px 1px 0;
 }
 .catalogue-list .project-row-copy {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 8px 10px 10px;
   background: var(--ocean);
 }
 .project-row-meta {
@@ -661,7 +665,6 @@ svg {
   border-top: 1px solid var(--line);
   color: var(--ice);
   font: 600 clamp(28px, 3.6vw, 48px)/1 var(--display);
-  background: var(--ocean);
 }
 .filter-bar {
   display: flex;
