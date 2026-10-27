@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { projects } from "../../content/portfolio";
+import {
+  portfolioProjects,
+  gameProjects,
+} from "../../content/project-visibility";
 import { ProjectCatalogue } from "../../components/projects/ProjectCatalogue";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Software engineering, AI, machine learning, research, cyber security, competition bots, and games by Aman Sharma.",
+    "Software engineering, AI, machine learning, research, cyber security, and competition bots by Aman Sharma.",
 };
 
 export default function ProjectsPage() {
@@ -15,13 +18,16 @@ export default function ProjectsPage() {
         <h1>Projects</h1>
         <div className="intro-foot">
           <p>
-            Software, AI, machine learning, research, cyber security,
-            competitions, and games.
+            Software, AI, machine learning, research, cyber security, and
+            competitions.
           </p>
-          <span>{projects.length} PROJECTS / SYDNEY</span>
+          <span>{portfolioProjects.length} PROJECTS / SYDNEY</span>
         </div>
       </header>
-      <ProjectCatalogue projects={projects} />
+      <ProjectCatalogue
+        projects={portfolioProjects}
+        gameCount={gameProjects.length}
+      />
     </div>
   );
 }

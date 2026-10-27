@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { projects } from "../../content/portfolio";
+import {
+  portfolioProjects,
+  gameProjects,
+} from "../../content/project-visibility";
 import { ProjectRow } from "../projects/ProjectRow";
 import { GalleryMotion } from "../visual/GalleryMotion";
 
@@ -16,14 +19,20 @@ export function SelectedWork() {
           Work
         </h2>
         <Link href="/projects">
-          All projects
+          Projects
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M3 10h13M10 4l6 6-6 6" />
+          </svg>
+        </Link>
+        <Link href="/projects/games">
+          Games <span>{String(gameProjects.length).padStart(2, "0")}</span>
           <svg viewBox="0 0 20 20" aria-hidden="true">
             <path d="M3 10h13M10 4l6 6-6 6" />
           </svg>
         </Link>
       </div>
       <GalleryMotion className="project-list home-project-list">
-        {projects.map((project, index) => (
+        {portfolioProjects.map((project, index) => (
           <ProjectRow key={project.slug} project={project} index={index} />
         ))}
       </GalleryMotion>

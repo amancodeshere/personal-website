@@ -359,6 +359,7 @@ svg {
   align-items: end;
   min-height: 48px;
   margin: 0 0 26px;
+  gap: clamp(18px, 3vw, 36px);
 }
 .work-heading a {
   display: inline-flex;
@@ -369,6 +370,20 @@ svg {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
+}
+.work-heading a:hover {
+  color: var(--cyan);
+}
+.work-heading a > span {
+  color: var(--muted);
+  font-size: 9px;
+}
+.work-heading a svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
 }
 .visually-hidden {
   position: absolute;
@@ -632,7 +647,10 @@ svg {
   gap: 8px;
   margin: 28px 0 15px;
 }
-.filter-bar button {
+.filter-bar button,
+.filter-bar .games-topic-link {
+  display: inline-flex;
+  align-items: center;
   padding: 8px 12px;
   border: 1px solid var(--line);
   background: transparent;
@@ -641,12 +659,14 @@ svg {
   cursor: pointer;
 }
 .filter-bar button:hover,
-.filter-bar button[aria-pressed="true"] {
+.filter-bar button[aria-pressed="true"],
+.filter-bar .games-topic-link:hover {
   color: var(--deep);
   border-color: var(--cyan);
   background: var(--cyan);
 }
-.filter-bar button span {
+.filter-bar button span,
+.filter-bar .games-topic-link span {
   margin-left: 8px;
   opacity: 0.7;
 }

@@ -1,21 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Project } from "../../types/portfolio";
 import { projectCategories } from "../../content/project-categories";
 import { ProjectRow } from "./ProjectRow";
 
-const filters = ["All", ...projectCategories] as const;
-type Filter = (typeof filters)[number];
-
-export function ProjectCatalogue({ projects }: { projects: Project[] }) {
-  const [active, setActive] = useState<Filter>("All");
+export function ProjectCatalogue({
+  projects,
+  gameCount,
+}: {
+  projects: Project[];
+  gameCount: number;
+}) {
   const groups = projectCategories
     .map((category) => ({
       category,
       projects: projects.filter((project) => project.category === category),
     }))
     .filter((group) => group.projects.length > 0);
+  const filters = ["All", ...groups.map((group) => group.category)] as const;
+  type Filter = (typeof filters)[number];
+  const [active, setActive] = useState<Filter>("All");
   const visibleGroups =
     active === "All"
       ? groups
@@ -49,6 +55,10 @@ export function ProjectCatalogue({ projects }: { projects: Project[] }) {
             </span>
           </button>
         ))}
+        <Link className="games-topic-link" href="/projects/games">
+          Games
+          <span>{gameCount}</span>
+        </Link>
       </div>
       <p className="visually-hidden" role="status">
         {visibleCount} projects shown

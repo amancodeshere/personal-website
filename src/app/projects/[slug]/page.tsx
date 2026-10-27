@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "../../../content/portfolio";
+import {
+  gameProjects,
+  portfolioProjects,
+} from "../../../content/project-visibility";
 import { ProjectArtwork } from "../../../components/projects/ProjectArtwork";
 
 export function generateStaticParams() {
@@ -28,17 +32,21 @@ export default async function ProjectPage({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
-  const index = projects.findIndex((item) => item.slug === slug);
-  const next = projects[(index + 1) % projects.length];
+  const isGame = project.category === "Games";
+  const navigationProjects = isGame ? gameProjects : portfolioProjects;
+  const index = navigationProjects.findIndex((item) => item.slug === slug);
+  const next = navigationProjects[(index + 1) % navigationProjects.length];
   return (
     <article className="project-detail frame-x">
       <div className="detail-breadcrumb">
-        <Link href="/projects">WORK</Link>
+        <Link href={isGame ? "/projects/games" : "/projects"}>
+          {isGame ? "GAMES" : "WORK"}
+        </Link>
         <span>/</span>
         <span>{project.category}</span>
         <span className="detail-index">
           {String(index + 1).padStart(2, "0")} /{" "}
-          {String(projects.length).padStart(2, "0")}
+          {String(navigationProjects.length).padStart(2, "0")}
         </span>
       </div>
       <header className="detail-heading">

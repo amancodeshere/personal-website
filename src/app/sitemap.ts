@@ -12,7 +12,7 @@ function getSiteOrigin() {
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = getSiteOrigin();
   if (!origin) return [];
-  const routes = ["", "/about", "/experience", "/projects"];
+  const routes = ["", "/about", "/experience", "/projects", "/projects/games"];
   return [
     ...routes.map((route) => ({
       url: `${origin}${route}`,
