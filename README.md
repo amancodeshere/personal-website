@@ -15,6 +15,7 @@ Visit http://localhost:3000. For production:
 
 ```sh
 npm run typecheck
+npm run format:check
 npm run build
 npm start
 ```
@@ -22,8 +23,9 @@ npm start
 The Docker image runs Next's standalone `server.js` as a non-root user. To reproduce that mode locally after building:
 
 ```sh
-cp -R public .next/standalone/public
-cp -R .next/static .next/standalone/.next/static
+mkdir -p .next/standalone/public .next/standalone/.next/static
+cp -R public/. .next/standalone/public/
+cp -R .next/static/. .next/standalone/.next/static/
 HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 ```
 
@@ -55,13 +57,15 @@ The route checks cover all seven projects, core pages, CV evidence, the owner's 
 
 Production: https://portfolio-production-e5eb.up.railway.app
 
-The dedicated `aman-sharma-portfolio` project contains the `portfolio` service. `railway.toml` selects the multi-stage Docker build and homepage health check. `PORT` is injected by Railway; the server binds to `0.0.0.0`.
+The dedicated `aman-sharma-portfolio` project contains the `portfolio` service. `.railway/railway.ts` declares the Docker builder and homepage health check using Railway's TypeScript infrastructure SDK. `PORT` is injected by Railway; the server binds to `0.0.0.0`.
 
 Set `NEXT_PUBLIC_SITE_URL` to the public HTTPS origin before building (Railway build argument and runtime environment). This supplies social metadata, robots, and sitemap origins. Update it when adding a custom domain, then rebuild.
 
 ```sh
 railway login
 railway link --project 1659a361-c52a-4856-a732-3fa14675fce1 --service portfolio
+railway config plan
+railway config apply --yes
 railway up --service portfolio --detach
 railway deployment list --service portfolio --json
 ```
