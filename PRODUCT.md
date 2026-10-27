@@ -31,3 +31,6 @@ Two CVs provided at /Users/aman/Desktop/Latest CVs/Aman_Sharma_CV_ml.pdf and /Us
 
 ## Public Contact
 User explicitly requires amancodinghere@gmail.com as the sole public contact email. Never publish the personal address from the CVs.
+
+## UI Overhaul Brief
+The owner requested a cleaner, more dynamic interface that mirrors wodniack.dev more closely. Replace repetitive résumé-style project rows and generic abstract diagrams with a moving visual gallery, actual public application captures and project figures where available, and clearly labelled illustrative workflows for projects without shareable media. Remove decorative technical labels and repeated metadata from the homepage. Preserve all seven project pages, equal software/ML emphasis, approved public contact and source-sharing restrictions.
