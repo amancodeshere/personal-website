@@ -24,9 +24,6 @@ research result.
 
 ## Food illustration prompt
 
-The recipe image was generated with this prompt: “Overhead editorial food
-photograph of three separate ceramic bowls arranged side by side on a warm stone
-table: tomato lentil stew on the left, spinach chickpea curry in the center,
-vegetable noodles on the right; natural window light, tactile ingredients,
-realistic food photography, wide 3:1 landscape frame, no legible text, no labels,
-no branding.”
+The built-in ImageGen tool generated the image, saved in this project as `public/projects/recipe-food.webp` after WebP compression. The final prompt was:
+
+> Create a beautiful, realistic food photograph for a software portfolio's recipe recommendation project. Landscape wide composition, overhead flat lay of three separate ceramic bowls arranged left to right on a warm pale stone tabletop: left a rich tomato and red lentil stew garnished with herbs, center a spinach and chickpea curry with fresh ginger and cilantro, right sesame vegetable noodles with bok choy and carrots. Each dish occupies one third of the composition, generous clear distinction between dishes, bowls fully visible. Professional natural window light, tactile real food, appetizing rich earthy colors, editorial cookbook photography. Absolutely no typography, labels, interface, decorations, logos, hands or people. This will be used as illustrative food imagery, not an actual application screenshot. Wide 3:1 photographic triptych, identical camera angle and scale for all three dishes.
