@@ -24,6 +24,7 @@ export function ProjectArtwork({
   return (
     <figure
       className={`project-art ${styles.artwork} ${compact ? styles.compact : ""} ${project.visual === "medical" && media.image ? styles.medicalArt : ""}`}
+      style={{ aspectRatio: media.image?.aspectRatio }}
       aria-label={media.title}
       data-visual={project.visual}
       data-authored-study={
@@ -46,6 +47,7 @@ export function ProjectArtwork({
             }
             src={media.image.src}
             alt={media.image.alt}
+            style={{ objectFit: media.image.fit }}
             fill
             sizes={compact ? "(max-width: 760px) 100vw, 75vw" : "100vw"}
           />

@@ -16,6 +16,8 @@ export type ProjectMedia = {
     src: string;
     alt: string;
     presentation?: "frame" | "crop-strip";
+    aspectRatio?: string;
+    fit?: "cover" | "contain";
   };
 };
 
@@ -27,6 +29,8 @@ export const projectMedia = {
     source: "Scores are demonstration values · public demo capture",
     image: {
       src: "/projects/jobforge-results.webp",
+      aspectRatio: "16 / 9",
+      fit: "contain",
       alt: "JobForge sample opportunity results with demonstration match scores",
     },
   },

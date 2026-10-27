@@ -34,3 +34,5 @@ The built-in ImageGen tool generated the image, saved in this project as `public
 All additions use the shared caption-free artwork wrapper. New authored study styles are isolated in `AdditionalProjectArtwork.module.css`; breakpoint decisions follow the artwork container width.
 
 Recipe dish framing isolates one square panel of the food triptych before applying a centered 118% crop. Each dish has its own focal position; narrow 100px thumbnails retain a 118px crop floor so neighbouring dishes and empty edges cannot enter the frame.
+
+JobForge displays the complete existing 1280×720 capture at its native 16:9 ratio, with `fit: "contain"`. Optional image `aspectRatio` and `fit` metadata support full-image framing per project without changing other artwork.
