@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T11:30:54Z",
+  "title": "Design System: Aman Sharma Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#d7edf2", "tonalRamp": ["#10262d", "#294149", "#425c65", "#5b7780", "#75939c", "#90afb8", "#b1cbd2", "#d7edf2"] },
+      "muted": { "role": "neutral", "displayName": "Muted Current", "canonical": "#86aab5", "tonalRamp": ["#14252a", "#2b3d42", "#42565b", "#5a7075", "#70888e", "#86aab5", "#a9c3c9", "#d5e5e8"] },
+      "faint": { "role": "neutral", "displayName": "Faint Current", "canonical": "#587b87", "tonalRamp": ["#102125", "#25373b", "#394d53", "#4c646c", "#587b87", "#82a0a8", "#abc0c5", "#d7e2e4"] },
+      "ocean": { "role": "primary", "displayName": "Ocean Field", "canonical": "#062838", "tonalRamp": ["#03151e", "#04202d", "#062838", "#0a3547", "#17475a", "#356477", "#7095a3", "#c3d9df"] },
+      "deep": { "role": "neutral", "displayName": "Deep Water", "canonical": "#041d2a", "tonalRamp": ["#021017", "#031823", "#041d2a", "#0a2a38", "#1b3d49", "#3c5c66", "#78949d", "#c3d4d9"] },
+      "panel": { "role": "secondary", "displayName": "Panel Blue", "canonical": "#082f40", "tonalRamp": ["#041820", "#062532", "#082f40", "#104052", "#27576a", "#4b7485", "#88a7b2", "#cedee2"] },
+      "panel-hi": { "role": "secondary", "displayName": "Panel Tide", "canonical": "#0b3d50", "tonalRamp": ["#051d25", "#082d3a", "#0b3d50", "#175267", "#356c80", "#5d8998", "#9eb9c1", "#d7e4e7"] },
+      "line": { "role": "neutral", "displayName": "Fine Rule", "canonical": "rgba(164,214,225,.18)", "tonalRamp": ["rgba(164,214,225,.04)", "rgba(164,214,225,.07)", "rgba(164,214,225,.1)", "rgba(164,214,225,.13)", "rgba(164,214,225,.18)", "rgba(164,214,225,.3)", "rgba(164,214,225,.48)", "rgba(164,214,225,.72)"] },
+      "line-strong": { "role": "neutral", "displayName": "Strong Rule", "canonical": "rgba(164,214,225,.38)", "tonalRamp": ["rgba(164,214,225,.08)", "rgba(164,214,225,.14)", "rgba(164,214,225,.22)", "rgba(164,214,225,.3)", "rgba(164,214,225,.38)", "rgba(164,214,225,.52)", "rgba(164,214,225,.68)", "rgba(164,214,225,.85)"] },
+      "cyan": { "role": "tertiary", "displayName": "Current Cyan", "canonical": "#54cede", "tonalRamp": ["#0a2226", "#10353a", "#194a50", "#28636a", "#39858d", "#54cede", "#8be2ea", "#d1f4f6"] },
+      "ice": { "role": "neutral", "displayName": "Ice", "canonical": "#e8f7f8", "tonalRamp": ["#182729", "#303f41", "#49595b", "#647476", "#829294", "#a4b5b7", "#c7d9da", "#e8f7f8"] },
+      "availability": { "role": "tertiary", "displayName": "Availability Green", "canonical": "#83dab8", "tonalRamp": ["#17251e", "#2a3e34", "#3e594a", "#527461", "#68947a", "#83dab8", "#a8e8cb", "#dcf7ea"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Oversized hero title in Barlow Condensed." },
+      "headline": { "displayName": "Headline", "purpose": "Page and section headings in Barlow Condensed." },
+      "body": { "displayName": "Body", "purpose": "Reading, navigation, and interface text in DM Sans." },
+      "editorial": { "displayName": "Editorial", "purpose": "Lead statements and introductions in Georgia." },
+      "label": { "displayName": "Label", "purpose": "Compact tracked metadata and utility labels in DM Sans." }
+    },
+    "shadows": [
+      { "name": "artwork-glow", "value": "0 0 38px rgba(71,217,229,.34)", "purpose": "Localized soft cyan glow around diagram nodes; never use as a general card shadow." }
+    ],
+    "motion": [
+      { "name": "current-drift", "value": "21s ease-in-out infinite alternate", "purpose": "Slow line drift in the hero current artwork." },
+      { "name": "fine-current-drift", "value": "28s ease-in-out infinite alternate-reverse", "purpose": "Secondary slower drift for fine current lines." },
+      { "name": "pointer-parallax", "value": "0.6s cubic-bezier(.2,.7,.2,1)", "purpose": "Small pointer-following offset on the hero SVG field." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Disables current drift and pointer translation and minimizes transitions." }
+    ],
+    "breakpoints": [
+      { "name": "wide-tablet", "value": "1080px" },
+      { "name": "mobile", "value": "760px" },
+      { "name": "small-mobile", "value": "390px" }
+    ],
+    "components": [
+      {
+        "name": "Filter Chip",
+        "kind": "chip",
+        "refersTo": "filter-chip",
+        "description": "Square project filter with count and clear selected state.",
+        "html": "<button class=\"ds-filter-chip\" type=\"button\" aria-pressed=\"true\">Machine learning <span>03</span></button>",
+        "css": ".ds-filter-chip { display: inline-flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid var(--line-strong, rgba(164,214,225,.38)); border-radius: 0; background: transparent; color: var(--muted, #86aab5); font: 400 11px/1.4 'DM Sans', Arial, sans-serif; cursor: pointer; transition: background .2s, color .2s, border-color .2s; } .ds-filter-chip span { color: var(--cyan, #54cede); font: 500 9px/1 monospace; } .ds-filter-chip:hover, .ds-filter-chip:focus-visible, .ds-filter-chip[aria-pressed=true] { background: var(--panel-hi, #0b3d50); border-color: var(--cyan, #54cede); color: var(--ice, #e8f7f8); } .ds-filter-chip:focus-visible { outline: 2px solid var(--cyan, #54cede); outline-offset: 4px; }"
+      },
+      {
+        "name": "Primary Navigation",
+        "kind": "nav",
+        "description": "Editorial header navigation with thin separators and restrained hover fill.",
+        "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#work\" aria-current=\"page\">Work</a><a href=\"#about\">About</a></nav>",
+        "css": ".ds-nav { display: flex; align-items: stretch; background: var(--deep, #041d2a); } .ds-nav a { display: flex; align-items: center; min-height: 48px; padding: 0 19px; border-left: 1px solid var(--line, rgba(164,214,225,.18)); color: var(--muted, #86aab5); font: 400 12px/1.4 'DM Sans', Arial, sans-serif; text-decoration: none; transition: color .2s, background .2s; } .ds-nav a:hover, .ds-nav a[aria-current=page] { color: var(--ice, #e8f7f8); background: rgba(83,206,222,.06); } .ds-nav a:focus-visible { outline: 2px solid var(--cyan, #54cede); outline-offset: 2px; }"
+      },
+      {
+        "name": "Project Artwork Frame",
+        "kind": "custom",
+        "refersTo": "project-artwork",
+        "description": "Rectangular abstract illustration frame for a portfolio project.",
+        "html": "<div class=\"ds-project-art\" aria-hidden=\"true\"><span class=\"ds-orbit\"></span><span class=\"ds-core\">AS</span></div>",
+        "css": ".ds-project-art { position: relative; display: grid; place-items: center; aspect-ratio: 1.6 / 1; overflow: hidden; border: 1px solid var(--line-strong, rgba(164,214,225,.38)); border-radius: 0; background: radial-gradient(ellipse at 50% 55%, #125269, var(--panel, #082f40) 63%, var(--ocean, #062838)); } .ds-project-art::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(134,200,211,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(134,200,211,.035) 1px, transparent 1px); background-size: 44px 44px; } .ds-orbit { position: absolute; width: 54%; height: 74%; border: 1px solid rgba(119,222,232,.48); border-radius: 50%; transform: rotate(-30deg); } .ds-core { z-index: 1; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: #b8e8e9; color: #0a3341; font: 800 28px/1 'Barlow Condensed', Impact, sans-serif; box-shadow: 0 0 38px rgba(71,217,229,.34); }"
+      },
+      {
+        "name": "Editorial Text Link",
+        "kind": "custom",
+        "description": "Compact uppercase call to action with a cyan arrow and visible keyboard focus.",
+        "html": "<a class=\"ds-text-link\" href=\"#work\">Explore the work <span aria-hidden=\"true\">→</span></a>",
+        "css": ".ds-text-link { display: inline-flex; align-items: center; gap: 12px; color: var(--ice, #e8f7f8); font: 700 10px/1.4 'DM Sans', Arial, sans-serif; letter-spacing: .14em; text-decoration: none; text-transform: uppercase; } .ds-text-link span { color: var(--cyan, #54cede); font-size: 17px; transition: transform .2s; } .ds-text-link:hover span { transform: translateX(4px); } .ds-text-link:focus-visible { outline: 2px solid var(--cyan, #54cede); outline-offset: 4px; }"
+      },
+      {
+        "name": "Contact Invitation",
+        "kind": "custom",
+        "description": "Large outlined editorial phrase above the owner's public contact link.",
+        "html": "<section class=\"ds-contact\"><p>HAVE SOMETHING IN MIND?</p><h2>LET'S MAKE<br><em>IT WORK.</em></h2><a href=\"mailto:amancodinghere@gmail.com\">amancodinghere@gmail.com</a></section>",
+        "css": ".ds-contact { padding: 36px; background: #0a3b4d; color: var(--ice, #e8f7f8); } .ds-contact p { color: #9bc4ca; font: 600 9px/1.5 'DM Sans', Arial, sans-serif; letter-spacing: .16em; } .ds-contact h2 { margin: 40px 0; font: 900 clamp(54px, 12vw, 120px)/.78 'Barlow Condensed', Impact, sans-serif; letter-spacing: -.04em; text-transform: uppercase; } .ds-contact h2 em { color: transparent; font-style: normal; -webkit-text-stroke: 1px var(--cyan, #54cede); } .ds-contact a { color: var(--ice, #e8f7f8); border-bottom: 1px solid rgba(196,232,234,.5); padding-bottom: 8px; font: 500 16px/1.5 'DM Sans', Arial, sans-serif; text-decoration: none; } .ds-contact a:focus-visible { outline: 2px solid var(--cyan, #54cede); outline-offset: 4px; }"
+      }
+    ],
+    "narrative": {
+      "northStar": "Current in Motion",
+      "overview": "This is an editorial portfolio set in a deep ocean palette. A fine coordinate grid, precise rules, oversized condensed typography, and flowing current lines give the work a sense of motion while keeping the reading structure calm. The visual language takes cues from wodniack.dev, then expresses them through Aman's own identity, writing, and abstract artwork.\n\nThe interface is a frame for projects and research: high contrast headlines establish hierarchy; DM Sans keeps details clear; Georgia adds an editorial voice to introductions and longer passages. Project art is drawn with SVG and CSS as abstract diagrams. It is illustrative, not a screenshot or a claim about a model's output.",
+      "keyCharacteristics": [
+        "Dark ocean blues, icy text, and restrained cyan accents.",
+        "Large Barlow Condensed display type balanced by readable DM Sans and Georgia.",
+        "Thin grid and section rules with generous editorial spacing.",
+        "Flowing SVG current artwork and abstract project diagrams."
+      ],
+      "rules": [
+        { "name": "The Signal Color Rule", "body": "Cyan marks a state, path, or point of attention; it does not become a large decorative fill.", "section": "colors" },
+        { "name": "The Three-Voice Rule", "body": "Use Barlow Condensed for hierarchy, DM Sans for utility and reading, and Georgia for editorial emphasis; do not add a fourth display voice.", "section": "typography" }
+      ],
+      "dos": [
+        "Do keep the deep ocean field, icy text, and restrained cyan as the recurring color relationship.",
+        "Do build new project art from abstract SVG or CSS diagrams that represent the subject.",
+        "Do use the typed portfolio content as the source of project labels and facts.",
+        "Do preserve reduced-motion behavior, keyboard focus, and the public contact address amancodinghere@gmail.com."
+      ],
+      "donts": [
+        "Don't add product screenshots or model-output imagery; the visual system uses abstract authored illustrations.",
+        "Don't reintroduce the private CV email or add another public email address.",
+        "Don't add source or deployment links for Job Advertisement Information Extraction or Toohak; those destinations are no longer available to share.",
+        "Don't replace the fine rules and square frames with rounded cards, pills, or generic shadow-heavy panels.",
+        "Don't remove the reduced-motion treatment or rely on animation to convey essential information."
+      ]
+    }
+  }
+}
