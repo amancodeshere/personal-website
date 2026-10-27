@@ -1,14 +1,8 @@
+import Image from "next/image";
+import type { CSSProperties } from "react";
 import type { Project } from "../../types/portfolio";
-
-const labels: Record<Project["visual"], string> = {
-  forge: "JOB / MATCH / APPLY",
-  trade: "DOCUMENT / ROUTE / TRACK",
-  nlp: "TEXT TO STRUCTURE",
-  medical: "IMAGE / PIXEL / SIGNAL",
-  quiz: "QUESTION / RESPONSE",
-  recipe: "TASTE / PROFILE / MATCH",
-  research: "ABSTRACT / SDG / CLASSIFY",
-};
+import { projectMedia, type ProjectMedia } from "../../content/project-media";
+import styles from "./ProjectArtwork.module.css";
 
 export function ProjectArtwork({
   project,
@@ -17,162 +11,267 @@ export function ProjectArtwork({
   project: Project;
   compact?: boolean;
 }) {
+  const mappedMedia = projectMedia[
+    project.slug as keyof typeof projectMedia
+  ] as ProjectMedia | undefined;
+  const media = mappedMedia ?? {
+    kind: "interface-study" as const,
+    title: project.shortTitle,
+    caption: project.summary,
+  };
+
+  return (
+    <figure
+      className={`project-art ${styles.artwork} ${compact ? styles.compact : ""} ${project.visual === "medical" && media.image ? styles.medicalArt : ""} ${!compact && media.source ? styles.withSource : ""}`}
+      aria-label={media.title}
+    >
+      <div
+        className={`${styles.canvas} ${media.image?.presentation === "crop-strip" ? styles.recipeCanvas : ""}`}
+        aria-hidden={!media.image || media.image.presentation === "crop-strip"}
+      >
+        {media.image && media.image.presentation !== "crop-strip" ? (
+          <Image
+            className={
+              project.visual === "medical"
+                ? styles.ultrasound
+                : styles.liveCapture
+            }
+            src={media.image.src}
+            alt={media.image.alt}
+            fill
+            sizes="(max-width: 760px) 100vw, 50vw"
+          />
+        ) : project.visual === "nlp" && mappedMedia ? (
+          <ExtractionStudy />
+        ) : project.visual === "recipe" && mappedMedia ? (
+          <RecipeStudy photoSrc={media.image?.src} />
+        ) : project.visual === "quiz" && mappedMedia ? (
+          <QuizStudy />
+        ) : project.visual === "research" && mappedMedia ? (
+          <ResearchStudy />
+        ) : mappedMedia ? (
+          <p className={styles.fallback}>{project.summary}</p>
+        ) : (
+          <p className={styles.fallback}>{project.summary}</p>
+        )}
+      </div>
+      <figcaption
+        className={`${styles.caption} ${compact ? styles.captionCompact : styles.captionDetail}`}
+      >
+        <span>{media.caption}</span>
+        {!compact && media.source && (
+          <span className={styles.captionSource}>{media.source}</span>
+        )}
+      </figcaption>
+    </figure>
+  );
+}
+
+function ExtractionStudy() {
+  return (
+    <div className={styles.extraction}>
+      <div className={styles.extractPanel}>
+        <header>
+          <b>Job advertisement</b>
+          <span>HTML source</span>
+        </header>
+        <p>
+          <mark>Senior engineer</mark> to build and maintain web services.
+          Applicants should have a degree in computer science and experience
+          with distributed systems.
+        </p>
+        <footer>
+          <span>Raw listing text</span>
+          <b>Extract fields</b>
+        </footer>
+      </div>
+      <div className={styles.extractArrow}>→</div>
+      <div className={styles.fieldsPanel}>
+        <header>
+          <b>Structured fields</b>
+          <span>JSON</span>
+        </header>
+        <div>
+          <span>role</span>
+          <b>Senior engineer</b>
+        </div>
+        <div>
+          <span>education</span>
+          <b>Computer science degree</b>
+        </div>
+        <div>
+          <span>experience</span>
+          <b>Distributed systems</b>
+        </div>
+        <div>
+          <span>salary</span>
+          <b className={styles.muted}>Not stated in source</b>
+        </div>
+        <footer>Values shown are illustrative</footer>
+      </div>
+    </div>
+  );
+}
+
+function QuizStudy() {
+  return (
+    <div className={styles.quiz}>
+      <header>
+        <b>TOOHAK</b>
+        <span>Live game · Player view</span>
+        <i>Connected</i>
+      </header>
+      <div className={styles.question}>
+        <small>QUESTION</small>
+        <h3>Which tool keeps a live quiz in sync?</h3>
+      </div>
+      <div className={styles.answers}>
+        <div>
+          <b>A</b>
+          <span>WebSocket events</span>
+        </div>
+        <div>
+          <b>B</b>
+          <span>Page refreshes</span>
+        </div>
+        <div>
+          <b>C</b>
+          <span>Local storage</span>
+        </div>
+        <div>
+          <b>D</b>
+          <span>Static files</span>
+        </div>
+      </div>
+      <footer>
+        <span>Answer selected on player device</span>
+        <b>Waiting for host</b>
+      </footer>
+    </div>
+  );
+}
+
+function RecipeStudy({ photoSrc }: { photoSrc?: string }) {
+  return (
+    <div className={styles.recipe}>
+      <header>
+        <b>Recipe finder</b>
+        <span>Hybrid recommendations</span>
+        <i>Preferences</i>
+      </header>
+      <div className={styles.recipeIntro}>
+        <div>
+          <small>BASED ON YOUR INGREDIENTS</small>
+          <h3>Ideas for your next meal</h3>
+        </div>
+        <span>Content match + community ratings</span>
+      </div>
+      <div className={styles.recipeCards}>
+        <article>
+          <div
+            className={`${styles.recipePhoto} ${styles.tomato}`}
+            style={
+              { "--photo-source": `url("${photoSrc ?? ""}")` } as CSSProperties
+            }
+          />
+          <b>Tomato & lentil stew</b>
+          <p>Tomato · lentils · cumin</p>
+          <small>Similar ingredients</small>
+        </article>
+        <article>
+          <div
+            className={`${styles.recipePhoto} ${styles.greens}`}
+            style={
+              { "--photo-source": `url("${photoSrc ?? ""}")` } as CSSProperties
+            }
+          />
+          <b>Spinach chickpea curry</b>
+          <p>Spinach · chickpeas · ginger</p>
+          <small>Similar ingredients</small>
+        </article>
+        <article>
+          <div
+            className={`${styles.recipePhoto} ${styles.noodles}`}
+            style={
+              { "--photo-source": `url("${photoSrc ?? ""}")` } as CSSProperties
+            }
+          />
+          <b>Sesame vegetable noodles</b>
+          <p>Noodles · greens · sesame</p>
+          <small>Shared reader signals</small>
+        </article>
+      </div>
+      <footer>
+        <span>Recommendation signals</span>
+        <b>Ingredient similarity</b>
+        <i>+</i>
+        <b>User–item ratings</b>
+      </footer>
+    </div>
+  );
+}
+
+function ResearchStudy() {
+  return (
+    <div className={styles.research}>
+      <header>
+        <b>Research abstract</b>
+        <span>Multi-label classification</span>
+      </header>
+      <div className={styles.abstract}>
+        <small>EXAMPLE ABSTRACT</small>
+        <p>
+          “This study examines how urban planning can improve access to public
+          transport and essential services across growing cities.”
+        </p>
+      </div>
+      <div className={styles.labelFlow}>
+        <span>Candidate labels</span>
+        <i>→</i>
+        <b>UN Sustainable Development Goals</b>
+      </div>
+      <div className={styles.goalGrid}>
+        <Goal code="01" name="No poverty" color="#e5243b" />
+        <Goal code="02" name="Zero hunger" color="#dda63a" />
+        <Goal code="03" name="Good health" color="#4c9f38" />
+        <Goal code="04" name="Quality education" color="#c5192d" />
+        <Goal code="05" name="Gender equality" color="#ff3a21" />
+        <Goal code="06" name="Clean water" color="#26bde2" />
+        <Goal code="07" name="Clean energy" color="#fcc30b" />
+        <Goal code="08" name="Decent work" color="#a21942" />
+        <Goal code="09" name="Industry & innovation" color="#fd6925" />
+        <Goal code="10" name="Reduced inequalities" color="#dd1367" />
+        <Goal code="11" name="Sustainable cities" color="#fd9d24" selected />
+        <Goal code="12" name="Responsible consumption" color="#bf8b2e" />
+        <Goal code="13" name="Climate action" color="#3f7e44" />
+        <Goal code="14" name="Life below water" color="#0a97d9" />
+        <Goal code="15" name="Life on land" color="#56c02b" />
+        <Goal code="16" name="Peace & justice" color="#00689d" />
+        <Goal code="17" name="Partnerships" color="#19486a" />
+      </div>
+      <footer>Example candidate label · Goal 11</footer>
+    </div>
+  );
+}
+
+function Goal({
+  code,
+  name,
+  color,
+  selected = false,
+}: {
+  code: string;
+  name: string;
+  color: string;
+  selected?: boolean;
+}) {
   return (
     <div
-      className={`project-art art-${project.visual} ${compact ? "art-compact" : ""}`}
-      aria-hidden="true"
+      className={`${styles.goal} ${selected ? styles.goalSelected : ""}`}
+      style={{ "--goal-color": color } as CSSProperties}
     >
-      <div className="art-topline">
-        <span>
-          {project.visual.toUpperCase()} / 0
-          {[
-            "forge",
-            "trade",
-            "nlp",
-            "medical",
-            "quiz",
-            "recipe",
-            "research",
-          ].indexOf(project.visual) + 1}
-        </span>
-        <span>AS—SYSTEMS</span>
-      </div>
-      <div className="art-graphic">
-        {project.visual === "forge" && (
-          <>
-            <div className="forge-orbit orbit-a" />
-            <div className="forge-orbit orbit-b" />
-            <div className="forge-core">
-              J<span>F</span>
-            </div>
-            <div className="forge-node node-a">CV</div>
-            <div className="forge-node node-b">ROLE</div>
-            <div className="forge-node node-c">FIT</div>
-            <div className="forge-label">
-              EVIDENCE
-              <br />
-              TO MATCH
-            </div>
-          </>
-        )}
-        {project.visual === "trade" && (
-          <>
-            <div className="trade-sheet">
-              <i />
-              <i />
-              <i />
-              <b>UBL</b>
-              <span>INVOICE / 2048</span>
-            </div>
-            <div className="trade-route">
-              <i />
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="trade-parcel">
-              TRACKING
-              <br />
-              IN MOTION
-            </div>
-          </>
-        )}
-        {project.visual === "nlp" && (
-          <>
-            <div className="text-block">
-              salary
-              <br />
-              experience
-              <br />
-              education
-              <br />
-              <em>requirements</em>
-            </div>
-            <div className="extract-bracket" />
-            <div className="json-block">{`{\n  "role": true,\n  "salary": …\n}`}</div>
-          </>
-        )}
-        {project.visual === "medical" && (
-          <>
-            <div className="scan-ring ring-a" />
-            <div className="scan-ring ring-b" />
-            <div className="scan-center" />
-            <div className="scan-label">
-              US / 01
-              <br />
-              PIXEL STUDY
-            </div>
-            <div className="scan-cross">+</div>
-          </>
-        )}
-        {project.visual === "quiz" && (
-          <>
-            <div className="quiz-panel">
-              <span>Q. 04</span>
-              <b>
-                READY
-                <br />
-                PLAYER?
-              </b>
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="quiz-signal signal-a" />
-            <div className="quiz-signal signal-b" />
-            <div className="quiz-live">LIVE / 04</div>
-          </>
-        )}
-        {project.visual === "recipe" && (
-          <>
-            <div className="recipe-circles">
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="recipe-link link-a" />
-            <div className="recipe-link link-b" />
-            <div className="recipe-copy">
-              CONTENT
-              <br />
-              AND SIGNAL
-            </div>
-          </>
-        )}
-        {project.visual === "research" && (
-          <>
-            <div className="research-globe">
-              <i />
-              <i />
-              <i />
-              <i />
-              <b>17</b>
-            </div>
-            <div className="research-tag tag-a">SDG / 03</div>
-            <div className="research-tag tag-b">SDG / 11</div>
-            <div className="research-orbit" />
-          </>
-        )}
-      </div>
-      <div className="art-baseline">
-        <span>{labels[project.visual]}</span>
-        <span>
-          FIG.{" "}
-          {String(
-            [
-              "forge",
-              "trade",
-              "nlp",
-              "medical",
-              "quiz",
-              "recipe",
-              "research",
-            ].indexOf(project.visual) + 1,
-          ).padStart(2, "0")}
-        </span>
-      </div>
+      <b>{code}</b>
+      <span>{name}</span>
     </div>
   );
 }

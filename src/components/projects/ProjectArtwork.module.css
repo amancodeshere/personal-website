@@ -1,0 +1,509 @@
+.artwork {
+  --ink: #17333a;
+  --muted-ink: #526970;
+  --line: #d8e0dc;
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.6 / 1;
+  min-height: 230px;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  border: 1px solid #d5ddda;
+  background: #f5f7f3;
+  font-family: Arial, Helvetica, sans-serif;
+  isolation: isolate;
+}
+
+.compact {
+  min-height: 200px;
+}
+.canvas {
+  position: absolute;
+  inset: 0 0 34px;
+  overflow: hidden;
+  container-type: inline-size;
+}
+.recipeCanvas {
+  background: #fbf7f0;
+}
+.withSource .canvas {
+  bottom: 46px;
+}
+.caption {
+  position: absolute;
+  inset: auto 0 0;
+  min-height: 34px;
+  max-height: 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+  padding: 5px 13px;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--muted-ink);
+  font:
+    500 10px/1.3 Arial,
+    Helvetica,
+    sans-serif;
+}
+.caption > span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.captionCompact {
+  max-height: 34px;
+  padding-block: 6px;
+}
+.captionDetail {
+  padding-block: 5px;
+}
+.captionSource {
+  color: #63757a;
+  font-size: clamp(9px, 0.8vw, 11px);
+}
+.fallback {
+  max-width: 68ch;
+  margin: auto;
+  padding: clamp(20px, 4cqw, 48px);
+  color: #344c53;
+  font-size: clamp(12px, 1.3cqw, 16px);
+  line-height: 1.5;
+}
+
+/* Job-ad extraction: literal source text mapped to explicitly named fields. */
+.extraction {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(26px, 4cqw, 60px) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(8px, 1.2cqw, 18px);
+  padding: clamp(14px, 2cqw, 28px);
+  background: #f3f6f8;
+}
+.extractPanel,
+.fieldsPanel {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d6dfe4;
+  background: white;
+  box-shadow: 0 3px 12px rgba(39, 66, 82, 0.07);
+}
+.extractPanel header,
+.fieldsPanel header {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(6px, 1cqw, 14px);
+  padding: clamp(9px, 1.25cqw, 16px);
+  border-bottom: 1px solid #dce4e8;
+  font-size: clamp(11px, 1.35cqw, 18px);
+}
+.extractPanel header span,
+.fieldsPanel header span {
+  color: #617787;
+  font-size: clamp(9px, 1cqw, 13px);
+}
+.extractPanel p {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(12px, 1.8cqw, 26px);
+  color: #314958;
+  font:
+    clamp(11px, 1.2cqw, 16px)/1.65 Georgia,
+    serif;
+}
+.extractPanel mark {
+  padding: 1px 2px;
+  background: #f5e8bd;
+  color: #314958;
+}
+.extractPanel footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  padding: clamp(7px, 1cqw, 14px);
+  background: #f3f6f7;
+  color: #617787;
+  font-size: clamp(9px, 1cqw, 13px);
+}
+.extractPanel footer b {
+  color: #335c75;
+}
+.extractArrow {
+  color: #547b8e;
+  text-align: center;
+  align-self: center;
+  font-size: clamp(18px, 2.3cqw, 30px);
+}
+.fieldsPanel > div {
+  flex: 1;
+  align-content: center;
+  display: grid;
+  grid-template-columns: minmax(72px, 0.65fr) 1fr;
+  gap: clamp(6px, 1cqw, 14px);
+  padding: clamp(8px, 1.2cqw, 16px);
+  border-bottom: 1px solid #e7ecef;
+  font-size: clamp(10px, 1.1cqw, 14px);
+}
+.fieldsPanel > div span {
+  color: #547183;
+  font-family: monospace;
+}
+.fieldsPanel > div b {
+  font-weight: 600;
+}
+.fieldsPanel .muted {
+  color: #647985;
+  font-style: italic;
+  font-weight: 400;
+}
+.fieldsPanel footer {
+  padding: clamp(7px, 1cqw, 14px);
+  color: #617787;
+  background: #f3f6f7;
+  font-size: clamp(9px, 1cqw, 13px);
+}
+
+/* Real ultrasound samples and masks from the linked project repository. */
+.medicalArt {
+  background: #151c20;
+  border-color: #313c3f;
+}
+.medicalArt .canvas {
+  background: #13191d;
+}
+.ultrasound {
+  object-fit: contain;
+  padding: clamp(8px, 1.5cqw, 20px) clamp(10px, 2cqw, 30px);
+}
+.medicalArt .caption {
+  --muted-ink: #40545a;
+}
+
+/* Toohak: a host-synchronized player question and its answer state. */
+.quiz {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 clamp(12px, 2cqw, 30px);
+  color: #26304f;
+  background: #f4f5fb;
+}
+.quiz > header {
+  flex: 0 0 clamp(38px, 6cqw, 68px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 1.2cqw, 16px);
+  border-color: #d9ddec;
+  font-size: clamp(10px, 1.1cqw, 15px);
+}
+.quiz > header b {
+  letter-spacing: 0.1em;
+}
+.quiz > header i {
+  padding: clamp(4px, 0.7cqw, 9px) clamp(6px, 1cqw, 14px);
+  color: #395d4a;
+  background: #e2f0e6;
+  font-size: clamp(9px, 0.9cqw, 12px);
+  font-style: normal;
+}
+.question {
+  padding: clamp(10px, 1.7cqw, 24px) 0;
+  text-align: center;
+}
+.question small {
+  color: #697396;
+  font-size: clamp(9px, 0.9cqw, 12px);
+  letter-spacing: 0.12em;
+}
+.question h3 {
+  max-width: 480px;
+  margin: clamp(5px, 0.8cqw, 12px) auto 0;
+  font-size: clamp(17px, 2.4cqw, 32px);
+  line-height: 1.2;
+}
+.answers {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(7px, 1.2cqw, 18px);
+}
+.answers div {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.2cqw, 18px);
+  padding: clamp(8px, 1.5cqw, 22px);
+  border: 1px solid #d9ddec;
+  background: white;
+  font-size: clamp(12px, 1.35cqw, 18px);
+}
+.answers div:first-child {
+  border-color: #d57c58;
+  background: #fff4ef;
+}
+.answers b {
+  display: grid;
+  place-items: center;
+  width: clamp(24px, 3.5cqw, 42px);
+  height: clamp(24px, 3.5cqw, 42px);
+  color: white;
+  background: #6976a7;
+  font-size: clamp(10px, 1cqw, 14px);
+}
+.answers div:first-child b {
+  background: #bd5b39;
+}
+.quiz > footer {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(8px, 1.2cqw, 16px);
+  margin-top: clamp(10px, 1.5cqw, 20px);
+  padding-block: clamp(8px, 1cqw, 14px);
+  border-top: 1px solid #d9ddec;
+  color: #65708e;
+  font-size: clamp(10px, 1cqw, 14px);
+}
+.quiz > footer b {
+  color: #414e7a;
+}
+
+/* Recipe recommendations shown as recipes and visible ingredient overlaps. */
+.recipe {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 clamp(12px, 2cqw, 28px);
+  background: #fbf7f0;
+  color: #3c3228;
+}
+.recipe > header {
+  flex: 0 0 clamp(38px, 6cqw, 68px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 1cqw, 14px);
+  border-color: #e8ded1;
+  font-size: clamp(11px, 1.25cqw, 17px);
+}
+.recipe > header span,
+.recipeIntro > span {
+  color: #776957;
+  font-size: clamp(9px, 1cqw, 13px);
+}
+.recipe > header i {
+  padding: clamp(4px, 0.7cqw, 9px) clamp(6px, 1cqw, 14px);
+  border: 1px solid #dfd1bf;
+  font-size: clamp(9px, 0.95cqw, 13px);
+  font-style: normal;
+}
+.recipeIntro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: clamp(8px, 1.2cqw, 16px);
+  padding: clamp(10px, 1.6cqw, 23px) 0 clamp(8px, 1.2cqw, 16px);
+}
+.recipeIntro h3 {
+  margin: clamp(4px, 0.6cqw, 8px) 0 0;
+  font-size: clamp(16px, 1.9cqw, 25px);
+}
+.recipeCards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(7px, 1.2cqw, 16px);
+  align-items: stretch;
+}
+.recipeCards article {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: clamp(7px, 1cqw, 14px);
+  border: 1px solid #e7ded3;
+  background: white;
+}
+.recipePhoto {
+  flex: 1;
+  min-height: clamp(64px, 11cqw, 150px);
+  overflow: hidden;
+  background-image: var(--photo-source);
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+}
+.tomato {
+  background-position: left center;
+}
+.greens {
+  background-position: center center;
+}
+.noodles {
+  background-position: right center;
+}
+.recipeCards article > b {
+  display: block;
+  padding: clamp(7px, 1cqw, 14px) clamp(7px, 1cqw, 14px) 0;
+  font-size: clamp(11px, 1.25cqw, 17px);
+}
+.recipeCards p {
+  margin: clamp(4px, 0.6cqw, 8px) clamp(7px, 1cqw, 14px);
+  color: #726452;
+  font-size: clamp(10px, 1cqw, 14px);
+  line-height: 1.4;
+}
+.recipeCards article > small {
+  display: block;
+  margin: auto clamp(7px, 1cqw, 14px) 0;
+  color: #815e30;
+  font-size: clamp(9px, 0.95cqw, 13px);
+}
+.recipe > footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.9cqw, 12px);
+  margin-top: clamp(8px, 1.2cqw, 16px);
+  padding-block: clamp(7px, 1cqw, 14px);
+  border-top: 1px solid #e5d9ca;
+  color: #715f4c;
+  font-size: clamp(9px, 0.95cqw, 13px);
+}
+.recipe > footer b {
+  padding: clamp(4px, 0.7cqw, 9px) clamp(6px, 0.9cqw, 12px);
+  background: #efe5d7;
+  color: #554633;
+  font-size: clamp(9px, 0.95cqw, 13px);
+}
+.recipe > footer i {
+  font-style: normal;
+}
+
+/* SDG research: a sample abstract connected to real UN goal names. */
+.research {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 clamp(12px, 2cqw, 28px);
+  background: #f7f7f2;
+  color: #273c45;
+}
+.research > header {
+  flex: 0 0 clamp(38px, 6cqw, 68px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 1cqw, 14px);
+  border-color: #dce2df;
+  font-size: clamp(12px, 1.4cqw, 18px);
+}
+.research > header span {
+  color: #5c7377;
+  font-size: clamp(10px, 1cqw, 14px);
+}
+.abstract {
+  margin: clamp(10px, 1.5cqw, 20px) auto clamp(8px, 1cqw, 14px);
+  padding: clamp(9px, 1.2cqw, 16px);
+  border: 1px solid #d8e0dc;
+  background: white;
+}
+.abstract small {
+  color: #526970;
+  font-size: clamp(10px, 1cqw, 13px);
+}
+.abstract p {
+  margin: clamp(5px, 0.8cqw, 11px) 0 0;
+  color: #344c53;
+  font:
+    clamp(12px, 1.3cqw, 17px)/1.45 Georgia,
+    serif;
+}
+.labelFlow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 1.2cqw, 16px);
+  color: #526970;
+  font-size: clamp(10px, 1.1cqw, 14px);
+}
+.labelFlow i {
+  color: #548377;
+  font-size: clamp(13px, 1.5cqw, 20px);
+  font-style: normal;
+}
+.labelFlow b {
+  color: #344e53;
+  font-weight: 600;
+}
+.goalGrid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: clamp(3px, 0.5cqw, 7px);
+  margin: clamp(7px, 1cqw, 14px) auto 0;
+}
+.goal {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.6cqw, 8px);
+  min-height: 0;
+  padding: clamp(4px, 0.8cqw, 11px);
+  border: 1px solid #e0e5e2;
+  border-top: 2px solid var(--goal-color);
+  background: white;
+}
+.goal b {
+  flex: 0 0 auto;
+  color: var(--goal-color);
+  font-size: clamp(10px, 1.25cqw, 14px);
+}
+.goal span {
+  color: #344c53;
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: clamp(10px, 1.25cqw, 14px);
+  line-height: 1.2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goalSelected {
+  outline: 1px solid var(--goal-color);
+  background: #fff8ef;
+}
+.research > footer {
+  margin-top: clamp(6px, 0.9cqw, 12px);
+  padding-block: clamp(6px, 0.9cqw, 12px);
+  color: #6f655a;
+  text-align: right;
+  font-size: clamp(10px, 1cqw, 13px);
+}
+
+@media (max-width: 620px) {
+  .artwork {
+    min-height: 200px;
+  }
+  .compact {
+    min-height: 180px;
+  }
+  .research {
+    padding: 0 9px;
+  }
+  .goalGrid {
+    gap: 2px;
+    margin-top: 5px;
+  }
+}
