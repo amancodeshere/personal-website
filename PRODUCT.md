@@ -46,3 +46,6 @@ The owner classifies JobForge as AI rather than traditional machine learning. Jo
 
 ## Opt-in Games and Authentic Competition Media
 The owner wants Games available only through an explicit topic link. The homepage and default Projects catalogue show the 11 non-game projects, with a Games link opening `/projects/games` for the remaining two. Detail navigation stays within each collection. All 13 source records and individual routes remain available. Competition previews should use actual UNSW Battlecode board imagery and official CTN UNSW competition imagery rather than invented interfaces, with provenance retained outside image caption bars.
+
+## Animated Project Index
+The owner wants the homepage ocean-current motion carried across the Projects index, more prominently behind the gallery. Projects and Games topic indexes share a fixed viewport current field; controls, category headings, and project-copy panels use solid ocean backgrounds. Individual project pages retain a plain reading background. The current is decorative, never intercepts interaction, and preserves reduced-motion and hidden-page suspension.

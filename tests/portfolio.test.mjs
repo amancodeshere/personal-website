@@ -36,6 +36,16 @@ for (const [path, evidence] of cases) {
       /<figcaption[\s>]/,
       "Project image caption bars must not render",
     );
+    if (path === "/projects" || path === "/projects/games") {
+      assert.match(html, /class="project-index-backdrop" aria-hidden="true"/);
+      assert.match(html, /data-ocean-mode="index"/);
+    } else if (path.startsWith("/projects/")) {
+      assert.doesNotMatch(
+        html,
+        /project-index-backdrop|data-ocean-mode="index"/,
+        "Individual project pages must keep their plain reading background",
+      );
+    }
     if (path === "/projects/job-advertisement-extraction") {
       assert.doesNotMatch(
         html,

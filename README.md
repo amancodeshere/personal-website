@@ -40,6 +40,7 @@ HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 - `src/components/`: shared layout, home sections, project catalogue, artwork, and ocean field.
 - `src/content/project-media.ts`: image sources, alt text, and documentary provenance; images have no bottom caption bars.
 - `src/components/visual/`: per-path ocean animation and scroll-linked gallery transforms, with reduced-motion fallbacks.
+- `src/components/projects/ProjectIndexSurface.tsx`: fixed ocean-current backdrop for catalogue routes, with opaque reading panels; individual project routes stay plain.
 - `src/app/globals.css`: shared color, typography, spacing, responsive, and reduced-motion rules.
 
 To add a project, add one typed record to the canonical project data in `src/content/portfolio.ts` or `src/content/additional-projects.ts`. Non-game projects appear on the homepage and default catalogue; Games projects appear on `/projects/games`, which is linked from both. Detail-page breadcrumbs and next-project links stay within the project's collection, while the sitemap and static detail routes retain all 13 canonical projects. See [content guide](docs/CONTENT_GUIDE.md) for field definitions and source rules. Add a new standalone route with `src/app/<route>/page.tsx`, then link it in the shared header where appropriate.

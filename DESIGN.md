@@ -158,6 +158,8 @@ The header is a clean, ruled band with a compact nameplate, Work/About/Experienc
 
 The SVG current field spans the viewport above a bordered title strip. Its lines drift and respond to pointer movement. Keep the full name as the dominant typographic element; the hero includes a short work link and Sydney location metadata.
 
+The Projects and Games indexes use the shared index surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). Its gradient ID is unique per SVG, and the pointer-transparent backdrop leaves filters and project links usable. Opaque ocean panels keep card copy and filters readable; individual project details retain their plain ocean background. The hero's appearance and pointer response remain unchanged.
+
 ### About Panel
 
 Center one short statement inside a narrow panel with vertical rules. Use Georgia for the lead, DM Sans for supporting copy, and a single route to the longer About page.
@@ -176,7 +178,7 @@ Use four compact ruled rows with period, role, and organization. Keep the row st
 
 ### Motion and Accessibility
 
-The current SVG updates while visible, pauses when hidden or outside view, and returns to its static path with reduced motion. Gallery transforms follow scroll position; they are cleared for reduced motion and on mobile. The contact reveal responds to hover and keyboard focus. Keep media in normal document flow and preserve focus outlines, the skip link, and semantic navigation.
+The current SVG updates while visible, pauses when hidden or outside view, and returns to its static path with reduced motion. The Projects and Games index field stays fixed to the viewport while scrolling; it has no pointer-driven effect. Gallery transforms follow scroll position; they are cleared for reduced motion and on mobile. The contact reveal responds to hover and keyboard focus. Keep media in normal document flow and preserve focus outlines, the skip link, and semantic navigation.
 
 ## Do's and Don'ts
 
