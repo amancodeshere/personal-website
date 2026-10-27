@@ -21,3 +21,14 @@ The source descriptions above are maintenance records and are not rendered as ca
 The built-in ImageGen tool generated the image, saved in this project as `public/projects/recipe-food.webp` after WebP compression. The final prompt was:
 
 > Create a beautiful, realistic food photograph for a software portfolio's recipe recommendation project. Landscape wide composition, overhead flat lay of three separate ceramic bowls arranged left to right on a warm pale stone tabletop: left a rich tomato and red lentil stew garnished with herbs, center a spinach and chickpea curry with fresh ginger and cilantro, right sesame vegetable noodles with bok choy and carrots. Each dish occupies one third of the composition, generous clear distinction between dishes, bowls fully visible. Professional natural window light, tactile real food, appetizing rich earthy colors, editorial cookbook photography. Absolutely no typography, labels, interface, decorations, logos, hands or people. This will be used as illustrative food imagery, not an actual application screenshot. Wide 3:1 photographic triptych, identical camera angle and scale for all three dishes.
+
+## Additional repository projects
+
+- **Music-Rec:** authored topic-profile and recommendation study based on the public notebook/README. Track and artist names and topic weights are fictional examples, not dataset excerpts or evaluation metrics.
+- **Data Exfiltration Prevention:** authored packet activity and alert study based on AwesomeDEP's Scapy/SQLite workflow. All displayed events are synthetic; no real addresses, packet payloads, or logs are included.
+- **sudo_win:** authored grid-map and routing study based on the public strategy documentation. It is an illustrative state, not a captured match or competition result.
+- **Botfluencer:** authored fixture ledger reflecting documented mock/replay/no-op defaults. The study does not imply live publishing or a deployed worker.
+- **Spin the Block:** `public/projects/spin-the-block.webp`, converted from the public repository's `game-audit/evidence/beta-test-phase4/02_desktop_1920x1080_viewport.png`. The capture shows the actual game board and test crews. Source: https://github.com/amancodeshere/spin-the-block/blob/HEAD/game-audit/evidence/beta-test-phase4/02_desktop_1920x1080_viewport.png
+- **Midnight Run:** `public/projects/midnight-run.webp`, captured by rendering the public pinball frontend locally. The original playfield is visible in a started, unlaunched game; the score service was absent. Only public frontend files were served, without the backend or database. Source: https://github.com/amancodeshere/pinball
+
+All additions use the shared caption-free artwork wrapper. New authored study styles are isolated in `AdditionalProjectArtwork.module.css`; breakpoint decisions follow the artwork container width.

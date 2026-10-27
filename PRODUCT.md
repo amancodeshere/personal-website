@@ -15,7 +15,7 @@ Recruiters, engineering teams, collaborators, and people exploring Aman's work (
 Present Aman Sharma's projects, research, education, and experience accurately, with a dedicated page for every project in either supplied CV, and verified GitHub links where available.
 
 ## Capabilities and Constraints
-Seven project pages: union of six technical projects and honours thesis. Homepage, project index, project details, experience, about, and contact. Modular components and typed content allow additions without duplicating pages. Responsive, keyboard-usable, with reduced-motion support. Deploy via Railway CLI as requested. Make regular detailed task commits using feat:<description> format. Use GPT-6 Luna high implementers, GPT-6.1 Sol high planner, GPT-6.1 Sol medium reviewer.
+Thirteen project pages: seven CV-backed projects plus six repository-backed additions. Homepage, project index, project details, experience, about, and contact. Modular components and typed content allow additions without duplicating pages. Responsive, keyboard-usable, with reduced-motion support. Deploy via Railway CLI as requested. Make regular detailed task commits using feat:<description> format. Use GPT-6 Luna high implementers, GPT-6.1 Sol high planner, GPT-6.1 Sol medium reviewer.
 
 ## Brand Commitments
 User explicitly requested the design language of https://wodniack.dev, replacing red/black with a dark ocean-blue palette. Keep its expressive typography, fine grid framing, generative line artwork, and intentional motion. The reference is visual inspiration; use Aman's own identity, CV facts, and authored artwork.
@@ -33,7 +33,10 @@ Two CVs provided at /Users/aman/Desktop/Latest CVs/Aman_Sharma_CV_ml.pdf and /Us
 User explicitly requires amancodinghere@gmail.com as the sole public contact email. Never publish the personal address from the CVs.
 
 ## UI Overhaul Brief
-The owner requested a cleaner, more dynamic interface that mirrors wodniack.dev more closely. Replace repetitive résumé-style project rows and generic abstract diagrams with a moving visual gallery, actual public application captures and project figures where available, and clearly labelled illustrative workflows for projects without shareable media. Remove decorative technical labels and repeated metadata from the homepage. Preserve all seven project pages, equal software/ML emphasis, approved public contact and source-sharing restrictions.
+The owner requested a cleaner, more dynamic interface that mirrors wodniack.dev more closely. Replace repetitive résumé-style project rows and generic abstract diagrams with a moving visual gallery, actual public application captures and project figures where available, and clearly labelled illustrative workflows for projects without shareable media. Remove decorative technical labels and repeated metadata from the homepage. Preserve all existing project pages, equal software/ML emphasis, approved public contact and source-sharing restrictions.
 
 ## Project Preview Cleanup
 The owner requires no bottom caption or source-credit bars on project artwork, on either listing or detail pages. Keep image provenance in documentation and accessible descriptions. Recipe and SDG studies must use intrinsic layout and artwork-container breakpoints so cards, goal labels, and inner headings cannot overlap or inherit listing-title styles.
+
+## Repository Project Expansion
+The owner added Music-Rec under Machine learning, Data-Exfiltration-Prevention under Cyber security, sudo_win and Botfluencer under Competitions, and Spin the Block and Midnight Run (pinball repository) under Games. The archive groups projects into six named discipline sections and retains filters. A shared category registry and typed project modules keep future additions modular. Each entry has a dedicated page and the exact supplied GitHub link. Claims come from public README and source evidence, without inferred competition placements or publishing capabilities.

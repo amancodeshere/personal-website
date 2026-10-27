@@ -19,4 +19,17 @@ The PDFs were read for this task and are not copied into the website or reposito
 | Toohak: Real-Time Quiz Game Platform | SWE CV | Not available to share | The project owner confirmed that its source code and deployment are no longer available to share. The portfolio describes the project without a source link. |
 | Multi-Label NLP Classification of Research Publications | Both CVs (Honours Thesis) | [amancodeshere/multi-label_classify_sdg](https://github.com/amancodeshere/multi-label_classify_sdg) | Public repository description identifies research-abstract classification with UN SDGs. CV supplies current thesis scope and supervisor. |
 
+## Additional project source mapping
+
+The six additional entries below are based on the public repository README and, where noted, selected source or package files. Categories, summaries, and role labels in the portfolio are editorial classifications; technical details are kept to what the repositories document.
+
+| Portfolio entry | Public source | Notes |
+| --- | --- | --- |
+| Content-Based Music Recommendation | [amancodeshere/Music-Rec](https://github.com/amancodeshere/Music-Rec) | README describes the 1,500-song, five-topic notebook; text classification, topic-specific TF-IDF profiles, cosine-similarity ranking, and simulated recommendation evaluation. |
+| Data Exfiltration Prevention | [amancodeshere/Data-Exfiltration-Prevention](https://github.com/amancodeshere/Data-Exfiltration-Prevention) | README and `network_monitor/main.py` / `limiter.py` checked. The code examines IPv4 TCP source addresses against a country allowlist and IP blacklist, logs and alerts on suspicious packets, and attempts macOS PF outbound blocking with password-based restore. |
+| sudo_win | [amancodeshere/sudo_win](https://github.com/amancodeshere/sudo_win) | Top-level and `algo_bot/README.md` checked for the C++20 UNSW Battlecode bot, current strategy description, CMake/Catch2 setup, and sandbox workflow. No competition ranking or winning result is claimed. |
+| Botfluencer | [amancodeshere/botfluencer](https://github.com/amancodeshere/botfluencer) | README, `pyproject.toml`, and `docs/architecture.md` checked for the Python 3.13 stack, Capture the Narrative SDK version, PostgreSQL architecture, mock/replay/no-op defaults, and execution boundaries. |
+| Spin the Block | [amancodeshere/spin-the-block](https://github.com/amancodeshere/spin-the-block) · [live game](https://spin-the-block-production.up.railway.app) | README and `package.json` checked for gameplay, React/Vite and Express/Socket.IO stack. The live URL returned HTTP 200 on 28 Oct 2026 (verified by the project owner). |
+| Midnight Run | [amancodeshere/pinball](https://github.com/amancodeshere/pinball) | README and `package.json` checked for original pinball gameplay, JavaScript canvas/audio implementation, Node server, and PostgreSQL dependency. |
+
 Experience, education, and skills are transcribed from the CVs. Dates and claims are kept as stated there; no additional employment status, project metrics, or missing source URLs are inferred. Only public repository information is used.

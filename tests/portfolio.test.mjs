@@ -14,6 +14,12 @@ const cases = [
   ["/projects/hybrid-recipe-recommender", "Precision@K"],
   ["/projects/toohak", "WebSocket"],
   ["/projects/unsw-sdg-research-classification", "Aditya Joshi"],
+  ["/projects/music-rec", "1,500 songs"],
+  ["/projects/data-exfiltration-prevention", "Scapy"],
+  ["/projects/sudo-win", "C++20"],
+  ["/projects/botfluencer", "Capture the Narrative 2026"],
+  ["/projects/spin-the-block", "Socket.IO"],
+  ["/projects/midnight-run", "480 Hz"],
 ];
 
 for (const [path, evidence] of cases) {
@@ -73,6 +79,8 @@ test("project image assets ship with the standalone application", async () => {
     "/projects/tradedocnavigator-live.webp",
     "/projects/ultrasound-segmentation-examples.png",
     "/projects/recipe-food.webp",
+    "/projects/spin-the-block.webp",
+    "/projects/midnight-run.webp",
   ];
   await Promise.all(
     paths.map(async (path) => {
@@ -85,4 +93,46 @@ test("project image assets ship with the standalone application", async () => {
       );
     }),
   );
+});
+
+const newProjects = [
+  ["music-rec", "Machine learning", "Music-Rec"],
+  [
+    "data-exfiltration-prevention",
+    "Cyber security",
+    "Data-Exfiltration-Prevention",
+  ],
+  ["sudo-win", "Competitions", "sudo_win"],
+  ["botfluencer", "Competitions", "botfluencer"],
+  ["spin-the-block", "Games", "spin-the-block"],
+  ["midnight-run", "Games", "pinball"],
+];
+
+test("new projects have the requested categories and exact source links", async () => {
+  await Promise.all(
+    newProjects.map(async ([slug, category, repository]) => {
+      const html = await (
+        await fetch(new URL(`/projects/${slug}`, base))
+      ).text();
+      assert.ok(html.includes(category), `${slug}: missing category`);
+      assert.ok(
+        html.includes(`href="https://github.com/amancodeshere/${repository}"`),
+        `${slug}: missing source`,
+      );
+    }),
+  );
+});
+
+test("archive exposes the new discipline sections and all 13 project links", async () => {
+  const html = await (await fetch(new URL("/projects", base))).text();
+  for (const category of ["Cyber security", "Competitions", "Games"]) {
+    assert.ok(
+      html.includes(`>${category}</h2>`),
+      `Missing category section: ${category}`,
+    );
+  }
+  const links = new Set(
+    [...html.matchAll(/href="(\/projects\/[^"?]+)"/g)].map((match) => match[1]),
+  );
+  assert.equal(links.size, 13);
 });

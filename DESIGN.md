@@ -81,7 +81,7 @@ components:
 
 The portfolio opens with a full-width field of animated current lines and Aman's name set as a monumental title strip. A fine frame and ruled bands hold the page together. The ocean palette and compressed lettering give the site a technical, editorial character while leaving the work and its images as the focus.
 
-The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The home sequence alternates wide project captures and figures; the Projects archive presents a two-column catalogue. Authentic captures and repository figures sit alongside authored interface studies, with provenance retained in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
+The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The home sequence alternates wide project captures and figures; the Projects archive groups work across six categories from one shared category registry. Four authored studies sit alongside two actual game captures, with no caption bars and provenance retained in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
 
 **Key Characteristics:**
 
@@ -138,7 +138,7 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 
 The site uses a consistent horizontal frame of `clamp(16px, 2.7vw, 42px)` and fluid section padding. A thin fixed outline surrounds the viewport. The desktop header is 72px high; it reduces to 64px on mobile, where the nav becomes a keyboard-operable menu.
 
-The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The archive uses two columns; below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The layout has a second small-screen adjustment at 390px.
+The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The archive groups six categories using the shared category registry and uses two columns; below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The layout has a second small-screen adjustment at 390px.
 
 ## Elevation & Depth
 
@@ -164,7 +164,7 @@ Center one short statement inside a narrow panel with vertical rules. Use Georgi
 
 ### Work Stage and Project Media
 
-The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The archive uses two columns and square image frames. Do not render bottom caption or credit bars on gallery, archive, or detail-page images. Keep provenance in the media registry and documentation: JobForge uses sample data, ultrasound uses a repository figure, and recipe food imagery is generated. Authored workflow text remains clearly illustrative. Add new image paths, alt text, and provenance to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
+The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The archive uses two columns and square image frames, grouping projects through the shared six-category registry. Four responsive code-authored studies and two actual game captures extend the gallery; their authored colors stay local to each study and do not change the ocean palette. Do not render bottom caption or credit bars on gallery, archive, or detail-page images. Keep provenance in the media registry and documentation: JobForge uses sample data, ultrasound uses a repository figure, and recipe food imagery is generated. Authored workflow text remains clearly illustrative. Add new image paths, alt text, and provenance to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
 
 ### Experience List
 

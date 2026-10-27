@@ -1,6 +1,6 @@
 # Aman Sharma — Portfolio
 
-A modular Next.js / React portfolio in TypeScript, with an ocean-blue visual system inspired by wodniack.dev. It includes seven CV-backed project case studies, a filterable archive, experience, education, and contact.
+A modular Next.js / React portfolio in TypeScript, with an ocean-blue visual system inspired by wodniack.dev. It includes 13 project case studies across software engineering, machine learning, research, cyber security, competitions, and games, a filterable archive, experience, education, and contact.
 
 ## Development
 
@@ -31,11 +31,13 @@ HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 
 ## Editing content and adding pages
 
-- `src/content/portfolio.ts`: all project, profile, experience, education, and skills content.
+- `src/content/portfolio.ts`: canonical project list, profile, experience, education, and skills.
+- `src/content/additional-projects.ts`: repository-backed project additions.
+- `src/content/project-categories.ts`: ordered category names and their shared type.
 - `src/types/portfolio.ts`: shared content types.
 - `src/app/projects/[slug]/page.tsx`: one reusable detail template generates every project route.
 - `src/components/`: shared layout, home sections, project catalogue, artwork, and ocean field.
-- `src/content/project-media.ts`: image sources, alt text, provenance, and compact/detail captions.
+- `src/content/project-media.ts`: image sources, alt text, and documentary provenance; images have no bottom caption bars.
 - `src/components/visual/`: per-path ocean animation and scroll-linked gallery transforms, with reduced-motion fallbacks.
 - `src/app/globals.css`: shared color, typography, spacing, responsive, and reduced-motion rules.
 
@@ -53,7 +55,7 @@ npm test
 TEST_BASE_URL=https://portfolio-production-e5eb.up.railway.app npm test
 ```
 
-The route checks cover all seven projects, core pages, CV evidence, the owner's public email, restricted project sources, and real 404 responses. Browser QA checks filters, menu behavior, long titles, desktop/mobile layouts, and visible contact details. Content provenance is recorded in [source notes](docs/CONTENT_SOURCES.md).
+The route checks cover all 13 projects, core pages, CV evidence, the owner's public email, restricted project sources, and real 404 responses. Browser QA checks filters, menu behavior, long titles, desktop/mobile layouts, and visible contact details. Content provenance is recorded in [source notes](docs/CONTENT_SOURCES.md).
 
 ## Railway
 
