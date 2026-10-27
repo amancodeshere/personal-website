@@ -5,7 +5,7 @@ import { ProjectCatalogue } from "../../components/projects/ProjectCatalogue";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Software engineering, machine learning, and research projects by Aman Sharma.",
+    "Software engineering, machine learning, research, cyber security, competition bots, and games by Aman Sharma.",
 };
 
 export default function ProjectsPage() {
@@ -14,7 +14,10 @@ export default function ProjectsPage() {
       <header className="page-intro">
         <h1>Projects</h1>
         <div className="intro-foot">
-          <p>Software, machine learning, and research projects.</p>
+          <p>
+            Software, machine learning, research, cyber security, competitions,
+            and games.
+          </p>
           <span>{projects.length} PROJECTS / SYDNEY</span>
         </div>
       </header>

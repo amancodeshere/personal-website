@@ -77,4 +77,53 @@ export const projectMedia = {
     caption: "Research study · example abstract mapped across the 17 UN SDGs",
     source: "Goal names and colors · UN Sustainable Development Goals",
   },
+  "music-rec": {
+    kind: "interface-study",
+    title: "Illustrative lyric-based music recommendation profile",
+    caption:
+      "Authored study of topic profiles and content-based recommendations",
+    source:
+      "Music-Rec notebook and README; sample names and weights are illustrative",
+  },
+  "data-exfiltration-prevention": {
+    kind: "interface-study",
+    title: "Illustrative packet monitoring and suspicious activity review",
+    caption: "Authored network monitoring study with synthetic events",
+    source: "AwesomeDEP public README and packet monitoring source",
+  },
+  "sudo-win": {
+    kind: "workflow-study",
+    title: "Illustrative remembered map and body-aware Battlecode route",
+    caption: "Authored gameplay study of map memory and safe routing",
+    source: "sudo_win public strategy documentation; not a match replay",
+  },
+  botfluencer: {
+    kind: "interface-study",
+    title:
+      "Illustrative Botfluencer fixture observation ledger in replay and no-op mode",
+    caption: "Authored fixture-run observation study",
+    source:
+      "Botfluencer public architecture and README; no live publishing shown",
+  },
+  "spin-the-block": {
+    kind: "repository-figure",
+    title: "Spin the Block multiplayer game board",
+    caption: "Repository gameplay capture",
+    source: "Public game-audit desktop gameplay evidence",
+    image: {
+      src: "/projects/spin-the-block.webp",
+      alt: "Spin the Block gameplay with an isometric city board, player crews, property squares, and turn controls",
+    },
+  },
+  "midnight-run": {
+    kind: "repository-figure",
+    title: "Midnight Run original pinball table",
+    caption: "Local capture of the public pinball frontend",
+    source:
+      "Public pinball frontend rendered locally without the score service",
+    image: {
+      src: "/projects/midnight-run.webp",
+      alt: "Midnight Run pinball with its amber score display, orange ramps, chrome wireforms, illustrated playfield, and keyboard controls",
+    },
+  },
 } satisfies Record<string, ProjectMedia>;

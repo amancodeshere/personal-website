@@ -616,6 +616,16 @@ svg {
   font-size: 10px;
   letter-spacing: 0.1em;
 }
+.catalogue-group {
+  margin-top: clamp(40px, 5vw, 72px);
+}
+.catalogue-heading {
+  margin: 0 0 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--ice);
+  font: 600 clamp(28px, 3.6vw, 48px)/1 var(--display);
+}
 .filter-bar {
   display: flex;
   flex-wrap: wrap;

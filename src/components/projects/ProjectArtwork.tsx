@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import type { Project } from "../../types/portfolio";
 import { projectMedia, type ProjectMedia } from "../../content/project-media";
+import { AdditionalProjectArtwork } from "./AdditionalProjectArtwork";
 import styles from "./ProjectArtwork.module.css";
 
 export function ProjectArtwork({
@@ -57,7 +58,7 @@ export function ProjectArtwork({
         ) : project.visual === "research" && mappedMedia ? (
           <ResearchStudy />
         ) : mappedMedia ? (
-          <p className={styles.fallback}>{project.summary}</p>
+          <AdditionalProjectArtwork visual={project.visual} />
         ) : (
           <p className={styles.fallback}>{project.summary}</p>
         )}
