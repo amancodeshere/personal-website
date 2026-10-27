@@ -47,3 +47,7 @@ Keep the content entry self-contained so adding projects does not require duplic
 - `skillGroups` groups skill labels and their associated terms.
 
 When changing any export shape, update `src/types/portfolio.ts` and any callers that consume that shape.
+
+## Visibility and Games
+
+`src/content/project-visibility.ts` derives `portfolioProjects` (all categories except Games) and `gameProjects` (Games only) from the canonical list. The homepage and default `/projects` render `portfolioProjects`. Their Games topic links open `/projects/games`; Games is navigation, not an in-place filter. Project details choose their next link and collection count from the same visibility collection. Keep all canonical records in static route generation and add `/projects/games` to the sitemap alongside them. Reserve the `games` slug for this topic route.

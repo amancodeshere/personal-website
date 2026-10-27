@@ -43,3 +43,6 @@ The owner added Music-Rec under Machine learning, Data-Exfiltration-Prevention u
 
 ## AI Category
 The owner classifies JobForge as AI rather than traditional machine learning. JobForge uses the shared `AI` category, with its own archive section and filter. Its existing project URL and content remain unchanged.
+
+## Opt-in Games and Authentic Competition Media
+The owner wants Games available only through an explicit topic link. The homepage and default Projects catalogue show the 11 non-game projects, with a Games link opening `/projects/games` for the remaining two. Detail navigation stays within each collection. All 13 source records and individual routes remain available. Competition previews should use actual UNSW Battlecode board imagery and official CTN UNSW competition imagery rather than invented interfaces, with provenance retained outside image caption bars.

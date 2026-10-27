@@ -20,6 +20,7 @@ const cases = [
   ["/projects/botfluencer", "Capture the Narrative 2026"],
   ["/projects/spin-the-block", "Socket.IO"],
   ["/projects/midnight-run", "480 Hz"],
+  ["/projects/games", "Games"],
 ];
 
 for (const [path, evidence] of cases) {
@@ -84,6 +85,8 @@ test("project image assets ship with the standalone application", async () => {
     "/projects/recipe-food.webp",
     "/projects/spin-the-block.webp",
     "/projects/midnight-run.webp",
+    "/projects/sudo-win-battlecode-board.webp",
+    "/projects/ctn-official-competition.webp",
   ];
   await Promise.all(
     paths.map(async (path) => {
@@ -130,16 +133,132 @@ test("projects have the requested categories and exact source links", async () =
   );
 });
 
-test("archive exposes the new discipline sections and all 13 project links", async () => {
+test("homepage and default catalogue keep Games opt-in", async () => {
+  const [homeResponse, projectsResponse] = await Promise.all([
+    fetch(new URL("/", base)),
+    fetch(new URL("/projects", base)),
+  ]);
+  const [homeHtml, projectsHtml] = await Promise.all([
+    homeResponse.text(),
+    projectsResponse.text(),
+  ]);
+  assert.ok(homeHtml.includes('href="/projects/games"'));
+  assert.ok(projectsHtml.includes('href="/projects/games"'));
+  assert.match(projectsHtml, /Games\s*<span>2<\/span>/);
+  assert.match(projectsHtml, /All\s*<span>11<\/span>/);
+  assert.doesNotMatch(projectsHtml, /aria-pressed="false"[^>]*>Games/);
+
+  const gameSlugs = ["spin-the-block", "midnight-run"];
+  for (const html of [homeHtml, projectsHtml]) {
+    for (const slug of gameSlugs) {
+      assert.doesNotMatch(html, new RegExp(`href="/projects/${slug}"`));
+    }
+  }
+
+  const cardSlugs = new Set(
+    [...projectsHtml.matchAll(/href="\/projects\/([^"/?]+)"/g)]
+      .map((match) => match[1])
+      .filter((slug) => slug !== "games"),
+  );
+  assert.equal(cardSlugs.size, 11);
+  const categories = [
+    ...projectsHtml.matchAll(
+      /<h2[^>]*class="catalogue-heading"[^>]*>([^<]+)<\/h2>/g,
+    ),
+  ].map((match) => match[1]);
+  assert.equal(categories.length, 6);
+  assert.ok(!categories.includes("Games"));
+});
+
+test("Games topic lists only its two projects and links back to Projects", async () => {
+  const html = await (await fetch(new URL("/projects/games", base))).text();
+  assert.ok(html.includes('href="/projects">Back to Projects'));
+  const gameSlugs = new Set(
+    [...html.matchAll(/href="\/projects\/([^"/?]+)"/g)].map(
+      (match) => match[1],
+    ),
+  );
+  assert.deepEqual([...gameSlugs].sort(), ["midnight-run", "spin-the-block"]);
+  assert.ok(html.includes("Midnight Run"));
+  assert.ok(html.includes("Spin the Block"));
+});
+
+test("detail navigation stays within its visible project collection", async () => {
+  const [
+    regularResponse,
+    lastRegularResponse,
+    gameResponse,
+    otherGameResponse,
+  ] = await Promise.all([
+    fetch(new URL("/projects/jobforge", base)),
+    fetch(new URL("/projects/botfluencer", base)),
+    fetch(new URL("/projects/spin-the-block", base)),
+    fetch(new URL("/projects/midnight-run", base)),
+  ]);
+  const [regularHtml, lastRegularHtml, gameHtml, otherGameHtml] =
+    await Promise.all([
+      regularResponse.text(),
+      lastRegularResponse.text(),
+      gameResponse.text(),
+      otherGameResponse.text(),
+    ]);
+  assert.ok(
+    regularHtml.includes(
+      'class="next-project" href="/projects/trade-doc-navigator"',
+    ),
+  );
+  assert.doesNotMatch(
+    regularHtml,
+    /class="next-project" href="\/projects\/(?:spin-the-block|midnight-run)"/,
+  );
+  assert.ok(
+    lastRegularHtml.includes('class="next-project" href="/projects/jobforge"'),
+  );
+  assert.doesNotMatch(
+    lastRegularHtml,
+    /href="\/projects\/(?:spin-the-block|midnight-run)"/,
+  );
+  assert.ok(gameHtml.includes('href="/projects/games">GAMES</a>'));
+  assert.ok(
+    gameHtml.includes('class="next-project" href="/projects/midnight-run"'),
+  );
+  assert.ok(
+    otherGameHtml.includes(
+      'class="next-project" href="/projects/spin-the-block"',
+    ),
+  );
+});
+
+test("archive exposes six non-game discipline sections and 11 project links", async () => {
   const html = await (await fetch(new URL("/projects", base))).text();
-  for (const category of ["AI", "Cyber security", "Competitions", "Games"]) {
+  for (const category of [
+    "Software engineering",
+    "AI",
+    "Machine learning",
+    "Research",
+    "Cyber security",
+    "Competitions",
+  ]) {
     assert.ok(
       html.includes(`>${category}</h2>`),
       `Missing category section: ${category}`,
     );
   }
   const links = new Set(
-    [...html.matchAll(/href="(\/projects\/[^"?]+)"/g)].map((match) => match[1]),
+    [...html.matchAll(/href="(\/projects\/[^"?]+)"/g)]
+      .map((match) => match[1])
+      .filter((href) => href !== "/projects/games"),
   );
-  assert.equal(links.size, 13);
+  assert.equal(links.size, 11);
+});
+
+test("competition previews use actual Battlecode and official CTN images", async () => {
+  for (const [slug, asset] of [
+    ["sudo-win", "sudo-win-battlecode-board.webp"],
+    ["botfluencer", "ctn-official-competition.webp"],
+  ]) {
+    const html = await (await fetch(new URL(`/projects/${slug}`, base))).text();
+    assert.ok(html.includes(asset), `${slug}: missing real competition image`);
+    assert.doesNotMatch(html, /Illustrative remembered map|Observation ledger/);
+  }
 });

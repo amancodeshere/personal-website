@@ -81,7 +81,7 @@ components:
 
 The portfolio opens with a full-width field of animated current lines and Aman's name set as a monumental title strip. A fine frame and ruled bands hold the page together. The ocean palette and compressed lettering give the site a technical, editorial character while leaving the work and its images as the focus.
 
-The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The home sequence alternates wide project captures and figures; the Projects archive groups work across seven categories from one shared category registry. Four authored studies sit alongside two actual game captures, with no caption bars and provenance retained in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
+The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The homepage shows 11 non-game projects. The shared registry has seven categories, while the default Projects catalogue groups those 11 projects across six non-game categories; its visible Games link opens a dedicated topic with the other two project cards. Competition media includes an actual Battlecode replay board and a capture of the official CTN homepage. These images have no caption bars, and their provenance stays in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
 
 **Key Characteristics:**
 
@@ -138,7 +138,7 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 
 The site uses a consistent horizontal frame of `clamp(16px, 2.7vw, 42px)` and fluid section padding. A thin fixed outline surrounds the viewport. The desktop header is 72px high; it reduces to 64px on mobile, where the nav becomes a keyboard-operable menu.
 
-The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The archive groups seven categories using the shared category registry and uses two columns; below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The layout has a second small-screen adjustment at 390px.
+The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The layout has a second small-screen adjustment at 390px.
 
 ## Elevation & Depth
 
@@ -164,7 +164,7 @@ Center one short statement inside a narrow panel with vertical rules. Use Georgi
 
 ### Work Stage and Project Media
 
-The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The archive uses two columns and square image frames, grouping projects through the shared seven-category registry. Four responsive code-authored studies and two actual game captures extend the gallery; their authored colors stay local to each study and do not change the ocean palette. Do not render bottom caption or credit bars on gallery, archive, or detail-page images. Keep provenance in the media registry and documentation: JobForge uses sample data, ultrasound uses a repository figure, and recipe food imagery is generated. Authored workflow text remains clearly illustrative. Add new image paths, alt text, and provenance to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
+The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The default archive uses two columns and square image frames for 11 non-game projects in six categories from the seven-category registry; a visible topic link opens the two-card Games route. Responsive code-authored studies and authentic competition captures extend the main gallery; the two game captures live only in the Games topic; their authored colors stay local to each study and do not change the ocean palette. Detail navigation stays within the same collection as its breadcrumb. Do not render bottom caption or credit bars on gallery, archive, or detail-page images. Keep provenance in the media registry and documentation: JobForge uses sample data, ultrasound uses a repository figure, and recipe food imagery is generated. Authored workflow text remains clearly illustrative. Add new image paths, alt text, and provenance to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
 
 ### Experience List
 
@@ -196,3 +196,7 @@ The current SVG updates while visible, pauses when hidden or outside view, and r
 - **Don't** return to generic abstract project diagrams when actual project media or a subject-specific labelled study is available.
 - **Don't** soften the framed geometry with pill controls, rounded cards, or generic shadow-heavy surfaces.
 - **Don't** remove the reduced-motion treatment or rely on animation to convey essential information.
+
+
+## Competition media and Games discovery
+Use the actual Schooltime board from saved sudo_win Battlecode match 830316 at round 80, exported from the official replay viewer; see the [official match record](https://game.battlecode.au/visualiser?match=830316). The Botfluencer artwork is a real capture of the [official Capture the Narrative homepage](https://capturethenarrative.com/) with UNSW branding. It documents the competition; it is not a Botfluencer dashboard. These are sourced images, not authored interface studies. Preserve complete captures with image-specific aspect ratios and containment. The homepage and default catalogue contain 11 non-game projects across six default categories; the seven-category registry includes Games. A visible Games topic link opens `/projects/games`, where the two game cards live; detail breadcrumbs and next links stay within their collection. Image provenance remains in metadata and docs, without bottom credit bars.

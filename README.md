@@ -1,6 +1,6 @@
 # Aman Sharma — Portfolio
 
-A modular Next.js / React portfolio in TypeScript, with an ocean-blue visual system inspired by wodniack.dev. It includes 13 project case studies across software engineering, AI, machine learning, research, cyber security, competitions, and games, a filterable archive, experience, education, and contact.
+A modular Next.js / React portfolio in TypeScript, with an ocean-blue visual system inspired by wodniack.dev. It includes 13 project case studies across seven registered categories. The homepage and default Projects catalogue show 11 projects across six non-game categories; a visible Games link opens a dedicated topic route with the other two projects. It also includes experience, education, and contact.
 
 ## Development
 
@@ -33,7 +33,8 @@ HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 
 - `src/content/portfolio.ts`: canonical project list, profile, experience, education, and skills.
 - `src/content/additional-projects.ts`: repository-backed project additions.
-- `src/content/project-categories.ts`: ordered category names and their shared type.
+- `src/content/project-categories.ts`: the ordered seven-category registry and shared category type.
+- `src/content/project-visibility.ts`: 11 default portfolio entries and two opt-in game entries.
 - `src/types/portfolio.ts`: shared content types.
 - `src/app/projects/[slug]/page.tsx`: one reusable detail template generates every project route.
 - `src/components/`: shared layout, home sections, project catalogue, artwork, and ocean field.
@@ -41,7 +42,7 @@ HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 - `src/components/visual/`: per-path ocean animation and scroll-linked gallery transforms, with reduced-motion fallbacks.
 - `src/app/globals.css`: shared color, typography, spacing, responsive, and reduced-motion rules.
 
-To add a project, add one typed record to `projects`. The homepage, filters, detail route, next-project navigation, and sitemap update automatically. See [content guide](docs/CONTENT_GUIDE.md) for field definitions and source rules. Add a new standalone route with `src/app/<route>/page.tsx`, then link it in the shared header where appropriate.
+To add a project, add one typed record to the canonical project data in `src/content/portfolio.ts` or `src/content/additional-projects.ts`. Non-game projects appear on the homepage and default catalogue; Games projects appear on `/projects/games`, which is linked from both. Detail-page breadcrumbs and next-project links stay within the project's collection, while the sitemap and static detail routes retain all 13 canonical projects. See [content guide](docs/CONTENT_GUIDE.md) for field definitions and source rules. Add a new standalone route with `src/app/<route>/page.tsx`, then link it in the shared header where appropriate.
 
 Only `amancodinghere@gmail.com` may be used for public contact. Do not copy contact information from source CVs. Job Ad Extraction and Toohak intentionally have no source or demo link; Job Ad Extraction uses confidential SEEK datasets, and Toohak code cannot be shared due to UNSW policy, as confirmed by the owner. Project media includes public application captures, a repository ultrasound figure, and clearly labelled illustrative studies. Recipe imagery is AI-generated illustration; no study artwork is presented as an original application screenshot or measured model output. See [media provenance](docs/PROJECT_MEDIA.md).
 
@@ -55,7 +56,7 @@ npm test
 TEST_BASE_URL=https://portfolio-production-e5eb.up.railway.app npm test
 ```
 
-The route checks cover all 13 projects, core pages, CV evidence, the owner's public email, restricted project sources, and real 404 responses. Browser QA checks filters, menu behavior, long titles, desktop/mobile layouts, and visible contact details. Content provenance is recorded in [source notes](docs/CONTENT_SOURCES.md).
+The route checks cover all 13 project detail routes, the Games topic route, core pages, CV evidence, the owner's public email, restricted project sources, and real 404 responses. Browser QA checks the 11-project default catalogue, six default categories, Games opt-in navigation, menu behavior, long titles, desktop/mobile layouts, and visible contact details. Content provenance is recorded in [source notes](docs/CONTENT_SOURCES.md).
 
 ## Railway
 
