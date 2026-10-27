@@ -10,7 +10,7 @@ The portfolio's structured content lives in `src/content/portfolio.ts` and `src/
 
 - `slug`: stable, URL-friendly identifier used by project detail pages and `getProjectBySlug(slug)`.
 - `title` and `shortTitle`: full project name and compact label for navigation or cards.
-- `category`: a value from `projectCategories` in `src/content/project-categories.ts` (`Software engineering`, `AI`, `Machine learning`, `Research`, `Cyber security`, `Competitions`, or `Games`). Import the shared type/list rather than creating another category union.
+- `category`: a value from `projectCategories` in `src/content/project-categories.ts` (`Full stack`, `AI`, `Machine learning`, `Research`, `Cyber security`, `Competitions`, or `Games`). Import the shared type/list rather than creating another category union.
 - `summary`: concise overview for project cards and page introductions.
 - `description`: paragraphs that explain the problem and scope.
 - `technologies`: technologies and methods that are supported by the CV or a verified public source.

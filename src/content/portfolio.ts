@@ -67,7 +67,7 @@ export const projects: Project[] = [
     slug: "trade-doc-navigator",
     title: "TradeDocNavigator",
     shortTitle: "TradeDocNavigator",
-    category: "Software engineering",
+    category: "Full stack",
     summary:
       "A full-stack UBL trade-document and shipment-tracking platform, developed with product ownership across planning, APIs, and data design.",
     description: [
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     slug: "toohak",
     title: "Toohak: Real-Time Quiz Game Platform",
     shortTitle: "Toohak",
-    category: "Software engineering",
+    category: "Full stack",
     summary:
       "A real-time multiplayer quiz platform with live sessions, synchronized host and player state, and scoring.",
     description: [

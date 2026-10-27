@@ -232,7 +232,7 @@ test("detail navigation stays within its visible project collection", async () =
 test("archive exposes six non-game discipline sections and 11 project links", async () => {
   const html = await (await fetch(new URL("/projects", base))).text();
   for (const category of [
-    "Software engineering",
+    "Full stack",
     "AI",
     "Machine learning",
     "Research",
