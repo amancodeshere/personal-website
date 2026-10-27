@@ -2,7 +2,7 @@ export type Project = {
   slug: string;
   title: string;
   shortTitle: string;
-  category: 'Software engineering' | 'Machine learning' | 'Research';
+  category: "Software engineering" | "Machine learning" | "Research";
   summary: string;
   description: string[];
   technologies: string[];
@@ -13,7 +13,8 @@ export type Project = {
   liveUrl?: string;
   status?: string;
   role: string;
-  visual: 'forge' | 'trade' | 'nlp' | 'medical' | 'quiz' | 'recipe' | 'research';
+  visual:
+    "forge" | "trade" | "nlp" | "medical" | "quiz" | "recipe" | "research";
 };
 
 export type Experience = {
