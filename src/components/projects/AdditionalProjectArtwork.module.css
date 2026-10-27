@@ -224,10 +224,17 @@
 
 /* AwesomeDEP — packet observation, persisted event, and operator alert path. */
 .security {
-  --sec-ink: #e8f0ee;
-  --sec-muted: #a7bcbb;
+  --sec-deep: var(--deep);
+  --sec-ocean: var(--ocean);
+  --sec-panel: var(--panel);
+  --sec-cyan: var(--cyan);
+  --sec-ice: var(--ice);
+  --sec-muted: var(--muted);
+  --sec-line: var(--line-strong);
+  --sec-warning: #f3d49d;
+  --sec-ink: var(--sec-ice);
   color: var(--sec-ink);
-  background: #142827;
+  background: var(--sec-deep);
 }
 .secHeader,
 .secBrand,
@@ -243,7 +250,8 @@
   justify-content: space-between;
   gap: 12px;
   padding: 0 clamp(15px, 2.3cqw, 31px);
-  border-bottom: 1px solid #38504d;
+  border-bottom: 1px solid var(--sec-line);
+  background: var(--sec-ocean);
 }
 .secBrand {
   gap: 10px;
@@ -257,7 +265,7 @@
   letter-spacing: -0.025em;
 }
 .secBrand > div > span {
-  color: #acc5c1;
+  color: var(--sec-muted);
   font: 10px/1 monospace;
   letter-spacing: 0.12em;
 }
@@ -271,7 +279,7 @@
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: #9cbe9e;
+  stroke: var(--sec-cyan);
   stroke-width: 1.7;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -279,17 +287,16 @@
 .monitorState {
   gap: 7px;
   padding: 7px 9px;
-  color: #c7e6c5;
-  border: 1px solid #496b58;
+  color: var(--sec-cyan);
+  border: 1px solid var(--sec-line);
   font: 10px/1 monospace;
   letter-spacing: 0.08em;
 }
-.monitorState i,
-.runState i {
+.monitorState i {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #a4d593;
+  background: var(--sec-cyan);
 }
 .secBody {
   display: grid;
@@ -313,7 +320,7 @@
   letter-spacing: -0.02em;
 }
 .secSectionHead > span {
-  color: #b5c9c6;
+  color: var(--sec-muted);
   font: 10px/1.2 monospace;
 }
 .packetLabels,
@@ -327,57 +334,57 @@
 }
 .packetLabels {
   padding: 0 9px 7px;
-  color: #9db5b2;
+  color: var(--sec-muted);
   font: 9px/1 monospace;
   letter-spacing: 0.08em;
 }
 .packetRow {
   min-height: 42px;
   padding: 7px 9px;
-  border-top: 1px solid #344c49;
-  color: #c9d8d5;
+  border-top: 1px solid var(--sec-line);
+  color: var(--sec-ice);
   font-size: clamp(10px, 1cqw, 13px);
 }
 .packetRow time {
-  color: #b0c6c1;
+  color: var(--sec-muted);
   font: 10px/1 monospace;
 }
 .packetRow b {
-  color: #e3edeb;
+  color: var(--sec-ice);
   font-weight: 500;
 }
 .packetRow > span {
-  color: #b4c6c2;
+  color: var(--sec-muted);
 }
 .packetRow > i {
   padding: 4px 5px;
-  color: #baddb8;
-  background: #254338;
+  color: var(--sec-deep);
+  background: var(--sec-cyan);
   font: 9px/1 monospace;
   font-style: normal;
 }
 .packetAlert {
-  background: #263933;
+  background: var(--sec-ocean);
 }
 .packetAlert > i {
-  color: #f3d49d;
-  background: #5b4931;
+  color: var(--sec-warning);
+  background: transparent;
 }
 .privacyNote {
   margin: 10px 0 0;
-  color: #b1c5c1;
+  color: var(--sec-muted);
   font-size: 10px;
   line-height: 1.4;
 }
 .eventPanel {
   padding-left: clamp(12px, 1.8cqw, 24px);
-  border-left: 1px solid #38504d;
+  border-left: 1px solid var(--sec-line);
 }
 .eventRecord {
   gap: 9px;
   padding: 10px;
-  border: 1px solid #3b5550;
-  background: #1a3330;
+  border: 1px solid var(--sec-line);
+  background: var(--sec-panel);
 }
 .recordIcon {
   width: 20px;
@@ -388,7 +395,7 @@
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: #b7d4ba;
+  stroke: var(--sec-cyan);
   stroke-width: 1.4;
 }
 .eventRecord > div {
@@ -401,13 +408,13 @@
   font-size: 12px;
 }
 .eventRecord > div span {
-  color: #b4c9c4;
+  color: var(--sec-muted);
   font: 10px/1.2 monospace;
   overflow-wrap: anywhere;
 }
 .eventRecord > i {
   margin-left: auto;
-  color: #bedcbd;
+  color: var(--sec-cyan);
   font: 10px/1 monospace;
   font-style: normal;
 }
@@ -424,25 +431,25 @@
   min-width: 55px;
   min-height: 42px;
   padding: 5px;
-  color: #d6e3df;
-  border: 1px solid #49625c;
+  color: var(--sec-ice);
+  border: 1px solid var(--sec-line);
+  background: var(--sec-ocean);
   text-align: center;
   font-size: 10px;
   line-height: 1.25;
 }
 .flowWarn {
-  color: #f3d49d;
-  border-color: #866845;
-  background: #3b3427;
+  color: var(--sec-warning);
+  border-color: var(--sec-warning);
 }
 .flowLine {
   height: 1px;
   min-width: 5px;
   flex: 1;
-  background: #6c9281;
+  background: var(--sec-cyan);
 }
 .eventPanel footer {
-  color: #b6c8c3;
+  color: var(--sec-muted);
   font-size: 10px;
 }
 
@@ -692,6 +699,12 @@
   font: 10px/1 monospace;
   letter-spacing: 0.08em;
 }
+.runState i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a4d593;
+}
 .botTable {
   border-top: 1px solid #50605a;
 }
@@ -801,7 +814,7 @@
     border-left: 0;
   }
   .eventPanel {
-    border-top-color: #38504d;
+    border-top-color: var(--sec-line);
   }
   .musicBody {
     gap: 15px;
