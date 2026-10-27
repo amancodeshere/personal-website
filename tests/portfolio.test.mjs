@@ -24,6 +24,18 @@ for (const [path, evidence] of cases) {
     assert.match(html, /<title>[^<]+<\/title>/);
     assert.ok(html.includes(evidence), `Missing evidence: ${evidence}`);
     assert.match(html, /<main[\s>]/);
+    assert.doesNotMatch(
+      html,
+      /<figcaption[\s>]/,
+      "Project image caption bars must not render",
+    );
+    if (path === "/projects/job-advertisement-extraction") {
+      assert.doesNotMatch(
+        html,
+        /logistic[-\s]*regression/i,
+        "Removed model reference must not return",
+      );
+    }
     const emails = [...html.matchAll(/href="mailto:([^"?]+)[^"]*"/g)].map(
       (match) => match[1],
     );

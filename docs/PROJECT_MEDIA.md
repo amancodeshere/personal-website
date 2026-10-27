@@ -1,9 +1,6 @@
 # Project media
 
-Project artwork has its own captions and visual direction in
-`src/content/project-media.ts`. This mapping is separate from portfolio facts.
-Interface and workflow studies are authored examples; captions identify them so
-they are not mistaken for screenshots of the original applications.
+Project artwork keeps visual direction and provenance in `src/content/project-media.ts`, separate from portfolio facts. The owner requested that gallery and detail-page images have no bottom caption or credit bars. Source records remain here for maintenance; authored workflows retain their in-image example content.
 
 ## Assets and treatments
 
@@ -17,10 +14,7 @@ they are not mistaken for screenshots of the original applications.
 | Toohak                                                  | Live player question, answer choices, and host synchronization state.                                                                              | Authored interface study; no original source or deployment is linked.                                                                                                                                                                                                                                                                                                                           |
 | Multi-Label NLP Classification of Research Publications | Clearly labelled example abstract shown alongside the complete set of 17 UN SDG names; Goal 11 is highlighted as one illustrative candidate label. | Authored research study. Goal names and colors follow the [UN Sustainable Development Goals](https://sdgs.un.org/goals).                                                                                                                                                                                                                                                                        |
 
-Do not remove the `Interface study`, `Illustrative workflow`, or `Research study`
-captions when changing the authored examples. They clarify which visuals are
-designed representations rather than captures of an original application or
-research result.
+The source descriptions above are maintenance records and are not rendered as caption bars. Recipe and research previews use natural content height with container-width breakpoints so cards, labels, and photographs cannot collapse or overlap.
 
 ## Food illustration prompt
 

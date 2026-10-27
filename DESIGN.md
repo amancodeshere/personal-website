@@ -81,7 +81,7 @@ components:
 
 The portfolio opens with a full-width field of animated current lines and Aman's name set as a monumental title strip. A fine frame and ruled bands hold the page together. The ocean palette and compressed lettering give the site a technical, editorial character while leaving the work and its images as the focus.
 
-The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The home sequence alternates wide project captures and figures; the Projects archive presents a two-column catalogue. Authentic captures and repository figures sit alongside authored interface studies, each identified in its caption. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
+The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The home sequence alternates wide project captures and figures; the Projects archive presents a two-column catalogue. Authentic captures and repository figures sit alongside authored interface studies, with provenance retained in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
 
 **Key Characteristics:**
 
@@ -132,7 +132,7 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 - **Title** (500–700, 13–25px): Navigation, role names, and small interface headings.
 - **Body** (400, 15px, 1.65 line-height): Default reading text in DM Sans.
 - **Editorial** (400, `clamp(27px, 3.3vw, 42px)`, 1.28 line-height): Centered About lead.
-- **Label** (600, 9–11px, lightly tracked): Categories, dates, captions, and supporting metadata.
+- **Label** (600, 9–11px, lightly tracked): Categories, dates, and supporting metadata.
 
 ## Layout
 
@@ -142,7 +142,7 @@ The home sequence is a full-width current field, large name strip, centered Abou
 
 ## Elevation & Depth
 
-The site is flat and framed rather than card-stacked. Thin blue-white rules, alternating ocean tones, the full-width current field, and the actual project imagery establish depth. Avoid generic shadows and decorative glow; media may have a restrained border and its own source caption.
+The site is flat and framed rather than card-stacked. Thin blue-white rules, alternating ocean tones, the full-width current field, and the actual project imagery establish depth. Avoid generic shadows and decorative glow; media uses a restrained frame without bottom caption bars.
 
 ## Shapes
 
@@ -164,7 +164,7 @@ Center one short statement inside a narrow panel with vertical rules. Use Georgi
 
 ### Work Stage and Project Media
 
-The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The archive uses two columns and square image frames. Preserve source and study captions: the live JobForge capture uses sample data, the ultrasound image is a repository figure, and the recipe food image is AI-generated. Authored studies must be labelled as illustrative. Add new image paths, alt text, captions, and credits to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
+The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The archive uses two columns and square image frames. Do not render bottom caption or credit bars on gallery, archive, or detail-page images. Keep provenance in the media registry and documentation: JobForge uses sample data, ultrasound uses a repository figure, and recipe food imagery is generated. Authored workflow text remains clearly illustrative. Add new image paths, alt text, and provenance to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
 
 ### Experience List
 
@@ -176,7 +176,7 @@ Use four compact ruled rows with period, role, and organization. Keep the row st
 
 ### Motion and Accessibility
 
-The current SVG updates while visible, pauses when hidden or outside view, and returns to its static path with reduced motion. Gallery transforms follow scroll position; they are cleared for reduced motion and on mobile. The contact reveal responds to hover and keyboard focus. Keep media in normal document flow and preserve captions, focus outlines, the skip link, and semantic navigation.
+The current SVG updates while visible, pauses when hidden or outside view, and returns to its static path with reduced motion. Gallery transforms follow scroll position; they are cleared for reduced motion and on mobile. The contact reveal responds to hover and keyboard focus. Keep media in normal document flow and preserve focus outlines, the skip link, and semantic navigation.
 
 ## Do's and Don'ts
 
@@ -184,7 +184,7 @@ The current SVG updates while visible, pauses when hidden or outside view, and r
 
 - **Do** use the current ocean, deep, work-stage, panel, ice, and cyan tokens for new surfaces.
 - **Do** keep section boundaries and media frames rectangular, ruled, and square-cornered.
-- **Do** use real project captures or repository figures where available; preserve their short captions and detail-page credits.
+- **Do** use real project captures or repository figures where available; retain descriptive alt text and document their source without visible footer bars.
 - **Do** label authored interface studies and AI-generated food imagery so they cannot be mistaken for original product screens or outputs.
 - **Do** keep scroll and pointer motion optional and retain the reduced-motion behavior.
 - **Do** use only `amancodinghere@gmail.com` as the public email address.

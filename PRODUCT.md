@@ -34,3 +34,6 @@ User explicitly requires amancodinghere@gmail.com as the sole public contact ema
 
 ## UI Overhaul Brief
 The owner requested a cleaner, more dynamic interface that mirrors wodniack.dev more closely. Replace repetitive résumé-style project rows and generic abstract diagrams with a moving visual gallery, actual public application captures and project figures where available, and clearly labelled illustrative workflows for projects without shareable media. Remove decorative technical labels and repeated metadata from the homepage. Preserve all seven project pages, equal software/ML emphasis, approved public contact and source-sharing restrictions.
+
+## Project Preview Cleanup
+The owner requires no bottom caption or source-credit bars on project artwork, on either listing or detail pages. Keep image provenance in documentation and accessible descriptions. Recipe and SDG studies must use intrinsic layout and artwork-container breakpoints so cards, goal labels, and inner headings cannot overlap or inherit listing-title styles.

@@ -30,8 +30,8 @@ The portfolio's structured content lives in `src/content/portfolio.ts`; its proj
 4. Add a GitHub or live URL only after confirming that it is public and corresponds to this project. If no link can be shared, omit the URL and give a concise explanation in `githubNote`.
 5. Choose an existing `visual` key unless the UI has been separately updated to support another one.
 6. Update `docs/CONTENT_SOURCES.md` to record the source material and any verified repository mapping.
-7. Add a matching entry to `src/content/project-media.ts`. Keep its visual title, short card caption, and source credit separate from project facts. Set an optional `image` with a local `src` and descriptive `alt` for real captures or repository figures. Use `presentation: "crop-strip"` only for a single wide image that contains separate crops, such as the three recipe examples.
-8. If no image is available, keep the authored interface or workflow study explicitly labelled in its caption. If a new slug has no media entry yet, `ProjectArtwork` falls back to the project summary instead of reusing another project's image.
+7. Add a matching entry to `src/content/project-media.ts`. Keep its visual title and source provenance separate from project facts. Images intentionally render without bottom caption or credit bars. Set an optional `image` with a local `src` and descriptive `alt` for real captures or repository figures. Use `presentation: "crop-strip"` only for a single wide image that contains separate crops, such as the three recipe examples.
+8. If no image is available, keep example content clearly illustrative and retain its provenance in the media metadata and source documentation. If a new slug has no media entry yet, `ProjectArtwork` falls back to the project summary instead of reusing another project's image.
 
 See `docs/PROJECT_MEDIA.md` for current asset sources, credits, and illustrative-image prompts.
 
