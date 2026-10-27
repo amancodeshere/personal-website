@@ -161,7 +161,7 @@ export const projects: Project[] = [
       "A deep-learning pipeline for classifying breast ultrasound images and segmenting lesions.",
     description: [
       "The project applies computer vision to breast ultrasound images, with preprocessing, augmentation, and reproducible data splits supporting both classification and segmentation tasks.",
-      "The CV describes a ResNet classifier alongside U-Net and DeepLabV3 segmentation models. Evaluation included accuracy, sensitivity, and intersection over union (IoU).",
+      "The pipeline combines a ResNet classifier with U-Net and DeepLabV3 segmentation models. Evaluation included accuracy, sensitivity, and intersection over union (IoU).",
     ],
     technologies: [
       "Python",

@@ -7,7 +7,18 @@ export function ContactSection() {
         <span>Contact</span>
         <span>SYDNEY / AUSTRALIA</span>
       </div>
-      <h2>LET’S TALK.</h2>
+      <a
+        className="contact-invitation"
+        href={`mailto:${profile.email}`}
+        aria-label="Start a conversation by email"
+      >
+        <h2>LET’S TALK.</h2>
+        <span className="contact-orbit" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <path d="M24 76 76 24M25 24h51v51" />
+          </svg>
+        </span>
+      </a>
       <div className="contact-bottom">
         <a className="contact-email" href={`mailto:${profile.email}`}>
           {profile.email}

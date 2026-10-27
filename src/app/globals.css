@@ -1185,3 +1185,75 @@ svg {
     font-size: clamp(44px, 14vw, 96px);
   }
 }
+
+/* A radial invitation mirrors the reference's closing circle without hiding contact details. */
+.contact-invitation {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-block: clamp(28px, 4vw, 56px);
+  padding-block: 20px;
+  overflow: hidden;
+}
+.contact-invitation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ice);
+  clip-path: circle(0% at 88% 50%);
+  transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-invitation:hover::before,
+.contact-invitation:focus-visible::before {
+  clip-path: circle(115% at 88% 50%);
+}
+.contact-invitation h2 {
+  margin: 0;
+  font-size: clamp(76px, 16vw, 240px);
+  transition: color 0.25s;
+}
+.contact-orbit {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: clamp(90px, 16vw, 220px);
+  aspect-ratio: 1;
+  margin-right: 4px;
+  color: var(--ice);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition:
+    color 0.25s,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-orbit svg {
+  width: 45%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
+.contact-invitation:hover h2,
+.contact-invitation:focus-visible h2,
+.contact-invitation:hover .contact-orbit,
+.contact-invitation:focus-visible .contact-orbit {
+  color: var(--ocean);
+}
+.contact-invitation:hover .contact-orbit,
+.contact-invitation:focus-visible .contact-orbit {
+  transform: rotate(45deg);
+}
+@media (max-width: 760px) {
+  .contact-invitation {
+    gap: 12px;
+  }
+  .contact-invitation h2 {
+    font-size: clamp(52px, 15vw, 100px);
+  }
+  .contact-orbit {
+    width: clamp(62px, 17vw, 110px);
+  }
+}
