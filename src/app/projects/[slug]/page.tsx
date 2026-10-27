@@ -78,25 +78,9 @@ export default async function ProjectPage({
             </a>
           ) : (
             <div className="repository-note">
-              {project.githubNote ===
-              "Source code and deployment are no longer available to share." ? (
-                <p>{project.githubNote}</p>
-              ) : (
-                <>
-                  <span className="source-unavailable">Source unavailable</span>
-                  <p>
-                    {project.githubNote ||
-                      "Source code is unavailable to share."}
-                  </p>
-                  <a
-                    href="https://github.com/amancodeshere"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    GitHub profile
-                  </a>
-                </>
-              )}
+              <p>
+                {project.githubNote || "Source code is unavailable to share."}
+              </p>
             </div>
           )}
         </div>

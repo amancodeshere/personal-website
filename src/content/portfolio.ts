@@ -149,7 +149,8 @@ export const projects: Project[] = [
         body: "Use Weights & Biases to record sweeps, model versions, and comparisons reproducibly.",
       },
     ],
-    githubNote: "Source code and deployment are no longer available to share.",
+    githubNote:
+      "Notebooks and project work cannot be shared because they use confidential SEEK datasets.",
     role: "Developer",
     visual: "nlp",
   },
@@ -285,7 +286,7 @@ export const projects: Project[] = [
         body: "Expose REST APIs for quiz creation and scoring, with Jest and CI practices supporting maintainability.",
       },
     ],
-    githubNote: "Source code and deployment are no longer available to share.",
+    githubNote: "Source code cannot be shared due to UNSW policy.",
     role: "Developer",
     visual: "quiz",
   },

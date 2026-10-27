@@ -53,14 +53,17 @@ for (const [path, evidence] of cases) {
   });
 }
 
-for (const slug of ["toohak", "job-advertisement-extraction"]) {
+for (const [slug, reason] of [
+  ["toohak", "Source code cannot be shared due to UNSW policy."],
+  [
+    "job-advertisement-extraction",
+    "Notebooks and project work cannot be shared because they use confidential SEEK datasets.",
+  ],
+]) {
   test(`${slug} respects the owner's source-sharing restriction`, async () => {
     const html = await (await fetch(new URL(`/projects/${slug}`, base))).text();
-    assert.ok(
-      html.includes(
-        "Source code and deployment are no longer available to share.",
-      ),
-    );
+    assert.ok(html.includes(reason));
+    assert.doesNotMatch(html, /VIEW SOURCE ON GITHUB|OPEN LIVE PROJECT/);
     assert.doesNotMatch(
       html,
       /href="https:\/\/github\.com\/amancodeshere\/(?:Toohak|toohak|job-advertisement-extraction)"/,

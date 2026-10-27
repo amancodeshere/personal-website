@@ -43,7 +43,7 @@ HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 
 To add a project, add one typed record to `projects`. The homepage, filters, detail route, next-project navigation, and sitemap update automatically. See [content guide](docs/CONTENT_GUIDE.md) for field definitions and source rules. Add a new standalone route with `src/app/<route>/page.tsx`, then link it in the shared header where appropriate.
 
-Only `amancodinghere@gmail.com` may be used for public contact. Do not copy contact information from source CVs. Job Ad Extraction and Toohak intentionally have no source or demo link; the owner confirmed they are no longer shareable. Project media includes public application captures, a repository ultrasound figure, and clearly labelled illustrative studies. Recipe imagery is AI-generated illustration; no study artwork is presented as an original application screenshot or measured model output. See [media provenance](docs/PROJECT_MEDIA.md).
+Only `amancodinghere@gmail.com` may be used for public contact. Do not copy contact information from source CVs. Job Ad Extraction and Toohak intentionally have no source or demo link; Job Ad Extraction uses confidential SEEK datasets, and Toohak code cannot be shared due to UNSW policy, as confirmed by the owner. Project media includes public application captures, a repository ultrasound figure, and clearly labelled illustrative studies. Recipe imagery is AI-generated illustration; no study artwork is presented as an original application screenshot or measured model output. See [media provenance](docs/PROJECT_MEDIA.md).
 
 ## Verification
 
