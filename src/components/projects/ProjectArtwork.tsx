@@ -24,6 +24,13 @@ export function ProjectArtwork({
     <figure
       className={`project-art ${styles.artwork} ${compact ? styles.compact : ""} ${project.visual === "medical" && media.image ? styles.medicalArt : ""} ${!compact && media.source ? styles.withSource : ""}`}
       aria-label={media.title}
+      data-visual={project.visual}
+      data-authored-study={
+        mappedMedia &&
+        (!media.image || media.image.presentation === "crop-strip")
+          ? project.visual
+          : undefined
+      }
     >
       <div
         className={`${styles.canvas} ${media.image?.presentation === "crop-strip" ? styles.recipeCanvas : ""}`}
@@ -39,7 +46,7 @@ export function ProjectArtwork({
             src={media.image.src}
             alt={media.image.alt}
             fill
-            sizes="(max-width: 760px) 100vw, 50vw"
+            sizes={compact ? "(max-width: 760px) 100vw, 75vw" : "100vw"}
           />
         ) : project.visual === "nlp" && mappedMedia ? (
           <ExtractionStudy />

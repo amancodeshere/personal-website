@@ -340,7 +340,7 @@
   min-height: clamp(64px, 11cqw, 150px);
   overflow: hidden;
   background-image: var(--photo-source);
-  background-size: 300% 100%;
+  background-size: 300% auto;
   background-repeat: no-repeat;
 }
 .tomato {
@@ -499,11 +499,259 @@
   .compact {
     min-height: 180px;
   }
-  .research {
-    padding: 0 9px;
+  .artwork:not(.compact)[data-visual="nlp"],
+  .artwork:not(.compact)[data-visual="quiz"],
+  .artwork:not(.compact)[data-visual="recipe"],
+  .artwork:not(.compact)[data-visual="research"] {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    overflow: visible;
   }
-  .goalGrid {
-    gap: 2px;
+  .artwork:not(.compact)[data-visual="nlp"] .canvas,
+  .artwork:not(.compact)[data-visual="quiz"] .canvas,
+  .artwork:not(.compact)[data-visual="recipe"] .canvas,
+  .artwork:not(.compact)[data-visual="research"] .canvas {
+    position: relative;
+    inset: auto;
+    height: auto;
+    overflow: visible;
+  }
+  .artwork:not(.compact)[data-visual="nlp"] .caption,
+  .artwork:not(.compact)[data-visual="quiz"] .caption,
+  .artwork:not(.compact)[data-visual="recipe"] .caption,
+  .artwork:not(.compact)[data-visual="research"] .caption {
+    position: static;
+    max-height: none;
+    min-height: 0;
+    display: flex;
+    align-items: flex-start;
+    overflow: visible;
+    padding: 9px 12px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .artwork:not(.compact)[data-visual="nlp"] .caption > span,
+  .artwork:not(.compact)[data-visual="quiz"] .caption > span,
+  .artwork:not(.compact)[data-visual="recipe"] .caption > span,
+  .artwork:not(.compact)[data-visual="research"] .caption > span {
+    max-width: 100%;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .artwork[data-authored-study="research"] .research {
+    padding: 0 12px 12px;
+    height: auto;
+  }
+  .artwork[data-authored-study="research"] .research > header {
+    min-height: 42px;
+    height: auto;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    padding-block: 8px;
+  }
+  .artwork[data-authored-study="research"] .abstract {
+    margin: 10px 0;
+    padding: 10px;
+  }
+  .artwork[data-authored-study="research"] .abstract p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .artwork[data-authored-study="research"] .labelFlow {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .artwork[data-authored-study="research"] .goalGrid {
+    flex: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: minmax(40px, auto);
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .artwork[data-authored-study="research"] .goal {
+    min-height: 40px;
+    gap: 7px;
+    padding: 6px 8px;
+  }
+  .artwork[data-authored-study="research"] .goal b,
+  .artwork[data-authored-study="research"] .goal span {
+    font-size: 11px;
+  }
+  .artwork[data-authored-study="research"] .goal span {
+    display: block;
+    overflow: visible;
+    line-height: 1.25;
+  }
+  .artwork[data-authored-study="research"] .research > footer {
+    margin-top: 10px;
+    padding: 0;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="nlp"] .extraction {
+    height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+  .artwork[data-authored-study="nlp"] .extractPanel,
+  .artwork[data-authored-study="nlp"] .fieldsPanel {
+    min-height: 0;
+  }
+  .artwork[data-authored-study="nlp"] .extractPanel header,
+  .artwork[data-authored-study="nlp"] .fieldsPanel header {
+    gap: 8px;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+  .artwork[data-authored-study="nlp"] .extractPanel header span,
+  .artwork[data-authored-study="nlp"] .fieldsPanel header span {
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="nlp"] .extractPanel p {
+    flex: none;
+    min-height: 0;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .artwork[data-authored-study="nlp"] .extractPanel footer,
+  .artwork[data-authored-study="nlp"] .fieldsPanel footer {
+    flex-wrap: wrap;
+    gap: 5px 10px;
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="nlp"] .extractArrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+  .artwork[data-authored-study="nlp"] .fieldsPanel > div {
+    flex: none;
+    grid-template-columns: minmax(78px, 0.6fr) minmax(0, 1fr);
+    gap: 8px;
+    padding: 9px 10px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .artwork[data-authored-study="nlp"] .fieldsPanel > div b {
+    overflow-wrap: anywhere;
+  }
+  .artwork[data-authored-study="quiz"] .quiz {
+    height: auto;
+    min-height: 0;
+    padding: 0 12px 12px;
+  }
+  .artwork[data-authored-study="quiz"] .quiz > header {
+    flex: none;
+    min-height: 42px;
+    flex-wrap: wrap;
+    padding-block: 8px;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="quiz"] .question {
+    flex: none;
+    padding: 12px 0;
+  }
+  .artwork[data-authored-study="quiz"] .question h3 {
+    font-size: 17px;
+  }
+  .artwork[data-authored-study="quiz"] .answers {
+    flex: none;
+    min-height: 0;
+    grid-template-rows: none;
+    grid-auto-rows: minmax(48px, auto);
+    gap: 7px;
+  }
+  .artwork[data-authored-study="quiz"] .answers div {
+    min-height: 48px;
+    gap: 8px;
+    padding: 8px;
+    font-size: 12px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+  .artwork[data-authored-study="quiz"] .answers b {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="quiz"] .quiz > footer {
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding-top: 9px;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="recipe"] .recipe {
+    height: auto;
+    padding: 0 12px 12px;
+  }
+  .artwork[data-authored-study="recipe"] .recipe > header {
+    min-height: 42px;
+    height: auto;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    padding-block: 8px;
+  }
+  .artwork[data-authored-study="recipe"] .recipe > header span,
+  .artwork[data-authored-study="recipe"] .recipeIntro > span {
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeIntro {
+    display: block;
+    padding: 12px 0;
+  }
+  .artwork[data-authored-study="recipe"] .recipeIntro small {
+    font-size: 10.5px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeIntro h3 {
     margin-top: 5px;
+    font-size: 16px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeIntro > span {
+    display: block;
+    margin-top: 5px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeCards {
+    flex: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .artwork[data-authored-study="recipe"]
+    .recipeCards
+    article:not(:first-child) {
+    display: none;
+  }
+  .artwork[data-authored-study="recipe"] .recipePhoto {
+    flex: none;
+    height: 130px;
+    min-height: 130px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeCards article > b {
+    padding: 10px 10px 0;
+    font-size: 15px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeCards p {
+    margin: 5px 10px;
+    font-size: 12px;
+  }
+  .artwork[data-authored-study="recipe"] .recipeCards article > small {
+    margin: 5px 10px 10px;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="recipe"] .recipe > footer {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 10px;
+  }
+  .artwork[data-authored-study="recipe"] .recipe > footer b {
+    padding: 5px 7px;
+    font-size: 10px;
   }
 }

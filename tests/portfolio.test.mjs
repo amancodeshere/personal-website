@@ -54,3 +54,23 @@ test("unknown project returns a real 404", async () => {
   const response = await fetch(new URL("/projects/nonexistent-project", base));
   assert.equal(response.status, 404);
 });
+
+test("project image assets ship with the standalone application", async () => {
+  const paths = [
+    "/projects/jobforge-results.webp",
+    "/projects/tradedocnavigator-live.webp",
+    "/projects/ultrasound-segmentation-examples.png",
+    "/projects/recipe-food.webp",
+  ];
+  await Promise.all(
+    paths.map(async (path) => {
+      const response = await fetch(new URL(path, base));
+      assert.equal(response.status, 200, `Missing project image: ${path}`);
+      assert.match(response.headers.get("content-type") ?? "", /^image\//);
+      assert.ok(
+        (await response.arrayBuffer()).byteLength > 1000,
+        `Empty project image: ${path}`,
+      );
+    }),
+  );
+});
