@@ -1,6 +1,6 @@
 /**
- * Visual direction and captions for project artwork. Kept separate from the
- * portfolio copy so imagery can be replaced or credited without changing facts.
+ * Visual direction and provenance for project artwork. These source notes are
+ * not rendered as caption bars; imagery remains separate from portfolio facts.
  */
 export type ProjectMedia = {
   kind:

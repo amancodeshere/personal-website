@@ -22,7 +22,7 @@ export function ProjectArtwork({
 
   return (
     <figure
-      className={`project-art ${styles.artwork} ${compact ? styles.compact : ""} ${project.visual === "medical" && media.image ? styles.medicalArt : ""} ${!compact && media.source ? styles.withSource : ""}`}
+      className={`project-art ${styles.artwork} ${compact ? styles.compact : ""} ${project.visual === "medical" && media.image ? styles.medicalArt : ""}`}
       aria-label={media.title}
       data-visual={project.visual}
       data-authored-study={
@@ -62,14 +62,6 @@ export function ProjectArtwork({
           <p className={styles.fallback}>{project.summary}</p>
         )}
       </div>
-      <figcaption
-        className={`${styles.caption} ${compact ? styles.captionCompact : styles.captionDetail}`}
-      >
-        <span>{media.caption}</span>
-        {!compact && media.source && (
-          <span className={styles.captionSource}>{media.source}</span>
-        )}
-      </figcaption>
     </figure>
   );
 }
@@ -208,12 +200,6 @@ function RecipeStudy({ photoSrc }: { photoSrc?: string }) {
           <small>Shared reader signals</small>
         </article>
       </div>
-      <footer>
-        <span>Recommendation signals</span>
-        <b>Ingredient similarity</b>
-        <i>+</i>
-        <b>User–item ratings</b>
-      </footer>
     </div>
   );
 }

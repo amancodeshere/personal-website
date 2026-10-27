@@ -6,7 +6,7 @@
   display: block;
   width: 100%;
   aspect-ratio: 1.6 / 1;
-  min-height: 230px;
+  min-height: 0;
   margin: 0;
   overflow: hidden;
   color: var(--ink);
@@ -14,58 +14,34 @@
   background: #f5f7f3;
   font-family: Arial, Helvetica, sans-serif;
   isolation: isolate;
+  container-type: inline-size;
 }
 
 .compact {
-  min-height: 200px;
+  min-height: 0;
 }
+
 .canvas {
   position: absolute;
-  inset: 0 0 34px;
+  inset: 0;
   overflow: hidden;
   container-type: inline-size;
 }
+
+/* Captures keep their frame; authored studies grow with their actual content. */
+.artwork[data-authored-study] {
+  height: auto;
+  aspect-ratio: auto;
+  overflow: visible;
+}
+.artwork[data-authored-study] .canvas {
+  position: relative;
+  inset: auto;
+  height: auto;
+  overflow: visible;
+}
 .recipeCanvas {
   background: #fbf7f0;
-}
-.withSource .canvas {
-  bottom: 46px;
-}
-.caption {
-  position: absolute;
-  inset: auto 0 0;
-  min-height: 34px;
-  max-height: 46px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  overflow: hidden;
-  padding: 5px 13px;
-  border-top: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.96);
-  color: var(--muted-ink);
-  font:
-    500 10px/1.3 Arial,
-    Helvetica,
-    sans-serif;
-}
-.caption > span {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.captionCompact {
-  max-height: 34px;
-  padding-block: 6px;
-}
-.captionDetail {
-  padding-block: 5px;
-}
-.captionSource {
-  color: #63757a;
-  font-size: clamp(9px, 0.8vw, 11px);
 }
 .fallback {
   max-width: 68ch;
@@ -78,7 +54,6 @@
 
 /* Job-ad extraction: literal source text mapped to explicitly named fields. */
 .extraction {
-  height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(26px, 4cqw, 60px) minmax(0, 1fr);
   align-items: stretch;
@@ -89,7 +64,6 @@
 .extractPanel,
 .fieldsPanel {
   min-width: 0;
-  min-height: 0;
   display: flex;
   flex-direction: column;
   border: 1px solid #d6dfe4;
@@ -111,8 +85,6 @@
   font-size: clamp(9px, 1cqw, 13px);
 }
 .extractPanel p {
-  flex: 1;
-  min-height: 0;
   margin: 0;
   padding: clamp(12px, 1.8cqw, 26px);
   color: #314958;
@@ -138,16 +110,16 @@
   color: #335c75;
 }
 .extractArrow {
+  align-self: center;
   color: #547b8e;
   text-align: center;
-  align-self: center;
   font-size: clamp(18px, 2.3cqw, 30px);
 }
 .fieldsPanel > div {
   flex: 1;
   align-content: center;
   display: grid;
-  grid-template-columns: minmax(72px, 0.65fr) 1fr;
+  grid-template-columns: minmax(72px, 0.65fr) minmax(0, 1fr);
   gap: clamp(6px, 1cqw, 14px);
   padding: clamp(8px, 1.2cqw, 16px);
   border-bottom: 1px solid #e7ecef;
@@ -180,25 +152,23 @@
 .medicalArt .canvas {
   background: #13191d;
 }
+.liveCapture {
+  object-fit: cover;
+  object-position: top;
+}
 .ultrasound {
   object-fit: contain;
   padding: clamp(8px, 1.5cqw, 20px) clamp(10px, 2cqw, 30px);
 }
-.medicalArt .caption {
-  --muted-ink: #40545a;
-}
 
 /* Toohak: a host-synchronized player question and its answer state. */
 .quiz {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0 clamp(12px, 2cqw, 30px);
+  padding: 0 clamp(12px, 2cqw, 30px) clamp(12px, 1.5cqw, 20px);
   color: #26304f;
   background: #f4f5fb;
 }
 .quiz > header {
-  flex: 0 0 clamp(38px, 6cqw, 68px);
+  min-height: clamp(42px, 6cqw, 68px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -228,19 +198,20 @@
 .question h3 {
   max-width: 480px;
   margin: clamp(5px, 0.8cqw, 12px) auto 0;
-  font-size: clamp(17px, 2.4cqw, 32px);
-  line-height: 1.2;
+  color: #26304f;
+  font:
+    600 clamp(17px, 2.4cqw, 32px)/1.2 Arial,
+    Helvetica,
+    sans-serif;
 }
 .answers {
-  flex: 1;
-  min-height: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(7px, 1.2cqw, 18px);
 }
 .answers div {
-  min-height: 0;
+  min-width: 0;
+  min-height: 54px;
   display: flex;
   align-items: center;
   gap: clamp(8px, 1.2cqw, 18px);
@@ -254,6 +225,7 @@
   background: #fff4ef;
 }
 .answers b {
+  flex: 0 0 auto;
   display: grid;
   place-items: center;
   width: clamp(24px, 3.5cqw, 42px);
@@ -279,17 +251,14 @@
   color: #414e7a;
 }
 
-/* Recipe recommendations shown as recipes and visible ingredient overlaps. */
+/* Recipe recommendations show the full set of food crops without stretching them. */
 .recipe {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0 clamp(12px, 2cqw, 28px);
+  padding: 0 clamp(12px, 2cqw, 28px) clamp(12px, 1.5cqw, 20px);
   background: #fbf7f0;
   color: #3c3228;
 }
 .recipe > header {
-  flex: 0 0 clamp(38px, 6cqw, 68px);
+  min-height: clamp(42px, 6cqw, 68px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -315,17 +284,23 @@
   gap: clamp(8px, 1.2cqw, 16px);
   padding: clamp(10px, 1.6cqw, 23px) 0 clamp(8px, 1.2cqw, 16px);
 }
+.recipeIntro small {
+  color: #776957;
+  font-size: clamp(9px, 0.95cqw, 13px);
+}
 .recipeIntro h3 {
   margin: clamp(4px, 0.6cqw, 8px) 0 0;
-  font-size: clamp(16px, 1.9cqw, 25px);
+  color: #3c3228;
+  font:
+    600 clamp(16px, 1.9cqw, 25px)/1.2 Arial,
+    Helvetica,
+    sans-serif;
 }
 .recipeCards {
-  flex: 1;
-  min-height: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: clamp(7px, 1.2cqw, 16px);
-  align-items: stretch;
 }
 .recipeCards article {
   min-width: 0;
@@ -336,8 +311,9 @@
   background: white;
 }
 .recipePhoto {
-  flex: 1;
-  min-height: clamp(64px, 11cqw, 150px);
+  width: 100%;
+  aspect-ratio: 1.35 / 1;
+  flex: none;
   overflow: hidden;
   background-image: var(--photo-source);
   background-size: 300% auto;
@@ -355,7 +331,9 @@
 .recipeCards article > b {
   display: block;
   padding: clamp(7px, 1cqw, 14px) clamp(7px, 1cqw, 14px) 0;
+  color: #3c3228;
   font-size: clamp(11px, 1.25cqw, 17px);
+  line-height: 1.3;
 }
 .recipeCards p {
   margin: clamp(4px, 0.6cqw, 8px) clamp(7px, 1cqw, 14px);
@@ -369,38 +347,15 @@
   color: #815e30;
   font-size: clamp(9px, 0.95cqw, 13px);
 }
-.recipe > footer {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: clamp(6px, 0.9cqw, 12px);
-  margin-top: clamp(8px, 1.2cqw, 16px);
-  padding-block: clamp(7px, 1cqw, 14px);
-  border-top: 1px solid #e5d9ca;
-  color: #715f4c;
-  font-size: clamp(9px, 0.95cqw, 13px);
-}
-.recipe > footer b {
-  padding: clamp(4px, 0.7cqw, 9px) clamp(6px, 0.9cqw, 12px);
-  background: #efe5d7;
-  color: #554633;
-  font-size: clamp(9px, 0.95cqw, 13px);
-}
-.recipe > footer i {
-  font-style: normal;
-}
 
 /* SDG research: a sample abstract connected to real UN goal names. */
 .research {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0 clamp(12px, 2cqw, 28px);
+  padding: 0 clamp(12px, 2cqw, 28px) clamp(12px, 1.5cqw, 20px);
   background: #f7f7f2;
   color: #273c45;
 }
 .research > header {
-  flex: 0 0 clamp(38px, 6cqw, 68px);
+  min-height: clamp(42px, 6cqw, 68px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -413,6 +368,7 @@
   font-size: clamp(10px, 1cqw, 14px);
 }
 .abstract {
+  max-width: 76ch;
   margin: clamp(10px, 1.5cqw, 20px) auto clamp(8px, 1cqw, 14px);
   padding: clamp(9px, 1.2cqw, 16px);
   border: 1px solid #d8e0dc;
@@ -447,12 +403,10 @@
   font-weight: 600;
 }
 .goalGrid {
-  flex: 1;
-  min-height: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(5, minmax(0, 1fr));
-  gap: clamp(3px, 0.5cqw, 7px);
+  grid-auto-rows: minmax(44px, auto);
+  gap: clamp(4px, 0.5cqw, 7px);
   margin: clamp(7px, 1cqw, 14px) auto 0;
 }
 .goal {
@@ -460,8 +414,7 @@
   display: flex;
   align-items: center;
   gap: clamp(4px, 0.6cqw, 8px);
-  min-height: 0;
-  padding: clamp(4px, 0.8cqw, 11px);
+  padding: clamp(5px, 0.8cqw, 11px);
   border: 1px solid #e0e5e2;
   border-top: 2px solid var(--goal-color);
   background: white;
@@ -469,289 +422,215 @@
 .goal b {
   flex: 0 0 auto;
   color: var(--goal-color);
-  font-size: clamp(10px, 1.25cqw, 14px);
+  font-size: clamp(10px, 1.1cqw, 14px);
 }
 .goal span {
+  min-width: 0;
   color: #344c53;
-  display: -webkit-box;
-  overflow: hidden;
-  font-size: clamp(10px, 1.25cqw, 14px);
-  line-height: 1.2;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  font-size: clamp(10px, 1.1cqw, 14px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 .goalSelected {
   outline: 1px solid var(--goal-color);
   background: #fff8ef;
 }
 .research > footer {
-  margin-top: clamp(6px, 0.9cqw, 12px);
-  padding-block: clamp(6px, 0.9cqw, 12px);
+  margin-top: clamp(8px, 0.9cqw, 12px);
   color: #6f655a;
   text-align: right;
   font-size: clamp(10px, 1cqw, 13px);
 }
 
-@media (max-width: 620px) {
-  .artwork {
-    min-height: 200px;
-  }
-  .compact {
-    min-height: 180px;
-  }
-  .artwork:not(.compact)[data-visual="nlp"],
-  .artwork:not(.compact)[data-visual="quiz"],
-  .artwork:not(.compact)[data-visual="recipe"],
-  .artwork:not(.compact)[data-visual="research"] {
-    height: auto;
-    min-height: 0;
-    aspect-ratio: auto;
-    overflow: visible;
-  }
-  .artwork:not(.compact)[data-visual="nlp"] .canvas,
-  .artwork:not(.compact)[data-visual="quiz"] .canvas,
-  .artwork:not(.compact)[data-visual="recipe"] .canvas,
-  .artwork:not(.compact)[data-visual="research"] .canvas {
-    position: relative;
-    inset: auto;
-    height: auto;
-    overflow: visible;
-  }
-  .artwork:not(.compact)[data-visual="nlp"] .caption,
-  .artwork:not(.compact)[data-visual="quiz"] .caption,
-  .artwork:not(.compact)[data-visual="recipe"] .caption,
-  .artwork:not(.compact)[data-visual="research"] .caption {
-    position: static;
-    max-height: none;
-    min-height: 0;
-    display: flex;
-    align-items: flex-start;
-    overflow: visible;
-    padding: 9px 12px;
-    font-size: 11px;
-    line-height: 1.35;
-  }
-  .artwork:not(.compact)[data-visual="nlp"] .caption > span,
-  .artwork:not(.compact)[data-visual="quiz"] .caption > span,
-  .artwork:not(.compact)[data-visual="recipe"] .caption > span,
-  .artwork:not(.compact)[data-visual="research"] .caption > span {
-    max-width: 100%;
-    overflow: visible;
-    text-overflow: clip;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-  .artwork[data-authored-study="research"] .research {
-    padding: 0 12px 12px;
-    height: auto;
-  }
-  .artwork[data-authored-study="research"] .research > header {
-    min-height: 42px;
-    height: auto;
-    flex-basis: auto;
-    flex-wrap: wrap;
-    padding-block: 8px;
-  }
-  .artwork[data-authored-study="research"] .abstract {
-    margin: 10px 0;
-    padding: 10px;
-  }
-  .artwork[data-authored-study="research"] .abstract p {
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .artwork[data-authored-study="research"] .labelFlow {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  .artwork[data-authored-study="research"] .goalGrid {
-    flex: none;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
-    grid-auto-rows: minmax(40px, auto);
-    gap: 5px;
-    margin-top: 10px;
-  }
-  .artwork[data-authored-study="research"] .goal {
-    min-height: 40px;
-    gap: 7px;
-    padding: 6px 8px;
-  }
-  .artwork[data-authored-study="research"] .goal b,
-  .artwork[data-authored-study="research"] .goal span {
-    font-size: 11px;
-  }
-  .artwork[data-authored-study="research"] .goal span {
-    display: block;
-    overflow: visible;
-    line-height: 1.25;
-  }
-  .artwork[data-authored-study="research"] .research > footer {
-    margin-top: 10px;
-    padding: 0;
-    font-size: 10px;
-  }
-  .artwork[data-authored-study="nlp"] .extraction {
-    height: auto;
+/* Study breakpoints follow the artwork panel, including archive cards. */
+@container (max-width: 620px) {
+  .extraction {
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     padding: 12px;
   }
-  .artwork[data-authored-study="nlp"] .extractPanel,
-  .artwork[data-authored-study="nlp"] .fieldsPanel {
-    min-height: 0;
-  }
-  .artwork[data-authored-study="nlp"] .extractPanel header,
-  .artwork[data-authored-study="nlp"] .fieldsPanel header {
+  .extractPanel header,
+  .fieldsPanel header {
     gap: 8px;
     padding: 9px 10px;
     font-size: 12px;
   }
-  .artwork[data-authored-study="nlp"] .extractPanel header span,
-  .artwork[data-authored-study="nlp"] .fieldsPanel header span {
+  .extractPanel header span,
+  .fieldsPanel header span {
     font-size: 10px;
   }
-  .artwork[data-authored-study="nlp"] .extractPanel p {
-    flex: none;
-    min-height: 0;
+  .extractPanel p {
     padding: 10px;
     font-size: 12px;
     line-height: 1.5;
   }
-  .artwork[data-authored-study="nlp"] .extractPanel footer,
-  .artwork[data-authored-study="nlp"] .fieldsPanel footer {
+  .extractPanel footer,
+  .fieldsPanel footer {
     flex-wrap: wrap;
     gap: 5px 10px;
     padding: 8px 10px;
     font-size: 10px;
   }
-  .artwork[data-authored-study="nlp"] .extractArrow {
+  .extractArrow {
     justify-self: center;
     transform: rotate(90deg);
   }
-  .artwork[data-authored-study="nlp"] .fieldsPanel > div {
-    flex: none;
-    grid-template-columns: minmax(78px, 0.6fr) minmax(0, 1fr);
+  .fieldsPanel > div {
+    grid-template-columns: minmax(72px, 0.6fr) minmax(0, 1fr);
     gap: 8px;
     padding: 9px 10px;
     font-size: 12px;
     overflow-wrap: anywhere;
   }
-  .artwork[data-authored-study="nlp"] .fieldsPanel > div b {
+  .fieldsPanel > div b {
     overflow-wrap: anywhere;
   }
-  .artwork[data-authored-study="quiz"] .quiz {
-    height: auto;
-    min-height: 0;
-    padding: 0 12px 12px;
+  .quiz,
+  .recipe,
+  .research {
+    padding-right: 12px;
+    padding-left: 12px;
   }
-  .artwork[data-authored-study="quiz"] .quiz > header {
-    flex: none;
-    min-height: 42px;
-    flex-wrap: wrap;
-    padding-block: 8px;
-    font-size: 10px;
-  }
-  .artwork[data-authored-study="quiz"] .question {
-    flex: none;
+  .recipeIntro {
+    display: block;
     padding: 12px 0;
   }
-  .artwork[data-authored-study="quiz"] .question h3 {
+  .recipeIntro h3 {
+    margin-top: 5px;
     font-size: 17px;
   }
-  .artwork[data-authored-study="quiz"] .answers {
-    flex: none;
-    min-height: 0;
-    grid-template-rows: none;
-    grid-auto-rows: minmax(48px, auto);
-    gap: 7px;
+  .recipeIntro > span {
+    display: block;
+    margin-top: 5px;
   }
-  .artwork[data-authored-study="quiz"] .answers div {
-    min-height: 48px;
-    gap: 8px;
-    padding: 8px;
-    font-size: 12px;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
+  .recipeCards article > b {
+    padding: 9px 9px 0;
+    font-size: 14px;
   }
-  .artwork[data-authored-study="quiz"] .answers b {
-    flex: 0 0 24px;
-    width: 24px;
-    height: 24px;
+  .recipeCards p {
+    margin: 5px 9px;
+    font-size: 11px;
+  }
+  .recipeCards article > small {
+    margin: 5px 9px 10px;
     font-size: 10px;
   }
-  .artwork[data-authored-study="quiz"] .quiz > footer {
-    flex-wrap: wrap;
-    margin-top: 10px;
-    padding-top: 9px;
-    font-size: 10px;
+  .goalGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(44px, auto);
   }
-  .artwork[data-authored-study="recipe"] .recipe {
-    height: auto;
-    padding: 0 12px 12px;
+  .goal {
+    gap: 6px;
+    padding: 6px;
   }
-  .artwork[data-authored-study="recipe"] .recipe > header {
-    min-height: 42px;
-    height: auto;
-    flex-basis: auto;
+  .goal b,
+  .goal span {
+    font-size: 11px;
+  }
+}
+
+@container (max-width: 400px) {
+  .quiz,
+  .recipe,
+  .research {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .quiz > header,
+  .recipe > header,
+  .research > header {
     flex-wrap: wrap;
     padding-block: 8px;
   }
-  .artwork[data-authored-study="recipe"] .recipe > header span,
-  .artwork[data-authored-study="recipe"] .recipeIntro > span {
+  .quiz > header {
+    min-height: 42px;
+  }
+  .quiz > header span,
+  .recipe > header span,
+  .research > header span {
     font-size: 10px;
   }
-  .artwork[data-authored-study="recipe"] .recipeIntro {
-    display: block;
-    padding: 12px 0;
-  }
-  .artwork[data-authored-study="recipe"] .recipeIntro small {
-    font-size: 10.5px;
-  }
-  .artwork[data-authored-study="recipe"] .recipeIntro h3 {
-    margin-top: 5px;
-    font-size: 16px;
-  }
-  .artwork[data-authored-study="recipe"] .recipeIntro > span {
-    display: block;
-    margin-top: 5px;
-  }
-  .artwork[data-authored-study="recipe"] .recipeCards {
-    flex: none;
+  .answers {
     grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
+    gap: 7px;
   }
-  .artwork[data-authored-study="recipe"]
-    .recipeCards
-    article:not(:first-child) {
-    display: none;
-  }
-  .artwork[data-authored-study="recipe"] .recipePhoto {
-    flex: none;
-    height: 130px;
-    min-height: 130px;
-  }
-  .artwork[data-authored-study="recipe"] .recipeCards article > b {
-    padding: 10px 10px 0;
-    font-size: 15px;
-  }
-  .artwork[data-authored-study="recipe"] .recipeCards p {
-    margin: 5px 10px;
+  .answers div {
+    min-height: 46px;
+    padding: 8px;
     font-size: 12px;
   }
-  .artwork[data-authored-study="recipe"] .recipeCards article > small {
-    margin: 5px 10px 10px;
-    font-size: 10px;
+  .question h3 {
+    font-size: 17px;
   }
-  .artwork[data-authored-study="recipe"] .recipe > footer {
+  .quiz > footer {
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-    padding-top: 10px;
     font-size: 10px;
   }
-  .artwork[data-authored-study="recipe"] .recipe > footer b {
-    padding: 5px 7px;
+  .research > header {
+    min-height: 42px;
+  }
+  .research .abstract {
+    margin: 10px 0;
+    padding: 10px;
+  }
+  .research .abstract p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .labelFlow {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .goalGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .goal {
+    min-height: 42px;
+    gap: 7px;
+    padding: 6px 8px;
+  }
+  .goal b,
+  .goal span {
+    font-size: 11px;
+  }
+}
+
+@container (max-width: 480px) {
+  .recipeCards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .recipeCards article {
+    display: grid;
+    grid-template-columns: minmax(72px, 29%) minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    min-height: 100px;
+    padding-bottom: 0;
+  }
+  .recipePhoto {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    aspect-ratio: auto;
+    background-size: auto 100%;
+  }
+  .recipeCards article > b {
+    grid-column: 2;
+    padding: 8px 8px 0;
+    font-size: 13px;
+  }
+  .recipeCards p {
+    grid-column: 2;
+    margin: 4px 8px;
+    font-size: 11px;
+  }
+  .recipeCards article > small {
+    grid-column: 2;
+    margin: 0 8px 8px;
     font-size: 10px;
   }
 }
