@@ -117,7 +117,7 @@ export const projects: Project[] = [
       "An NLP pipeline that turns raw job-ad HTML into structured information about salary, experience, education, and role requirements.",
     description: [
       "This project explored domain-specific information extraction from job advertisements, converting raw HTML into structured JSON fields.",
-      "The work compared CRF and logistic-regression baselines with fine-tuned GPT-2 and GPT-3.5 models. Weights & Biases supported experiment tracking, hyperparameter sweeps, model versioning, and reproducible comparisons.",
+      "The work compared a CRF baseline with fine-tuned GPT-2 and GPT-3.5 models. Weights & Biases supported experiment tracking, hyperparameter sweeps, model versioning, and reproducible comparisons.",
     ],
     technologies: [
       "Python",
@@ -131,7 +131,7 @@ export const projects: Project[] = [
       { label: "Output", value: "Structured JSON" },
       {
         label: "Models compared",
-        value: "CRF · Logistic regression · GPT-2 · GPT-3.5",
+        value: "CRF · GPT-2 · GPT-3.5",
       },
     ],
     approach: [

@@ -15,3 +15,8 @@ artifacts/
 # Local duplicate design backups remain private and unversioned.
 /DESIGN 2.md
 /.impeccable/design 2.json
+
+# Local sync duplicates are preserved, but do not ship in releases.
+/docs/* 2.md
+/src/**/* 2.*
+/public/projects/* 2.*
