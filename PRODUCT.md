@@ -9,7 +9,7 @@ web
 User requested TypeScript and its frameworks, with Railway CLI deployment. Framework selection delegated by brief: Next.js App Router, React, strict TypeScript. Typed local content supplies reusable project routes.
 
 ## Users
-Inferred from the CV-led personal website request: recruiters, engineering teams, collaborators, and people exploring Aman's work. Optional audience weighting question pending; default equal emphasis on software engineering and machine learning.
+Recruiters, engineering teams, collaborators, and people exploring Aman's work (inferred from the CV-led personal website request). User confirmed equal emphasis on software engineering and machine learning.
 
 ## Product Purpose
 Present Aman Sharma's projects, research, education, and experience accurately, with a dedicated page for every project in either supplied CV, and verified GitHub links where available.
@@ -28,3 +28,6 @@ Two CVs provided at /Users/aman/Desktop/Latest CVs/Aman_Sharma_CV_ml.pdf and /Us
 - Preserve CV truth and distinguish ongoing research from completed work.
 - Keep all portfolio content in one typed source of truth.
 - Navigation and interactions remain usable without motion.
+
+## Public Contact
+User explicitly requires amancodinghere@gmail.com as the sole public contact email. Never publish the personal address from the CVs.
