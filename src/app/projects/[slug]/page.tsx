@@ -78,23 +78,31 @@ export default async function ProjectPage({
             </a>
           ) : (
             <div className="repository-note">
-              <span className="source-unavailable">Source unavailable</span>
-              <p>
-                {project.githubNote || "Source code is unavailable to share."}
-              </p>
-              <a
-                href="https://github.com/amancodeshere"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub profile
-              </a>
+              {project.githubNote ===
+              "Source code and deployment are no longer available to share." ? (
+                <p>{project.githubNote}</p>
+              ) : (
+                <>
+                  <span className="source-unavailable">Source unavailable</span>
+                  <p>
+                    {project.githubNote ||
+                      "Source code is unavailable to share."}
+                  </p>
+                  <a
+                    href="https://github.com/amancodeshere"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GitHub profile
+                  </a>
+                </>
+              )}
             </div>
           )}
         </div>
       </div>
       <section className="detail-story">
-        <h2>The work.</h2>
+        <h2>Overview</h2>
         <div>
           {project.description.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
@@ -102,7 +110,7 @@ export default async function ProjectPage({
         </div>
       </section>
       <section className="approach-section">
-        <h2>How it comes together.</h2>
+        <h2>Approach</h2>
         <div className="approach-list">
           {project.approach.map((step, stepIndex) => (
             <article key={step.title}>
@@ -117,7 +125,7 @@ export default async function ProjectPage({
       </section>
       {project.highlights.length > 0 && (
         <section className="detail-highlights">
-          <h2>At a glance.</h2>
+          <h2>Details</h2>
           <dl>
             {project.highlights.map((item) => (
               <div key={item.label}>

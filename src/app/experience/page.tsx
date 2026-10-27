@@ -10,15 +10,10 @@ export default function ExperiencePage() {
   return (
     <div className="inner-page frame-x">
       <header className="page-intro">
-        <h1>
-          Across teams
-          <br />
-          and <em>disciplines.</em>
-        </h1>
+        <h1>Experience</h1>
         <div className="intro-foot">
           <p>
-            Engineering, teaching, and customer-facing work have shaped how I
-            approach a problem.
+            Software engineering, robotics, teaching, and customer-facing work.
           </p>
           <span>SYDNEY / REMOTE</span>
         </div>

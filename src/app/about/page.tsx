@@ -10,24 +10,13 @@ export default function AboutPage() {
   return (
     <div className="inner-page frame-x">
       <header className="page-intro">
-        <h1>
-          Curious by
-          <br />
-          <em>construction.</em>
-        </h1>
+        <h1>About</h1>
         <div className="intro-foot">
           <p>{profile.headline}</p>
           <span>{profile.location}</span>
         </div>
       </header>
       <section className="about-page-copy">
-        <div className="about-stamp">
-          <span>AS</span>
-          <i>
-            SOFTWARE
-            <br />+ ML
-          </i>
-        </div>
         <div>
           {profile.biography.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>

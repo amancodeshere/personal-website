@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { profile } from "../../content/portfolio";
 
 const links = [
+  { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
-  { href: "/projects", label: "Work" },
   { href: "/experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -15,30 +15,32 @@ const links = [
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
   return (
     <>
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
       <header className="site-header frame-x">
-        <Link
-          className="brand-mark"
-          href="/"
-          aria-label="Aman Sharma home"
-          onClick={() => setOpen(false)}
-        >
-          <span>AS</span>
-          <i />
-        </Link>
-        <Link href="/" className="brand-name">
+        <Link href="/" className="brand-name" onClick={() => setOpen(false)}>
           <b>AMAN SHARMA</b>
-          <span>SOFTWARE / MACHINE LEARNING</span>
+          <span>Software engineering · Sydney</span>
         </Link>
         <button
           className="menu-toggle"
+          type="button"
           aria-expanded={open}
           aria-controls="primary-navigation"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((value) => !value)}
         >
           <span>{open ? "Close" : "Menu"}</span>
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -54,12 +56,11 @@ export function SiteHeader() {
         >
           {links.map((link) => (
             <Link
-              key={link.href}
+              key={link.label}
               href={link.href}
               aria-current={
-                (link.href === "/projects" &&
-                  pathname.startsWith("/projects")) ||
-                (link.href === "/experience" && pathname === "/experience")
+                (link.label === "Work" && pathname.startsWith("/projects")) ||
+                (link.label === "Experience" && pathname === "/experience")
                   ? "page"
                   : undefined
               }
@@ -69,8 +70,17 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <a className="availability" href={`mailto:${profile.email}`}>
-          <span className="status-dot" /> OPEN TO OPPORTUNITIES
+        <a
+          className="header-social"
+          href={profile.githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Aman Sharma on GitHub"
+        >
+          GitHub
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 12 12 4M5 4h7v7" />
+          </svg>
         </a>
       </header>
     </>

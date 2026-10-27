@@ -3,41 +3,26 @@ import { profile } from "../../content/portfolio";
 
 export function AboutSection() {
   return (
-    <section className="about-section frame-x section-pad" id="about">
-      <div className="section-heading">
-        <h2>A little context.</h2>
-        <span>
-          SYDNEY, AUSTRALIA
-          <br />
-          UNSW / SOFTWARE ENGINEERING
-        </span>
-      </div>
-      <div className="about-grid">
-        <div className="about-stamp">
-          <span>AS</span>
-          <i>
-            ENGINEERING
-            <br />
-            IN PROGRESS
-          </i>
+    <section
+      className="about-section frame-x"
+      id="about"
+      aria-labelledby="about-title"
+    >
+      <div className="about-copy">
+        <h2 id="about-title">About</h2>
+        <p className="about-lead">
+          I’m a software engineering student at UNSW, building across{" "}
+          <em>software and machine learning.</em>
+        </p>
+        <div className="about-body">
+          <p>{profile.biography[2]}</p>
         </div>
-        <div className="about-copy">
-          <p className="about-lead">
-            I build <em>systems</em> that turn complex information into clear,
-            useful experiences.
-          </p>
-          <div className="about-body">
-            {profile.biography.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-          </div>
-          <Link className="text-link" href="/about">
-            MORE ABOUT AMAN{" "}
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M3 10h13M10 4l6 6-6 6" />
-            </svg>
-          </Link>
-        </div>
+        <Link className="text-link" href="/about">
+          More about Aman
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M3 10h13M10 4l6 6-6 6" />
+          </svg>
+        </Link>
       </div>
     </section>
   );

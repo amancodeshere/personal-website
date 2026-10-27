@@ -12,15 +12,9 @@ export default function ProjectsPage() {
   return (
     <div className="inner-page frame-x">
       <header className="page-intro">
-        <h1>
-          Ideas made
-          <br />
-          <em>tangible.</em>
-        </h1>
+        <h1>Projects</h1>
         <div className="intro-foot">
-          <p>
-            Platforms, models, and experiments. Browse the work by discipline.
-          </p>
+          <p>Software, machine learning, and research projects.</p>
           <span>{projects.length} PROJECTS / SYDNEY</span>
         </div>
       </header>
