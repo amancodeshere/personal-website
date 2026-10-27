@@ -35,11 +35,13 @@ HOSTNAME=0.0.0.0 PORT=3000 node .next/standalone/server.js
 - `src/types/portfolio.ts`: shared content types.
 - `src/app/projects/[slug]/page.tsx`: one reusable detail template generates every project route.
 - `src/components/`: shared layout, home sections, project catalogue, artwork, and ocean field.
+- `src/content/project-media.ts`: image sources, alt text, provenance, and compact/detail captions.
+- `src/components/visual/`: per-path ocean animation and scroll-linked gallery transforms, with reduced-motion fallbacks.
 - `src/app/globals.css`: shared color, typography, spacing, responsive, and reduced-motion rules.
 
 To add a project, add one typed record to `projects`. The homepage, filters, detail route, next-project navigation, and sitemap update automatically. See [content guide](docs/CONTENT_GUIDE.md) for field definitions and source rules. Add a new standalone route with `src/app/<route>/page.tsx`, then link it in the shared header where appropriate.
 
-Only `amancodinghere@gmail.com` may be used for public contact. Do not copy contact information from source CVs. Job Ad Extraction and Toohak intentionally have no source or demo link; the owner confirmed they are no longer shareable. Artwork is an abstract visual interpretation, not application screenshots or measured model outputs.
+Only `amancodinghere@gmail.com` may be used for public contact. Do not copy contact information from source CVs. Job Ad Extraction and Toohak intentionally have no source or demo link; the owner confirmed they are no longer shareable. Project media includes public application captures, a repository ultrasound figure, and clearly labelled illustrative studies. Recipe imagery is AI-generated illustration; no study artwork is presented as an original application screenshot or measured model output. See [media provenance](docs/PROJECT_MEDIA.md).
 
 ## Verification
 

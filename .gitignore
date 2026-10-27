@@ -11,3 +11,7 @@ dist/
 !.railway/README.md
 artifacts/
 *.log
+
+# Local duplicate design backups remain private and unversioned.
+/DESIGN 2.md
+/.impeccable/design 2.json
