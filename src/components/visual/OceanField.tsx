@@ -1,21 +1,36 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useId, useMemo, useRef } from "react";
 
 const WIDTH = 1200;
 const HEIGHT = 430;
 const LINE_COUNT = 61;
 const SAMPLE_COUNT = 25;
+const INDEX_WIDTH = 1200;
+const INDEX_HEIGHT = 800;
+const INDEX_LINE_COUNT = 43;
+const INDEX_SAMPLE_COUNT = 33;
+
+type OceanFieldMode = "hero" | "index";
+
+type OceanGeometry = {
+  width: number;
+  height: number;
+  lineCount: number;
+  sampleCount: number;
+};
 
 function makePath(
   index: number,
   time: number,
   pointer: { x: number; y: number; active: boolean; energy: number },
+  geometry: OceanGeometry,
 ) {
-  const x = (index / (LINE_COUNT - 1)) * WIDTH;
+  const { width, height, lineCount, sampleCount } = geometry;
+  const x = (index / (lineCount - 1)) * width;
   const points: string[] = [];
-  for (let sample = 0; sample < SAMPLE_COUNT; sample += 1) {
-    const y = (sample / (SAMPLE_COUNT - 1)) * HEIGHT;
+  for (let sample = 0; sample < sampleCount; sample += 1) {
+    const y = (sample / (sampleCount - 1)) * height;
     const wave =
       Math.sin(sample * 0.42 + index * 0.24 + time) * 16 +
       Math.sin(sample * 0.15 - index * 0.31 + time * 0.63) * 24;
@@ -38,21 +53,40 @@ function makePath(
   return points.join(" ");
 }
 
-export function OceanField() {
+export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
+  const gradientId = useId().replace(/:/g, "");
+  const geometry = useMemo<OceanGeometry>(
+    () =>
+      mode === "index"
+        ? {
+            width: INDEX_WIDTH,
+            height: INDEX_HEIGHT,
+            lineCount: INDEX_LINE_COUNT,
+            sampleCount: INDEX_SAMPLE_COUNT,
+          }
+        : {
+            width: WIDTH,
+            height: HEIGHT,
+            lineCount: LINE_COUNT,
+            sampleCount: SAMPLE_COUNT,
+          },
+    [mode],
+  );
+  const interactive = mode === "hero";
   const root = useRef<SVGSVGElement>(null);
   const paths = useRef<(SVGPathElement | null)[]>([]);
   const pointer = useRef({
-    x: WIDTH / 2,
-    y: HEIGHT / 2,
+    x: geometry.width / 2,
+    y: geometry.height / 2,
     active: false,
     energy: 0,
   });
   const initialPaths = useMemo(
     () =>
-      Array.from({ length: LINE_COUNT }, (_, index) =>
-        makePath(index, 0, { x: 0, y: 0, active: false, energy: 0 }),
+      Array.from({ length: geometry.lineCount }, (_, index) =>
+        makePath(index, 0, { x: 0, y: 0, active: false, energy: 0 }, geometry),
       ),
-    [],
+    [geometry.height, geometry.lineCount, geometry.sampleCount, geometry.width],
   );
 
   useEffect(() => {
@@ -74,7 +108,10 @@ export function OceanField() {
         if (pointer.current.energy < 0.008) pointer.current.energy = 0;
         paths.current.forEach((path, index) => {
           if (path)
-            path.setAttribute("d", makePath(index, time, pointer.current));
+            path.setAttribute(
+              "d",
+              makePath(index, time, pointer.current, geometry),
+            );
         });
       }
       frame = requestAnimationFrame(tick);
@@ -115,13 +152,13 @@ export function OceanField() {
       reduced.removeEventListener("change", onMotionPreference);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [geometry]);
 
   function move(event: React.PointerEvent<SVGSVGElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
     pointer.current = {
-      x: ((event.clientX - rect.left) / rect.width) * WIDTH,
-      y: ((event.clientY - rect.top) / rect.height) * HEIGHT,
+      x: ((event.clientX - rect.left) / rect.width) * geometry.width,
+      y: ((event.clientY - rect.top) / rect.height) * geometry.height,
       active: true,
       energy: 1,
     };
@@ -135,24 +172,36 @@ export function OceanField() {
     <svg
       ref={root}
       className="ocean-field"
-      viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-      preserveAspectRatio="xMidYMid slice"
+      viewBox={`0 0 ${geometry.width} ${geometry.height}`}
+      preserveAspectRatio={mode === "index" ? "none" : "xMidYMid slice"}
+      data-ocean-mode={mode}
       aria-hidden="true"
-      onPointerMove={move}
-      onPointerLeave={leave}
+      onPointerMove={interactive ? move : undefined}
+      onPointerLeave={interactive ? leave : undefined}
     >
       <defs>
-        <linearGradient id="current-stroke" x1="0" x2="1" y1="0" y2="1">
-          <stop stopColor="#8fe5ec" stopOpacity=".24" />
-          <stop offset=".48" stopColor="#67d4e2" stopOpacity=".84" />
-          <stop offset="1" stopColor="#b9f1f4" stopOpacity=".28" />
+        <linearGradient id={gradientId} x1="0" x2="1" y1="0" y2="1">
+          <stop
+            stopColor="#8fe5ec"
+            stopOpacity={mode === "index" ? ".48" : ".24"}
+          />
+          <stop
+            offset=".48"
+            stopColor="#67d4e2"
+            stopOpacity={mode === "index" ? ".96" : ".84"}
+          />
+          <stop
+            offset="1"
+            stopColor="#b9f1f4"
+            stopOpacity={mode === "index" ? ".52" : ".28"}
+          />
         </linearGradient>
       </defs>
       <g
         className="current-lines"
         fill="none"
-        stroke="url(#current-stroke)"
-        strokeWidth="1"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={mode === "index" ? "1.25" : "1"}
       >
         {initialPaths.map((path, index) => (
           <path
@@ -161,7 +210,11 @@ export function OceanField() {
               paths.current[index] = element;
             }}
             d={path}
-            opacity={0.23 + (index % 7) * 0.075}
+            opacity={
+              mode === "index"
+                ? 0.48 + (index % 7) * 0.065
+                : 0.23 + (index % 7) * 0.075
+            }
           />
         ))}
       </g>

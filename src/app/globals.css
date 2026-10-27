@@ -216,6 +216,24 @@ svg {
   height: 100%;
   touch-action: pan-y;
 }
+.project-index-surface {
+  position: relative;
+  isolation: isolate;
+}
+.project-index-backdrop {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.project-index-backdrop .ocean-field {
+  touch-action: auto;
+}
+.project-index-content {
+  position: relative;
+  z-index: 0;
+}
 .current-lines path,
 .current-lines-fine path {
   vector-effect: non-scaling-stroke;
@@ -445,6 +463,9 @@ svg {
 .project-row-copy {
   padding: 13px 1px 0;
 }
+.catalogue-list .project-row-copy {
+  background: var(--ocean);
+}
 .project-row-meta {
   display: flex;
   gap: 10px;
@@ -640,6 +661,7 @@ svg {
   border-top: 1px solid var(--line);
   color: var(--ice);
   font: 600 clamp(28px, 3.6vw, 48px)/1 var(--display);
+  background: var(--ocean);
 }
 .filter-bar {
   display: flex;
@@ -653,7 +675,7 @@ svg {
   align-items: center;
   padding: 8px 12px;
   border: 1px solid var(--line);
-  background: transparent;
+  background: var(--ocean);
   color: var(--muted);
   font-size: 11px;
   cursor: pointer;
