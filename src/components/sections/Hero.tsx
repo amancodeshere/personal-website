@@ -9,7 +9,7 @@ export function Hero() {
       </div>
       <div className="hero-title-wrap">
         <h1 id="hero-title">
-          <span>AMAN SHARMA</span>
+          <span>Aman Sharma</span>
         </h1>
       </div>
       <div className="hero-meta">

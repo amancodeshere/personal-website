@@ -1,6 +1,6 @@
 ---
 name: Aman Sharma Portfolio
-description: An ocean-framed portfolio where a moving current leads into software, machine learning, and research work.
+description: A readable ocean-blue portfolio where a moving current leads into software, machine learning, and research work.
 colors:
   ocean: "#082f49"
   deep: "#062a41"
@@ -16,34 +16,43 @@ colors:
   line-strong: "rgba(195, 230, 237, 0.43)"
 typography:
   display:
-    fontFamily: "Barlow Condensed, Impact, sans-serif"
-    fontSize: "clamp(84px, 17.2vw, 286px)"
-    fontWeight: 900
-    lineHeight: 0.76
-    letterSpacing: "-0.045em"
-  headline:
-    fontFamily: "Barlow Condensed, Impact, sans-serif"
-    fontSize: "clamp(45px, 7vw, 92px)"
-    fontWeight: 800
-    lineHeight: 0.85
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(48px, 9.6vw, 148px)"
+    fontWeight: 700
+    lineHeight: 1.06
     letterSpacing: "-0.035em"
+  headline:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(30px, 3.5vw, 44px)"
+    fontWeight: 700
+    lineHeight: 1.15
+  project-title:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(21px, 2.1vw, 28px)"
+    fontWeight: 600
+    lineHeight: 1.25
   body:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "15px"
+    fontSize: "16px"
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1.7
   editorial:
-    fontFamily: "Georgia, Times New Roman, serif"
-    fontSize: "clamp(27px, 3.3vw, 42px)"
-    fontWeight: 400
-    lineHeight: 1.28
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(26px, 3.1vw, 38px)"
+    fontWeight: 500
+    lineHeight: 1.4
   label:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "10px"
+    fontSize: "12px"
+    fontWeight: 500
+  control:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "14px"
     fontWeight: 600
-    letterSpacing: "0.09em"
+    lineHeight: 1.4
 rounded:
   square: "0px"
+  control: "6px"
   circle: "50%"
 spacing:
   frame: "clamp(16px, 2.7vw, 42px)"
@@ -57,10 +66,10 @@ components:
     rounded: "{rounded.square}"
     height: "72px"
   filter-chip:
-    backgroundColor: "transparent"
+    backgroundColor: "{colors.ocean}"
     textColor: "{colors.muted}"
-    rounded: "{rounded.square}"
-    padding: "8px 12px"
+    rounded: "{rounded.control}"
+    padding: "12px 14px"
   project-media-frame:
     backgroundColor: "{colors.panel}"
     textColor: "{colors.ice}"
@@ -79,14 +88,14 @@ components:
 
 **Creative North Star: “A Current Through the Work.”**
 
-The portfolio opens with a full-width field of animated current lines and Aman's name set as a monumental title strip. A fine frame and ruled bands hold the page together. The ocean palette and compressed lettering give the site a technical, editorial character while leaving the work and its images as the focus.
+The portfolio opens with a full-width field of animated current lines and Aman's name in open, natural-case lettering. Spacing and a clear type hierarchy hold the page together. The ocean palette keeps a technical character while friendly headings and readable text leave the work and its images as the focus.
 
 The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The homepage shows 11 non-game projects. The shared registry has seven categories, while the default Projects catalogue groups those 11 projects across six non-game categories; its visible Games link opens a dedicated topic with the other two project cards. Competition media includes an actual Battlecode replay board and a capture of the official CTN homepage. These images have no caption bars, and their provenance stays in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
 
 **Key Characteristics:**
 
-- Deep ocean surfaces, icy text, cyan signals, and thin inset framing.
-- Oversized Barlow Condensed lettering balanced by DM Sans and Georgia.
+- Deep ocean surfaces, icy text, and cyan signals without decorative separator bars.
+- Friendly DM Sans headings and readable body text; condensed letters remain in decorative artwork and interior editorial headings.
 - Current lines and scroll-linked image motion give the page a single sense of movement.
 - Real project media and clearly labelled studies carry the subject matter.
 
@@ -112,57 +121,58 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 - **Ink** (`{colors.ink}`, `#e3f3f5`): Default text on ocean surfaces.
 - **Muted Current** (`{colors.muted}`, `#a5c2cb`): Supporting copy and inactive navigation.
 - **Faint Current** (`{colors.faint}`, `#759ba8`): Low-priority labels.
-- **Fine Rule** (`{colors.line}`): Inset frame and section dividers.
-- **Strong Rule** (`{colors.line-strong}`): More prominent section boundaries.
+- **Fine Outline** (`{colors.line}`): Controls, metadata chips, and media frames.
+- **Strong Outline** (`{colors.line-strong}`): More prominent media and interaction boundaries.
 
 **The Current Accent Rule.** Cyan marks interaction and visual direction; use it sparingly against the ocean palette.
 
 ## Typography
 
-**Display Font:** Barlow Condensed (with Impact, sans-serif fallbacks)  
+**Landing and Gallery Font:** DM Sans (with Arial, sans-serif fallbacks)<br />
 **Body Font:** DM Sans (with Arial, sans-serif fallbacks)  
 **Editorial Font:** Georgia (with Times New Roman, serif fallbacks)
 
-**Character:** Barlow Condensed carries the large, tightly set titles. DM Sans keeps navigation and project details compact and clear. Georgia appears in the centered About statement and longer editorial summaries.
+**Character:** DM Sans gives the landing page and project catalogue an open voice with natural casing and comfortable leading. Barlow Condensed remains in decorative lettering and interior editorial headings; Georgia remains in longer interior summaries.
 
 ### Hierarchy
 
-- **Display** (900, `clamp(84px, 17.2vw, 286px)`, 0.76 line-height): The hero name strip.
-- **Headline** (800–900, responsive): Page titles, section names, and project titles; uppercase for the strongest headings.
-- **Title** (500–700, 13–25px): Navigation, role names, and small interface headings.
-- **Body** (400, 15px, 1.65 line-height): Default reading text in DM Sans.
-- **Editorial** (400, `clamp(27px, 3.3vw, 42px)`, 1.28 line-height): Centered About lead.
-- **Label** (600, 9–11px, lightly tracked): Categories, dates, and supporting metadata.
+- **Hero** (700, 48–148px, 1.06 leading): Natural-case name with room to wrap.
+- **Topic / section** (700, 30–44px, 1.15 leading): Larger than project titles at every breakpoint.
+- **Project title** (600, 21–28px, 1.25 leading): Natural case; no compressed mobile override.
+- **Controls** (600, 14px, 1.4 leading): Raised surfaces with a minimum 44px target.
+- **Body** (400, 16px, 1.7 leading): Landing prose with a 62ch reading measure.
+- **About lead** (500, 26–38px, 1.4 leading): Centered DM Sans statement.
+- **Metadata** (400–500, 12–13px): Categories, dates, and supporting text.
 
 ## Layout
 
-The site uses a consistent horizontal frame of `clamp(16px, 2.7vw, 42px)` and fluid section padding. A thin fixed outline surrounds the viewport. The desktop header is 72px high; it reduces to 64px on mobile, where the nav becomes a keyboard-operable menu.
+The site uses consistent horizontal spacing of `clamp(16px, 2.7vw, 42px)` and fluid section padding. Whitespace separates sections and list rows. The header uses individually raised links; mobile navigation opens below the header and remains keyboard operable.
 
-The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The layout has a second small-screen adjustment at 390px.
+The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The landing layout also remains readable at 320px.
 
 ## Elevation & Depth
 
-The site is flat and framed rather than card-stacked. Thin blue-white rules, alternating ocean tones, the full-width current field, and the actual project imagery establish depth. Avoid generic shadows and decorative glow; media uses a restrained frame without bottom caption bars.
+Ocean currents and project imagery establish depth. Controls have a restrained offset soft shadow and inset top highlight; hover lifts them slightly, pressing settles them, and keyboard focus has a cyan outline. Remove decorative page frames and separator bars; retain outlines around controls, media, and factual artwork.
 
 ## Shapes
 
-The frame, nav, filters, archive, and media use square corners. The contact invitation is the exception: an outlined circle expands into a radial field on hover or keyboard focus, and its orbit rotates. Keep the line weight fine and the viewport frame continuous.
+Controls use a gentle 6px corner radius; project media keeps its existing frame. The contact invitation uses an outlined circle that expands into a radial field on hover or keyboard focus, and its orbit rotates.
 
 ## Components
 
 ### Header and Navigation
 
-The header is a clean, ruled band with a compact nameplate, Projects/About/Experience/Contact links, and GitHub. Active and hovered links brighten against a quiet cyan-tinted surface. At 760px and below, expose the Menu/Close control and its expanded state; preserve Escape-to-close and visible keyboard focus.
+The header has a compact nameplate and individually spaced Projects/About/Experience/Contact controls plus GitHub. Active and hovered links brighten against ocean surfaces. At 760px and below, expose the Menu/Close control and its expanded state; preserve Escape-to-close and visible keyboard focus.
 
 ### Hero Current and Name Strip
 
-The SVG current field spans the viewport above a bordered title strip. Its lines drift and respond to pointer movement. Keep the full name as the dominant typographic element; the hero includes a short work link and Sydney location metadata.
+The SVG current field spans the viewport above a readable natural-case name. Its lines drift and respond to pointer movement. Keep the full name as the dominant typographic element; the hero includes a raised work link and Sydney location metadata.
 
 The Projects and Games indexes use a shared ocean surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). Topic headings sit directly on the currents; compact ocean backplates fit the project titles instead of filling each card's width. Filters retain their readable surfaces. A quieter shared field runs behind the home About, work, Experience, and Contact sections. Its transparent section surfaces reveal the same current language without adding an animation instance to each section. Individual project details retain their plain ocean background.
 
 ### About Panel
 
-Center one short statement inside a narrow panel with vertical rules. Use Georgia for the lead, DM Sans for supporting copy, and a single route to the longer About page.
+Center one short DM Sans statement with comfortable leading and supporting copy. Keep one clear route to the longer About page and use whitespace around the reading measure.
 
 ### Work Stage and Project Media
 
@@ -170,11 +180,11 @@ The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked
 
 ### Experience List
 
-Use four compact ruled rows with period, role, and organization. Keep the row structure direct and unboxed; collapse to two columns on mobile, with supporting details beneath.
+Use four spacious rows with period, role, and organization. Keep them direct and unboxed without separator bars; collapse to two columns on mobile, with supporting details beneath.
 
 ### Contact Invitation
 
-“LET’S TALK.” is a large mail link. Hover or keyboard focus expands the pale circular field from the right and turns the lettering ocean blue; the orbit rotates. Keep the public email visible below the invitation: `amancodinghere@gmail.com`.
+“Let’s talk.” is a large mail link. Hover or keyboard focus expands the pale circular field from the right and turns the lettering ocean blue; the orbit rotates. Keep the public email visible below the invitation: `amancodinghere@gmail.com`.
 
 ### Motion and Accessibility
 
@@ -185,7 +195,7 @@ The current SVG updates while its surface is visible, pauses when hidden or outs
 ### Do:
 
 - **Do** use the current ocean, deep, work-stage, panel, ice, and cyan tokens for new surfaces.
-- **Do** keep section boundaries and media frames rectangular, ruled, and square-cornered.
+- **Do** separate sections with whitespace and keep outlines limited to controls, metadata chips, and media frames.
 - **Do** use real project captures or repository figures where available; retain descriptive alt text and document their source without visible footer bars.
 - **Do** label authored interface studies and AI-generated food imagery so they cannot be mistaken for original product screens or outputs.
 - **Do** keep scroll and pointer motion optional and retain the reduced-motion behavior.
@@ -196,7 +206,7 @@ The current SVG updates while its surface is visible, pauses when hidden or outs
 - **Don't** invent metrics, model results, patient details, product screenshots, or source links.
 - **Don't** add source or deployment links for Job Advertisement Information Extraction or Toohak; those projects are not available to share.
 - **Don't** return to generic abstract project diagrams when actual project media or a subject-specific labelled study is available.
-- **Don't** soften the framed geometry with pill controls, rounded cards, or generic shadow-heavy surfaces.
+- **Don't** add separator bars, decorative page frames, pill controls, or heavy shadows. Keep the gentle control radius and subtle depth consistent.
 - **Don't** remove the reduced-motion treatment or rely on animation to convey essential information.
 
 

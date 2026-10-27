@@ -12,7 +12,7 @@ export function ContactSection() {
         href={`mailto:${profile.email}`}
         aria-label="Start a conversation by email"
       >
-        <h2>LET’S TALK.</h2>
+        <h2>Let’s talk.</h2>
         <span className="contact-orbit" aria-hidden="true">
           <svg viewBox="0 0 100 100">
             <path d="M24 76 76 24M25 24h51v51" />
