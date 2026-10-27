@@ -5,6 +5,7 @@
 export type ProjectMedia = {
   kind:
     | "live-capture"
+    | "replay-capture"
     | "repository-figure"
     | "interface-study"
     | "workflow-study"
@@ -96,18 +97,30 @@ export const projectMedia = {
     source: "AwesomeDEP public README and packet monitoring source",
   },
   "sudo-win": {
-    kind: "workflow-study",
-    title: "Illustrative remembered map and body-aware Battlecode route",
-    caption: "Authored gameplay study of map memory and safe routing",
-    source: "sudo_win public strategy documentation; not a match replay",
+    kind: "replay-capture",
+    title: "Actual UNSW Battlecode Schooltime board from a sudo_win replay",
+    caption: "Schooltime · match 830316 · round 80",
+    source:
+      "Saved sudo_win match 830316 rendered locally in the official UNSW Battlecode replay viewer",
+    image: {
+      src: "/projects/sudo-win-battlecode-board.webp",
+      alt: "Actual Schooltime game board from sudo_win Battlecode match 830316 at round 80, showing teal and orange dragons, pearls, kelp boundaries, and coloured portals",
+      aspectRatio: "1600 / 1086",
+      fit: "contain",
+    },
   },
   botfluencer: {
-    kind: "interface-study",
-    title:
-      "Illustrative Botfluencer fixture observation ledger in replay and no-op mode",
-    caption: "Authored fixture-run observation study",
+    kind: "live-capture",
+    title: "Capture the Narrative official competition website",
+    caption: "Official CTN competition imagery",
     source:
-      "Botfluencer public architecture and README; no live publishing shown",
+      "Capture the Narrative official website; competition imagery, not a Botfluencer dashboard",
+    image: {
+      src: "/projects/ctn-official-competition.webp",
+      alt: "Official Capture the Narrative competition website showing its red and blue event artwork, speech-bubble logo, and UNSW Sydney and Institute for Cyber Security logos",
+      aspectRatio: "1425 / 990",
+      fit: "contain",
+    },
   },
   "spin-the-block": {
     kind: "repository-figure",
