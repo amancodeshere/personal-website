@@ -5,7 +5,7 @@ Portfolio facts in `src/content/portfolio.ts` come from the two supplied CVs:
 - `Aman_Sharma_CV_ml.pdf`
 - `Aman_Sharma_CV_swe.pdf`
 
-The PDFs were read for this task and are not copied into the website or repository. The public professional email, LinkedIn profile, and GitHub profile are included as printed in the CVs. The telephone number is intentionally omitted.
+The PDFs were read for this task and are not copied into the website or repository. The public contact email is amancodinghere@gmail.com, explicitly supplied by the owner. LinkedIn and GitHub profiles are included as printed in the CVs. The telephone number is intentionally omitted.
 
 ## Project source mapping
 

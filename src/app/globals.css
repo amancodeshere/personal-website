@@ -24,3 +24,11 @@
 
 .skip-link{position:fixed;z-index:100;top:8px;left:8px;padding:10px 14px;background:var(--ice);color:var(--deep);font-size:12px;font-weight:700;transform:translateY(-160%);transition:transform .18s}.skip-link:focus{transform:translateY(0)}
 @media(max-width:760px){.hero-title-wrap{padding-top:24px;padding-bottom:13px}.hero-meta{min-height:48px}}
+
+@media (max-width:760px) {
+  .primary-nav { grid-column:1 / -1; }
+  .detail-heading h1,.project-row h3 { overflow-wrap:anywhere; }
+}
+@media (max-width:390px) {
+  .detail-heading h1 { font-size:clamp(44px,15vw,58px); }
+}
