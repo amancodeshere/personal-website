@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { education, experiences } from "../../content/portfolio";
+import {
+  education,
+  experiences,
+  sunswimExperience,
+} from "../../content/portfolio";
+import { SunSwimFeature } from "../../components/sections/SunSwimFeature";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -18,26 +23,31 @@ export default function ExperiencePage() {
           <span>SYDNEY / REMOTE</span>
         </div>
       </header>
+      <section className="experience-feature" aria-label="Featured experience">
+        <SunSwimFeature heading="h2" />
+      </section>
       <section className="timeline-section">
-        <h2>Experience.</h2>
+        <h2>Other experience.</h2>
         <div className="timeline">
-          {experiences.map((item) => (
-            <article key={item.company}>
-              <div className="timeline-date">{item.period}</div>
-              <div className="timeline-main">
-                <h3>{item.role}</h3>
-                <p className="timeline-company">
-                  {item.company} <span>·</span> {item.location}
-                </p>
-                <p className="timeline-description">{item.description}</p>
-                <ul>
-                  {item.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
+          {experiences
+            .filter((item) => item !== sunswimExperience)
+            .map((item) => (
+              <article key={item.company}>
+                <div className="timeline-date">{item.period}</div>
+                <div className="timeline-main">
+                  <h3>{item.role}</h3>
+                  <p className="timeline-company">
+                    {item.company} <span>·</span> {item.location}
+                  </p>
+                  <p className="timeline-description">{item.description}</p>
+                  <ul>
+                    {item.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
         </div>
       </section>
       <section className="education-section">

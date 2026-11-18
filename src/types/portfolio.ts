@@ -32,6 +32,7 @@ export type Project = {
 };
 
 export type Experience = {
+  caseStudyHref?: string;
   company: string;
   role: string;
   location: string;

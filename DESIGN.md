@@ -90,7 +90,7 @@ components:
 
 The portfolio opens with a full-width field of animated current lines and Aman's name in open, natural-case lettering. Spacing and a clear type hierarchy hold the page together. The ocean palette keeps a technical character while friendly headings and readable text leave the work and its images as the focus.
 
-The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The homepage shows 11 non-game projects. The shared registry has seven categories, while the default Projects catalogue groups those 11 projects across six non-game categories; its visible Games link opens a dedicated topic with the other two project cards. Competition media includes an actual Battlecode replay board and a capture of the official CTN homepage. These images have no caption bars, and their provenance stays in media metadata and documentation. A compact About panel, four-row experience list, and an expanding radial contact invitation complete the home page.
+The current carries into the project stage: a repeated W/O/R/K wall stays behind the scrolling media planes. The homepage shows 11 non-game projects. The shared registry has seven categories, while the default Projects catalogue groups those 11 projects across six non-game categories; its visible Games link opens a dedicated topic with the other two project cards. Competition media includes an actual Battlecode replay board and a capture of the official CTN homepage. These images have no caption bars, and their provenance stays in media metadata and documentation. A compact About panel, a featured robotics case study, and an expanding radial contact invitation complete the home page.
 
 **Key Characteristics:**
 
@@ -148,7 +148,7 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 
 The site uses consistent horizontal spacing of `clamp(16px, 2.7vw, 42px)` and fluid section padding. Whitespace separates sections and list rows. The header uses individually raised links; mobile navigation opens below the header and remains keyboard operable.
 
-The home sequence is a full-width current field, large name strip, centered About panel, scrolling project stage, compact experience list, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The landing layout also remains readable at 320px.
+The home sequence is a full-width current field, large name strip, centered About panel, compact experience feature, scrolling project stage, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The landing layout also remains readable at 320px.
 
 ## Elevation & Depth
 
@@ -178,9 +178,11 @@ Center one short DM Sans statement with comfortable leading and supporting copy.
 
 The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked project media. The default archive uses two columns and square image frames for 11 non-game projects in six categories from the seven-category registry; a visible topic link opens the two-card Games route. Responsive code-authored studies and authentic competition captures extend the main gallery; the two game captures live only in the Games topic; their authored colors stay local to each study and do not change the ocean palette. Detail navigation stays within the same collection as its breadcrumb. Do not render bottom caption or credit bars on gallery, archive, or detail-page images. Keep provenance in the media registry and documentation: JobForge uses sample data, ultrasound uses a repository figure, and recipe food imagery is generated. Authored workflow text remains clearly illustrative. Add new image paths, alt text, and provenance to `src/content/project-media.ts`; an unmapped project falls back to its own summary.
 
-### Experience List
+### Experience and case study
 
-Use four spacious rows with period, role, and organization. Keep them direct and unboxed without separator bars; collapse to two columns on mobile, with supporting details beneath.
+The homepage and Experience index use the same linked sUNSWim feature, with a validation frame beside the role, period, and article link. The image stacks above the copy on narrow screens. The Experience index follows the feature with the other roles and education.
+
+The article pairs a natural-case DM Sans display heading with a Georgia introduction and a full validation frame. A chapter list sits alongside the article on wide screens and moves into the reading flow on mobile. Technical prose uses a narrower measure than the figures. The detection frames and sample dashboard have editorial captions and open at full resolution. The mission workflow uses three labelled stages that stack on narrow screens.
 
 ### Contact Invitation
 

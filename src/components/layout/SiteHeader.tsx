@@ -62,7 +62,10 @@ export function SiteHeader() {
                 (link.href === "/#work" && pathname.startsWith("/projects")) ||
                 (link.label === "Experience" && pathname === "/experience")
                   ? "page"
-                  : undefined
+                  : link.label === "Experience" &&
+                      pathname.startsWith("/experience/")
+                    ? "location"
+                    : undefined
               }
               onClick={() => setOpen(false)}
             >

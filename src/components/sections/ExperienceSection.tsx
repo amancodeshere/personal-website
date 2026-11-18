@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { experiences } from "../../content/portfolio";
+import { SunSwimFeature } from "./SunSwimFeature";
 
 export function ExperienceSection() {
   return (
@@ -13,15 +13,7 @@ export function ExperienceSection() {
           </svg>
         </Link>
       </div>
-      <div className="experience-ribbon">
-        {experiences.map((item) => (
-          <article key={`${item.company}-${item.role}`}>
-            <span>{item.period}</span>
-            <h3>{item.role}</h3>
-            <p>{item.company}</p>
-          </article>
-        ))}
-      </div>
+      <SunSwimFeature />
     </section>
   );
 }

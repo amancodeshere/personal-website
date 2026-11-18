@@ -36,3 +36,8 @@ All additions use the shared caption-free artwork wrapper. Remaining authored st
 Recipe dish framing isolates one square panel of the food triptych before applying a centered 118% crop. Each dish has its own focal position; narrow 100px thumbnails retain a 118px crop floor so neighbouring dishes and empty edges cannot enter the frame.
 
 JobForge displays the complete existing 1280×720 capture at its native 16:9 ratio, with `fit: "contain"`. Optional image `aspectRatio` and `fit` metadata support full-image framing per project without changing other artwork.
+
+## sUNSWim experience
+
+- **Gate, flares and UNSW pool frames.** These WebP images show predictions from the local team checkpoint `best_t2_2026.onnx` (YOLO26s) on three frames from the `mantasunswim` validation split. The overlays were rendered with OpenCV. Scores are per-prediction confidences.
+- **Qualifier dashboard.** `public/experience/sunswim/dashboard.webp` captures the team's actual dashboard interface in its built-in sample mode. It contains recorded simulator data and example estimates.

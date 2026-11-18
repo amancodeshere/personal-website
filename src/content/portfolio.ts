@@ -337,21 +337,24 @@ export const projects: Project[] = [
   ...additionalProjects,
 ];
 
+export const sunswimExperience = {
+  caseStudyHref: "/experience/sunswim",
+  company: "sUNSWim Robotics, UNSW",
+  role: "Software Engineer – Perception",
+  location: "Sydney, Australia",
+  period: "May 2026 – Present",
+  description:
+    "Developing perception systems for underwater robotics competitions.",
+  highlights: [
+    "Developing Python computer-vision systems with YOLO and OpenCV to detect competition targets underwater.",
+    "Training and evaluating object-detection models through dataset consolidation, class remapping, augmentation, and performance analysis.",
+    "Optimising YOLO inference for real-time deployment on NVIDIA Jetson while balancing accuracy, latency, and compute constraints.",
+    "Integrating perception outputs with ROS 2 mission and control systems in C++ across software, mechanical, and electrical teams.",
+  ],
+} satisfies Experience;
+
 export const experiences: Experience[] = [
-  {
-    company: "sUNSWim Robotics, UNSW",
-    role: "Software Engineer – Perception",
-    location: "Sydney, Australia",
-    period: "May 2026 – Present",
-    description:
-      "Developing perception systems for underwater robotics competitions.",
-    highlights: [
-      "Developing Python computer-vision systems with YOLO and OpenCV to detect competition targets underwater.",
-      "Training and evaluating object-detection models through dataset consolidation, class remapping, augmentation, and performance analysis.",
-      "Optimising YOLO inference for real-time deployment on NVIDIA Jetson while balancing accuracy, latency, and compute constraints.",
-      "Integrating perception outputs with ROS 2 mission and control systems in C++ across software, mechanical, and electrical teams.",
-    ],
-  },
+  sunswimExperience,
   {
     company: "Global Exchange",
     role: "Customer Service Representative",

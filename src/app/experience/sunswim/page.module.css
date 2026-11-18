@@ -1,0 +1,268 @@
+.study {
+  background: var(--deep);
+}
+
+.container {
+  width: min(100% - var(--frame) * 2, 1290px);
+  margin-inline: auto;
+  padding-block: clamp(32px, 5vw, 68px) clamp(48px, 8vw, 100px);
+}
+
+.back {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.back:hover,
+.contents a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.back svg {
+  width: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 80px);
+  padding-block: clamp(18px, 3vw, 44px) clamp(70px, 10vw, 140px);
+}
+
+.heroCopy {
+  padding-bottom: 24px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(50px, 7.4vw, 102px);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: var(--ice);
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--cyan);
+}
+
+.lede {
+  max-width: 32ch;
+  margin: clamp(22px, 3.4vw, 40px) 0 0;
+  font: clamp(21px, 2.35vw, 32px)/1.35 var(--serif);
+  text-wrap: pretty;
+}
+
+.byline {
+  margin: clamp(20px, 4vw, 48px) 0 0;
+  color: var(--ice);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.byline span {
+  padding-inline: 5px;
+  color: var(--cyan);
+}
+
+.role {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.figure a {
+  display: block;
+  outline: 1px solid var(--line);
+}
+
+.figure a:hover,
+.figure a:focus-visible {
+  outline-color: var(--cyan);
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--panel);
+}
+
+.figure figcaption,
+.story .figureNote {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.editorial {
+  display: grid;
+  grid-template-columns: minmax(155px, 0.6fr) minmax(0, 3fr);
+  gap: clamp(28px, 5vw, 80px);
+}
+
+.contents {
+  position: sticky;
+  top: 32px;
+  align-self: start;
+  display: grid;
+  justify-items: start;
+}
+
+.contents p {
+  margin: 0 0 9px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.contents a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--ice);
+  font-size: 14px;
+}
+
+.story > section {
+  scroll-margin-top: 26px;
+  margin-bottom: clamp(66px, 9vw, 122px);
+}
+
+.story h2 {
+  max-width: 22ch;
+  margin: 0 0 20px;
+  color: var(--ice);
+  font-size: clamp(33px, 4.25vw, 61px);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.story p {
+  max-width: 66ch;
+  margin: 0 0 18px;
+  font-size: clamp(16px, 1.55vw, 19px);
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+.story > section > .figure {
+  margin-block: 30px;
+}
+
+.evaluation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.778fr);
+  gap: clamp(14px, 2vw, 25px);
+  margin-top: 30px;
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 32px);
+  padding: clamp(20px, 3vw, 36px);
+  margin: 28px 0;
+  list-style: none;
+  background: var(--ocean);
+  border-block: 1px solid var(--line);
+}
+
+.flow li {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+}
+
+.flow strong {
+  color: var(--cyan);
+  font-size: 17px;
+}
+
+.flow span {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.story > .reflections {
+  margin-bottom: 0;
+  padding: clamp(24px, 4vw, 50px);
+  background: var(--panel);
+}
+
+.reflections p:last-child {
+  margin-bottom: 0;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: clamp(40px, 6vw, 78px);
+}
+
+@media (max-width: 900px) {
+  .editorial {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .contents {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 20px;
+    padding-block: 5px;
+    border-block: 1px solid var(--line);
+  }
+
+  .contents p {
+    flex-basis: 100%;
+    margin: 8px 0 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .heroCopy {
+    padding-bottom: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 12vw, 86px);
+  }
+}
+
+@media (max-width: 500px) {
+  .evaluation,
+  .flow {
+    grid-template-columns: 1fr;
+  }
+
+  .evaluation {
+    gap: 22px;
+  }
+}

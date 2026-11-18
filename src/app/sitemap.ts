@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { projects } from "../content/portfolio";
+import { experiences, projects } from "../content/portfolio";
 
 function getSiteOrigin() {
   const configured = process.env.NEXT_PUBLIC_SITE_URL;
@@ -12,7 +12,16 @@ function getSiteOrigin() {
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = getSiteOrigin();
   if (!origin) return [];
-  const routes = ["", "/about", "/experience", "/projects", "/projects/games"];
+  const routes = [
+    "",
+    "/about",
+    "/experience",
+    "/projects",
+    "/projects/games",
+    ...experiences.flatMap(({ caseStudyHref }) =>
+      caseStudyHref ? [caseStudyHref] : [],
+    ),
+  ];
   return [
     ...routes.map((route) => ({
       url: `${origin}${route}`,
