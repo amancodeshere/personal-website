@@ -36,6 +36,14 @@ export const sunswim = {
     caption:
       "The team’s qualifier dashboard in sample mode, with recorded simulator data and example estimates.",
   },
+  diagnostics: {
+    src: "/experience/sunswim/diagnostics.webp",
+    alt: "The dashboard’s diagnostics view showing mission progress, PWM commands for all eight thrusters, and a timestamped qualifier log tracing the transition from search to align to approach.",
+    width: 1204,
+    height: 1044,
+    caption:
+      "Diagnostics in sample mode. The thruster panel shows the commanded output for each motor, and the qualifier log records when the mission changed state.",
+  },
   chapters: [
     ["perception", "Perception"],
     ["mission-control", "Mission & control"],

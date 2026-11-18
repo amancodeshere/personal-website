@@ -41,3 +41,4 @@ JobForge displays the complete existing 1280×720 capture at its native 16:9 rat
 
 - **Gate, flares and UNSW pool frames.** These WebP images show predictions from the local team checkpoint `best_t2_2026.onnx` (YOLO26s) on three frames from the `mantasunswim` validation split. The overlays were rendered with OpenCV. Scores are per-prediction confidences.
 - **Qualifier dashboard.** `public/experience/sunswim/dashboard.webp` captures the team's actual dashboard interface in its built-in sample mode. It contains recorded simulator data and example estimates.
+- **Diagnostics.** `public/experience/sunswim/diagnostics.webp` is a focused capture of the same dashboard in sample mode. It shows mission progress, thruster commands, and the timestamped qualifier state log.

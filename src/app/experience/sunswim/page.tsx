@@ -5,8 +5,19 @@ import { profile } from "../../../content/portfolio";
 import { sunswim } from "../../../content/sunswim";
 import styles from "./page.module.css";
 
-const { experience, title, summary, cover, dashboard, evaluation, chapters } =
-  sunswim;
+const {
+  experience,
+  title,
+  summary,
+  cover,
+  dashboard,
+  diagnostics,
+  evaluation,
+  chapters,
+} = sunswim;
+
+const dashboardImageSizes =
+  "(max-width: 900px) 94vw, (max-width: 1290px) 76vw, 980px";
 
 export const metadata: Metadata = {
   title,
@@ -16,7 +27,10 @@ export const metadata: Metadata = {
 };
 
 type CaseStudyImage =
-  typeof cover | typeof dashboard | (typeof evaluation)[number];
+  | typeof cover
+  | typeof dashboard
+  | typeof diagnostics
+  | (typeof evaluation)[number];
 
 function Figure({
   figure,
@@ -162,10 +176,7 @@ export default function SunSwimPage() {
                 camera detections and position estimates. Saved-run replay lets
                 us revisit what the operator saw at a specific point in a test.
               </p>
-              <Figure
-                figure={dashboard}
-                sizes="(max-width: 900px) 94vw, (max-width: 1290px) 76vw, 980px"
-              />
+              <Figure figure={dashboard} sizes={dashboardImageSizes} />
               <p>
                 One of the details I care most about is showing where an
                 estimate comes from. When camera tracking drops out, the
@@ -173,6 +184,14 @@ export default function SunSwimPage() {
                 warning in this capture tells the operator when that fallback is
                 in use.
               </p>
+              <p>
+                In diagnostics, I can check which thrusters the flight
+                controller is commanding and use the timestamped qualifier log
+                to trace the mission state machine. In this sample run, the log
+                shows when the vehicle switched from searching for the gate to
+                aligning with it and then approaching it.
+              </p>
+              <Figure figure={diagnostics} sizes={dashboardImageSizes} />
             </section>
 
             <section
