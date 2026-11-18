@@ -4,7 +4,7 @@ export const sunswim = {
   experience: sunswimExperience,
   title: "sUNSWim Robotics",
   summary:
-    "Teaching an underwater robot to see, act on what it sees, and show its work to the people at the surface.",
+    "Teaching an underwater robot to see, act on what it sees, and clearly communicate what it’s doing to the people at the surface.",
   cover: {
     src: "/experience/sunswim/gate.webp",
     alt: "A cyan gate detection box over a competition gate on the floor of a blue pool",
