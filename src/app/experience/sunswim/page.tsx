@@ -63,7 +63,9 @@ export default function SunSwimPage() {
             <p className={styles.byline}>
               {profile.name} <span>·</span> {experience.period}
             </p>
-            <p className={styles.role}>{experience.role} at UNSW Sydney</p>
+            <p className={styles.role}>
+              {experience.role} at {title}
+            </p>
           </div>
           <Figure
             figure={cover}
