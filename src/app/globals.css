@@ -251,14 +251,6 @@ svg {
 .hero-meta > span:first-child {
   color: var(--ice);
 }
-.hero-meta > a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 9px 0;
-  color: var(--ice);
-  font-weight: 700;
-}
 .hero-meta svg,
 .text-link svg {
   width: 17px;
@@ -267,7 +259,6 @@ svg {
   stroke-width: 1.5;
   transition: transform 0.2s;
 }
-.hero-meta > a:hover svg,
 .text-link:hover svg {
   transform: translateX(4px);
 }

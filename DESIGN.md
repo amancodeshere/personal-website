@@ -166,7 +166,7 @@ The header has a compact nameplate and individually spaced Projects/About/Experi
 
 ### Hero Current and Name Strip
 
-The SVG current field spans the viewport above a readable natural-case name. Its lines drift and respond to pointer movement. Keep the full name as the dominant typographic element; the hero includes a raised work link and Sydney location metadata.
+The SVG current field spans the viewport above a readable natural-case name. Its lines drift and respond to pointer movement. The hero keeps the full name as the dominant typographic element, with the engineering tagline and Sydney location below.
 
 The Projects and Games indexes use a shared ocean surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). Topic headings sit directly on the currents; compact ocean backplates fit the project titles instead of filling each card's width. Filters retain their readable surfaces. A quieter shared field runs behind the home About, work, Experience, and Contact sections. Its transparent section surfaces reveal the same current language without adding an animation instance to each section. Individual project details retain their plain ocean background.
 

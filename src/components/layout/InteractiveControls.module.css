@@ -18,7 +18,6 @@
 .controls :global(.primary-nav a),
 .controls :global(.header-social),
 .controls :global(.work-heading a),
-.controls :global(.hero-meta > a),
 .controls :global(.text-link),
 .controls :global(.detail-links > a) {
   min-height: 44px;
@@ -75,7 +74,6 @@
   background: rgba(8, 47, 73, 0.52);
 }
 
-.controls :global(.hero-meta > a),
 .controls :global(.work-heading a),
 .controls :global(.text-link),
 .controls :global(.detail-links > a) {
@@ -88,7 +86,6 @@
 .controls :global(.primary-nav a:hover),
 .controls :global(.header-social:hover),
 .controls :global(.work-heading a:hover),
-.controls :global(.hero-meta > a:hover),
 .controls :global(.text-link:hover),
 .controls :global(.detail-links > a:hover) {
   border-color: var(--cyan);
@@ -124,7 +121,6 @@
 .controls :global(.primary-nav a:active),
 .controls :global(.header-social:active),
 .controls :global(.work-heading a:active),
-.controls :global(.hero-meta > a:active),
 .controls :global(.text-link:active),
 .controls :global(.detail-links > a:active) {
   box-shadow:
@@ -139,7 +135,6 @@
 .controls :global(.primary-nav a:focus-visible),
 .controls :global(.header-social:focus-visible),
 .controls :global(.work-heading a:focus-visible),
-.controls :global(.hero-meta > a:focus-visible),
 .controls :global(.text-link:focus-visible),
 .controls :global(.detail-links > a:focus-visible) {
   outline: 2px solid var(--cyan);
@@ -153,7 +148,6 @@
   .controls :global(.primary-nav a),
   .controls :global(.header-social),
   .controls :global(.work-heading a),
-  .controls :global(.hero-meta > a),
   .controls :global(.text-link),
   .controls :global(.detail-links > a),
   .controls :global(.filter-bar button:hover),
@@ -162,7 +156,6 @@
   .controls :global(.primary-nav a:hover),
   .controls :global(.header-social:hover),
   .controls :global(.work-heading a:hover),
-  .controls :global(.hero-meta > a:hover),
   .controls :global(.text-link:hover),
   .controls :global(.detail-links > a:hover),
   .controls :global(.filter-bar button:active),
@@ -171,7 +164,6 @@
   .controls :global(.primary-nav a:active),
   .controls :global(.header-social:active),
   .controls :global(.work-heading a:active),
-  .controls :global(.hero-meta > a:active),
   .controls :global(.text-link:active),
   .controls :global(.detail-links > a:active) {
     transition: none;
