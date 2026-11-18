@@ -10,6 +10,8 @@ export type Project = {
   technologies: string[];
   highlights: { label: string; value: string }[];
   approach: { title: string; body: string }[];
+  takeaways: [string, ...string[]];
+  references?: { label: string; href: string }[];
   githubUrl?: string;
   githubNote?: string;
   liveUrl?: string;

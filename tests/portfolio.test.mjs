@@ -58,6 +58,19 @@ for (const [path, evidence] of cases) {
         /project-index-backdrop|data-ocean-mode="index"/,
         "Individual project pages must keep their plain reading background",
       );
+      assert.match(
+        html,
+        /<h2>Why it was built<\/h2>[\s\S]*<h2>How it came together<\/h2>[\s\S]*<h2>What I took forward<\/h2>/,
+        "Every project needs a rationale, an approach, and a reflection",
+      );
+      if (
+        ![
+          "/projects/toohak",
+          "/projects/job-advertisement-extraction",
+        ].includes(path)
+      ) {
+        assert.match(html, /aria-label="Project references"/);
+      }
     }
     if (path === "/projects/job-advertisement-extraction") {
       assert.doesNotMatch(

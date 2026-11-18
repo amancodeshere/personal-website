@@ -9,8 +9,8 @@ export const additionalProjects: Project[] = [
     summary:
       "A topic-aware music recommender that combines lyric classification with per-topic TF-IDF profiles and cosine-similarity ranking.",
     description: [
-      "This coursework notebook studies a content-based recommendation pipeline over 1,500 songs labelled with five lyrical themes. It compares classical text classifiers with fine-tuned BERT models, then uses predicted topics to organise recommendation candidates.",
-      "User profiles are built from keyword-selected lyrics within each topic. New songs are ranked against the matching profile by cosine similarity, with simulated user histories used to examine ranking quality and diversity.",
+      "This coursework project explored whether the themes in song lyrics could be useful for discovery. The notebook uses 1,500 songs with five topic labels and asks two questions. Can a model identify the theme from the text? Can those themes help the system rank songs for someone with particular interests?",
+      "The distinction matters because topic classification and recommendation serve different purposes. Predicting that two songs share a theme gives the recommender a candidate set. The user profile then provides the information needed to rank songs within that set.",
     ],
     technologies: [
       "Python",
@@ -30,15 +30,25 @@ export const additionalProjects: Project[] = [
     approach: [
       {
         title: "Prepare lyric features",
-        body: "Clean and stem lyrics, combine them with track metadata, and represent text with count and TF-IDF features.",
+        body: "Clean and stem lyrics, then compare count and TF-IDF representations. The preprocessing gives classical classifiers a vocabulary they can work with and lets the notebook test the effect of vocabulary size.",
       },
       {
         title: "Classify song themes",
-        body: "Compare Naive Bayes and LinearSVC baselines with fine-tuned transformer classifiers using stratified cross-validation.",
+        body: "Compare Naive Bayes and LinearSVC with fine-tuned BERT and DistilBERT. Use stratified cross-validation and macro metrics so the smaller topic classes still matter in the comparison.",
       },
       {
         title: "Rank by user interests",
-        body: "Build separate TF-IDF profiles for each topic and rank candidate songs by cosine similarity to the corresponding profile.",
+        body: "Build separate TF-IDF profiles from keyword-selected lyrics in each topic. Rank new songs by cosine similarity to the relevant profile, then evaluate the order and diversity of the shortlist in a simulated listening history.",
+      },
+    ],
+    takeaways: [
+      "On this dataset, the TF-IDF and LinearSVC baseline was competitive with the fine-tuned transformers. That gave me an example of a model choice where dataset size, label granularity, and compute mattered as much as the name of the architecture. The classifier chosen for the recommender was one the notebook had already tested.",
+      "Limiting each profile to its highest-weighted terms also affected simulated users differently. A short profile was enough for some histories, while one benefited from keeping all terms. That comparison helped me see why tuning the classifier and evaluating the final ranking are separate jobs.",
+    ],
+    references: [
+      {
+        label: "Classifier comparisons and simulated ranking results",
+        href: "https://github.com/amancodeshere/Music-Rec/blob/main/README.md",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/Music-Rec",
@@ -53,8 +63,8 @@ export const additionalProjects: Project[] = [
     summary:
       "A Python network-monitoring prototype that captures and analyses packets, raises alerts for suspicious activity, and presents activity in a web dashboard.",
     description: [
-      "AwesomeDEP monitors IPv4 TCP packets and checks each source address against a country allowlist and a blacklist, using a GeoIP lookup as part of that decision. Suspicious packets are recorded in SQLite and trigger an alert.",
-      "When a suspicious packet is found, the program attempts to block outgoing traffic with macOS PF and asks for an admin or override password to restore the default firewall configuration. A Flask and Flask-SocketIO dashboard provides a view of logged activity; the README warns that the blocking behavior can interrupt internet access.",
+      "AwesomeDEP was built as a defensive prototype for making suspicious network activity visible and responding to it. The project connects packet observation to a decision, an alert, and a dashboard where someone can review what was recorded.",
+      "The monitor operates on IPv4 TCP packets and uses source IP rules, including a GeoIP-based country allowlist and an IP blacklist. Those signals are useful for triage and provide limited context about the traffic itself. The prototype made it possible to follow the rule decision through to the event an operator would see.",
     ],
     technologies: [
       "Python",
@@ -72,15 +82,25 @@ export const additionalProjects: Project[] = [
     approach: [
       {
         title: "Observe network traffic",
-        body: "Capture packets with Scapy and inspect network activity for patterns that may warrant attention.",
+        body: "Capture packets with Scapy, inspect the source address of IPv4 TCP traffic, and evaluate it against the configured rules.",
       },
       {
         title: "Record and alert",
-        body: "Store network activity in SQLite and surface suspicious events through the alerting workflow.",
+        body: "Store flagged activity in SQLite and raise an alert. The macOS PF response attempts to interrupt outbound traffic, and the documented recovery flow gives the user a way to restore access.",
       },
       {
         title: "Review activity",
-        body: "Use a Flask and Socket.IO dashboard to monitor and visualise recorded network events.",
+        body: "Use Flask and Flask-SocketIO to give the recorded events a browser view, so someone can review activity without watching the packet capture directly.",
+      },
+    ],
+    takeaways: [
+      "The project gave me practice tracing a defensive signal through capture, a rule decision, persistence, and operator feedback. The dashboard matters because the person reviewing an alert needs a record of the decision after the packet is gone.",
+      "The README’s warning about interrupted internet access captures the main trade-off. A coarse IP rule can trigger a broad response, which makes false positives and recovery part of the design. Working through that response made the operational cost of a rule as important to consider as the detection itself.",
+    ],
+    references: [
+      {
+        label: "Packet monitor and rule decisions",
+        href: "https://github.com/amancodeshere/Data-Exfiltration-Prevention/blob/main/network_monitor/main.py",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/Data-Exfiltration-Prevention",
@@ -95,8 +115,8 @@ export const additionalProjects: Project[] = [
     summary:
       "A C++20 UNSW Battlecode bot using remembered-map routing, survival search, and coordinated rescue and resource strategies.",
     description: [
-      "sudo_win is a feature-organised C++20 UNSW Battlecode bot. Its current strategy uses persistent map memory, remembered pearl and frontier routing, body-aware survival search, and validated sprint and rescue-split decisions.",
-      "Stable and experimental strategy profiles keep routing changes and population-expansion ideas separate. CMake and Catch2 support regression tests, while sandbox benchmarks and replay reviews guide strategy iteration.",
+      "Our team built sudo_win for UNSW Battlecode, where a bot has to make decisions from an incomplete view of the board and under a per-turn compute budget. It needs to find resources, keep its own units alive, and respond when an opponent or a changing board makes a promising route unsafe.",
+      "The project developed from writing individual movement strategies into evaluating how they interact over a whole match. The C++20 code separates map memory, routing, survival, resource decisions, and other features. The replay reviews document the cases that justified revisiting those strategies.",
     ],
     technologies: [
       "C++20",
@@ -114,15 +134,29 @@ export const additionalProjects: Project[] = [
     approach: [
       {
         title: "Navigate from remembered state",
-        body: "Use persistent map memory with remembered pearl and frontier routes to plan movement across partially observed game maps.",
+        body: "Use remembered positions of pearls and unexplored frontiers to plan across a partly visible map. When a portal exit is outside current vision, distinguish a remembered observation from what the bot can currently confirm.",
       },
       {
         title: "Prioritise survival",
-        body: "Use body-aware survival search and validated escape and sprint decisions to manage movement risk.",
+        body: "Consider body geometry and possible escape moves alongside route length. Test sprint, splitting, and collision scenarios in isolation, then exercise the complete bot under the judge sandbox’s compute budget.",
       },
       {
-        title: "Coordinate resources",
-        body: "Apply rescue splits and resource-aware strategies while keeping experimental strategy profiles distinct from the stable profile.",
+        title: "Use replays to choose the next change",
+        body: "Compare strategies across maps, seeds, and both sides. Replay reviews look at how a loss developed, and the benchmark reports resource use and runtime failures alongside match outcomes.",
+      },
+    ],
+    takeaways: [
+      "One uploaded-version review found that the recorded self- and other-body collisions had no visibly safe first step in the final observation. That moved the question earlier in the replay. When did the route commit the bot to a position it could no longer escape?",
+      "The later validation notes also record mixed competitive results for a candidate that passed correctness checks. This was useful practice in separating evidence that a change behaves as intended from evidence that it improves play. Keeping the baseline and reviewing losses made both judgments more concrete.",
+    ],
+    references: [
+      {
+        label: "Replay review and routing failures",
+        href: "https://github.com/amancodeshere/sudo_win/blob/main/algo_bot/REPLAY_V3_REVIEW.md",
+      },
+      {
+        label: "Sandbox benchmarks and validation",
+        href: "https://github.com/amancodeshere/sudo_win/tree/main/algo_bot",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/sudo_win",
@@ -137,8 +171,8 @@ export const additionalProjects: Project[] = [
     summary:
       "A Capture the Narrative 2026 team workspace with a durable Python and PostgreSQL baseline for future bot strategies.",
     description: [
-      "Botfluencer provides a team-oriented foundation for Capture the Narrative 2026. The repository pins the official SDK and describes async adapters that follow its wire contracts, with Railway-hosted PostgreSQL as the durable data layer.",
-      "Its documented default combines mock inputs, replay, and a no-op action mode: fixture observations can be persisted without generating drafts or taking actions. Real publishing is unavailable in this baseline.",
+      "We built Botfluencer as a shared engineering workspace for Capture the Narrative 2026. The team needed a repeatable environment where contributors could work on competition strategies and inspect their behaviour using the same platform contracts, configuration, and saved observations.",
+      "The baseline runs with mock inputs, replay, and a no-op action mode. This makes it possible to exercise the software and record fixture observations in PostgreSQL before using any separately gated competition workflows. The project’s architecture also documents how the team handled worker ownership and interrupted work.",
     ],
     technologies: [
       "Python 3.13",
@@ -161,15 +195,25 @@ export const additionalProjects: Project[] = [
     approach: [
       {
         title: "Follow the SDK contract",
-        body: "Pin the official competition SDK and shape async adapters around its documented wire contracts.",
+        body: "Pin the competition SDK and isolate its wire contracts behind asynchronous adapters. Keep platform calls, strategy decisions, persistence, and operator reporting in separate parts of the application.",
       },
       {
         title: "Make development safe by default",
-        body: "Use mock observations, replay, and no-op actions so fixture data can be exercised without publishing or acting.",
+        body: "Use fixtures and replay to examine software behaviour repeatedly. Make no-op the default, and run database tests against a dedicated database so test runs and application records remain isolated.",
       },
       {
         title: "Persist a team baseline",
-        body: "Use a shared PostgreSQL service and documented checks to support future strategy work and team operations.",
+        body: "Deduplicate observations in PostgreSQL and persist work status so the application can recover after a restart. Record interrupted actions as unknown until there is evidence about the outcome.",
+      },
+    ],
+    takeaways: [
+      "The recovery model gave me practice thinking about the difference between a failed request and an unknown outcome. A worker can stop after an external service accepts a request but before the result is recorded. Keeping that state explicit prevents a restart from treating every interrupted action as a routine retry.",
+      "The project also gave me practice defining what a test actually demonstrates. A replay can show that the code behaves consistently on a known input, and a dedicated database can expose persistence errors. Those checks measure software behaviour. Competition outcomes are a separate question.",
+    ],
+    references: [
+      {
+        label: "Architecture, replay, and recovery",
+        href: "https://github.com/amancodeshere/botfluencer/blob/main/docs/architecture.md",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/botfluencer",
@@ -184,8 +228,8 @@ export const additionalProjects: Project[] = [
     summary:
       "An online multiplayer property game with private rooms, custom city boards, team play, and server-enforced rent shootouts.",
     description: [
-      "Spin the Block is a complete online property game built around private invite rooms, public matchmaking, bots, auctions, trades, and configurable rules. Players move across original city boards, claim districts, collect rent, and negotiate with other crews.",
-      "The React and Vite client connects to an Express and Socket.IO server with a shared game engine. The server controls game state and validates actions, while room snapshots support recovery after a restart. The README documents a live Railway deployment.",
+      "I built Spin the Block around the idea of an online property game friends could join in a private room, with public play and bots when a group is short a player. Original city boards, auctions, trades, and configurable rules make the board a shared space for decisions between turns.",
+      "An online table adds work beyond implementing the rules. Players need to see the same outcome, know whose turn it is, and be able to recover their seat after a disconnect. The board, current action, and other players are also competing for screen space on a phone.",
     ],
     technologies: [
       "JavaScript",
@@ -204,15 +248,33 @@ export const additionalProjects: Project[] = [
     approach: [
       {
         title: "Build the shared game loop",
-        body: "Connect a React and Vite client to an Express and Socket.IO service for room-based multiplayer play.",
+        body: "Connect a React and Vite client to an Express and Socket.IO server. Use the room to coordinate players, bots, and spectators while the shared engine resolves the rules.",
       },
       {
         title: "Keep game rules authoritative",
-        body: "Run dice, movement, legal actions, trades, and duel decisions on the server with a shared game engine.",
+        body: "Keep dice rolls, movement, legal actions, and trades server-side. The browser displays the result and asks to make the next move. The engine can test rule decisions without going through the UI.",
       },
       {
         title: "Support persistent rooms",
-        body: "Save room snapshots and restore them after restarts, with Railway configuration for the production service.",
+        body: "Save room snapshots to a persistent volume and use saved seat credentials to restore a connection to the same room. The documented deployment coordinates rooms in memory on one replica, with disk snapshots for restart recovery.",
+      },
+    ],
+    takeaways: [
+      "The playtest makes the difference between correct rules and a good turn clear. One audit reproduced a rapid series of roll clicks that resolved as one roll and restored a player’s seat after a reload. The same report found that bids could keep resetting the auction clock, stretching an otherwise valid turn.",
+      "A later viewport audit documented that a mobile player could see the main turn control while the board sat well below the fold. These checks gave me practice evaluating the whole player experience and turning issues into specific changes to investigate, alongside engine and multiplayer integration tests.",
+    ],
+    references: [
+      {
+        label: "Gameplay and reconnection playtest",
+        href: "https://github.com/amancodeshere/spin-the-block/blob/main/game-audit/02_PLAYTEST_REPORT.md",
+      },
+      {
+        label: "Desktop and mobile viewport audit",
+        href: "https://github.com/amancodeshere/spin-the-block/blob/main/LEAD_GAME_DESIGNER_PHASE4_REPORT.md",
+      },
+      {
+        label: "Multiplayer integration tests",
+        href: "https://github.com/amancodeshere/spin-the-block/blob/main/tests/multiplayer.test.js",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/spin-the-block",
@@ -228,8 +290,8 @@ export const additionalProjects: Project[] = [
     summary:
       "An original arcade pinball game with a fixed-step physics simulation, illustrated night-drive table, and verified score runs.",
     description: [
-      "Midnight Run is a fully playable pinball game inspired by late-1980s arcade machines. It pairs an original illustrated playfield and synthesized sound with keyboard and touch controls, multiball, lane bonuses, and a persistent local personal best.",
-      "The game advances its rules and physics at fixed high frequencies independent of rendering. For ranked games, the server issues a seeded run ticket and replays recorded inputs to compute the authoritative score; PostgreSQL stores player names and verified results in production.",
+      "I built Midnight Run to bring the feel of late-1980s arcade pinball into a browser with an original night-drive table. The illustrated playfield, synthesized sounds, and dot-matrix display are part of that feel. Flipper response, ball movement, and consistent table rules are what make it playable.",
+      "Pinball gave me two related problems to work on. The simulation had to behave consistently even when the screen rendered at a different rate, and a ranked score needed evidence the server could check. Both problems depended on making the same game repeatable.",
     ],
     technologies: [
       "JavaScript",
@@ -247,15 +309,29 @@ export const additionalProjects: Project[] = [
     approach: [
       {
         title: "Simulate the table",
-        body: "Advance physics at deterministic fixed steps, including ball motion, flippers, collisions, and table features.",
+        body: "Run inputs and rules at 240 Hz and use 480 Hz collision substeps. Render separately and interpolate positions between simulation updates so visual frame rate can vary independently of the game clock.",
       },
       {
         title: "Connect play to scoring",
-        body: "Model lanes, targets, multiball, saves, tilt, and bonus as a deterministic game lifecycle.",
+        body: "Keep scoring and table rules separate from drawing and sound. Test how lane bonuses, target locks, multiball, ball saves, and tilt interact over a full game.",
       },
       {
         title: "Verify ranked runs",
-        body: "Record player inputs against a server-issued seed and replay them server-side before accepting a score.",
+        body: "Issue a seed and run ticket, record the player’s inputs against simulation ticks, and replay them on the server to compute the score. Store verified results in PostgreSQL.",
+      },
+    ],
+    takeaways: [
+      "A fixed clock was useful for both play feel and verification. Pausing can freeze simulated time without changing the render loop, and a replay can run from the same seed and reproduce a completed game. The tests check that a supplied score does not affect the replay’s result.",
+      "A physics change also changes what old inputs mean. The project preserves earlier engines so a ticket issued before an upgrade can still be replayed with the rules and geometry it started with. That gave me a practical example of version compatibility tied to a real user workflow.",
+    ],
+    references: [
+      {
+        label: "Table rules and fixed-step physics",
+        href: "https://github.com/amancodeshere/pinball#physics",
+      },
+      {
+        label: "Score replay and compatibility tests",
+        href: "https://github.com/amancodeshere/pinball/blob/main/tests/replay.test.mjs",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/pinball",

@@ -33,3 +33,9 @@ The six additional entries below are based on the public repository README and, 
 | Midnight Run | [amancodeshere/pinball](https://github.com/amancodeshere/pinball) | README and `package.json` checked for original pinball gameplay, JavaScript canvas/audio implementation, Node server, and PostgreSQL dependency. |
 
 Experience, education, and skills are transcribed from the CVs. Dates and claims are kept as stated there; no additional employment status, project metrics, or missing source URLs are inferred. Only public repository information is used.
+
+## Expanded project stories
+
+The project detail pages link to the public artifacts that support their write-ups. The JobForge search benchmark distinguishes relevant recall from Precision@10 and measures ranking on 30 fixed, labelled briefs. The ultrasound team report distinguishes the ResNet work described in the CV from the team’s VGG-19 selection and reports the segmentation comparisons. The thesis links document experiments on grouped SDGi report passages alongside the broader UNSW abstract-classification objective. Battlecode replay reviews, Spin the Block playtests, and Midnight Run replay tests support the observations about strategy iteration, player experience, and version compatibility.
+
+The Job Advertisement Information Extraction and Toohak stories use the supplied CVs for project facts. Examples about field definitions and live quiz states explain the work at a conceptual level. The public pages keep the existing restrictions on sharing code and data.

@@ -754,12 +754,26 @@ svg {
 }
 .detail-story p {
   margin: 0 0 15px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.85;
 }
 .detail-story p:last-child {
   margin-bottom: 0;
+}
+.detail-references {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.detail-references a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--cyan);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 .approach-list article {
   display: grid;
@@ -778,9 +792,10 @@ svg {
   font-weight: 600;
 }
 .approach-list p {
+  max-width: 66ch;
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
 }
 .detail-highlights dl {
   margin: 0;

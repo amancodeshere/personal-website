@@ -94,7 +94,7 @@ export default async function ProjectPage({
         </div>
       </div>
       <section className="detail-story">
-        <h2>Overview</h2>
+        <h2>Why it was built</h2>
         <div>
           {project.description.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
@@ -102,7 +102,7 @@ export default async function ProjectPage({
         </div>
       </section>
       <section className="approach-section">
-        <h2>Approach</h2>
+        <h2>How it came together</h2>
         <div className="approach-list">
           {project.approach.map((step, stepIndex) => (
             <article key={step.title}>
@@ -113,6 +113,25 @@ export default async function ProjectPage({
               </div>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="detail-story">
+        <h2>What I took forward</h2>
+        <div>
+          {project.takeaways.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          {project.references && (
+            <ul className="detail-references" aria-label="Project references">
+              {project.references.map(({ label, href }) => (
+                <li key={href}>
+                  <a href={href} target="_blank" rel="noreferrer">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
       {project.highlights.length > 0 && (

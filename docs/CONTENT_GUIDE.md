@@ -12,10 +12,12 @@ The portfolio's structured content lives in `src/content/portfolio.ts` and `src/
 - `title` and `shortTitle`: full project name and compact label for navigation or cards.
 - `category`: a value from `projectCategories` in `src/content/project-categories.ts` (`Full stack`, `AI`, `Machine learning`, `Research`, `Cyber security`, `Competitions`, or `Games`). Import the shared type/list rather than creating another category union.
 - `summary`: concise overview for project cards and page introductions.
-- `description`: paragraphs that explain the problem and scope.
+- `description`: paragraphs that explain why the project was built and what problem it addresses.
 - `technologies`: technologies and methods that are supported by the CV or a verified public source.
 - `highlights`: short `{ label, value }` facts for scannable project details.
-- `approach`: ordered `{ title, body }` sections for the project page.
+- `approach`: ordered `{ title, body }` sections explaining how the work came together.
+- `takeaways`: one or more paragraphs about a skill, decision, or trade-off grounded in the documented work.
+- `references`: optional `{ label, href }` links to public reports, tests, or code that support the story.
 - `githubUrl` and `liveUrl`: optional verified public destinations. Leave them unset when there is no shareable public destination.
 - `githubNote`: optional user-facing explanation shown when the code link is unavailable or needs context.
 - `status`: optional status or date range, only when the source explicitly provides it.
@@ -28,7 +30,7 @@ The portfolio's structured content lives in `src/content/portfolio.ts` and `src/
 
 1. Add one object to the appropriate project array in `src/content/portfolio.ts` or `src/content/additional-projects.ts` and satisfy the `Project` type.
 2. Use a unique lowercase hyphenated slug. Do not change an existing slug after a page or link uses it.
-3. Write the summary and paragraphs from the source material. Keep claims, metrics, dates, technologies, and role precise; do not fill gaps with assumptions.
+3. Write the summary, project rationale, approach, and takeaways from the source material. Keep claims, metrics, dates, technologies, and role precise. For projects with restricted sources, use documented scope and describe the skills the work involved.
 4. Add a GitHub or live URL only after confirming that it is public and corresponds to this project. If no link can be shared, omit the URL and give a concise explanation in `githubNote`.
 5. Use a `visual` key supported by the artwork component. Add a new key there before referencing it in content.
 6. Update `docs/CONTENT_SOURCES.md` to record the source material and any verified repository mapping.

@@ -24,8 +24,8 @@ export const projects: Project[] = [
     summary:
       "An agent-oriented job discovery and application platform that connects candidate evidence to ranked roles and tailored application materials.",
     description: [
-      "JobForge takes a candidate’s CV, career interests, experience level, location, and job preferences to discover and rank relevant roles. It explains matches and can prepare a grounded CV and cover letter for selected positions.",
-      "The project combines multi-source retrieval and query planning with deduplication, ranking, caching, and provider fallbacks. An MCP service exposes reusable tools for job search and application preparation.",
+      "JobForge was built to help someone work through a job search with the information already in their CV. The workflow takes the candidate’s experience and preferences, finds relevant openings, and explains why each one made the shortlist. The candidate can then choose a role and prepare a tailored CV and cover letter.",
+      "The search had to handle several everyday problems. A promising job title can hide a seniority or location mismatch. The same listing can arrive through more than one provider, and a slow source can hold up an otherwise useful search. I treated collecting, checking, and ranking the listings as engineering problems in their own right.",
     ],
     technologies: [
       "Python",
@@ -38,8 +38,8 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        label: "Search quality",
-        value: "84.2% Precision@10 · 72.8% Recall@10 · 80.7% NDCG@10",
+        label: "Controlled search benchmark",
+        value: "84.2% Precision@10 · 72.8% relevant recall · 80.7% NDCG@10",
       },
       { label: "Automated tests", value: "101" },
       { label: "Deployment", value: "Railway" },
@@ -47,15 +47,29 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Find and rank roles",
-        body: "Use multi-source retrieval, query planning, deduplication, and relevance ranking to produce a shortlist of opportunities.",
+        body: "Turn candidate preferences into queries, combine indexed discovery with direct public job boards, and normalise listings before checking eligibility, deduplicating, and scoring them.",
       },
       {
         title: "Keep recommendations grounded",
-        body: "Candidate profiles and generated application materials are tied to evidence from the supplied CV and preferences.",
+        body: "Keep the source link attached to each result and ground application materials in the supplied CV. The dashboard and MCP tools expose the workflow so candidates can review the matches and drafts.",
       },
       {
         title: "Build for resilient searches",
-        body: "Progressive search, caching, and provider fallbacks help the system return useful results when a source is slow or unavailable.",
+        body: "Stream results as independent providers finish. Give providers their own time limits and keep a labelled sample fallback so a failed live search is visible to the candidate.",
+      },
+    ],
+    takeaways: [
+      "The 30-brief regression benchmark gave me a concrete way to improve ranking. Top-ten precision moved from 50.4% to 84.2% on the same controlled cases. Two changes exposed what broad relevance scores can hide. A role asking for zero to two years of experience needed to remain eligible for early-career applicants, and Australia-wide remote roles needed to remain eligible for candidates in Australian cities.",
+      "The benchmark measures ranking on a fixed corpus. Live coverage and latency depend on the providers, so I kept those questions separate and made room for partial results. That distinction made the search easier to evaluate and gave the interface a clearer way to explain what it had found.",
+    ],
+    references: [
+      {
+        label: "Search benchmark and calibration",
+        href: "https://github.com/amancodeshere/JobForge/blob/main/docs/evaluation/search-baseline.md",
+      },
+      {
+        label: "Live search design",
+        href: "https://github.com/amancodeshere/JobForge/blob/main/docs/live-search.md",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/JobForge",
@@ -71,8 +85,8 @@ export const projects: Project[] = [
     summary:
       "A full-stack UBL trade-document and shipment-tracking platform, developed with product ownership across planning, APIs, and data design.",
     description: [
-      "TradeDocNavigator supports invoices, UBL despatch advice, and shipment tracking through a React and TypeScript frontend, an Express API, and PostgreSQL.",
-      "The work covered roadmap planning, stakeholder communication, REST API development, database design, and live parcel-tracking workflows. The repository documents Docker and GitHub Actions workflows and Railway deployment.",
+      "TradeDocNavigator was built to bring invoices, despatch advice, and parcel tracking into one workflow. A user can create an invoice from line items or a Universal Business Language (UBL) order, download a UBL document, and follow a separate shipment reference when a parcel is sent.",
+      "As product owner, I worked on both the roadmap and the implementation. The work involved deciding what each screen needed to communicate and ensuring that the React interface, Express API, and PostgreSQL data model agreed about the same document. A prepared despatch advice and a carrier’s latest tracking update represent different events in that workflow.",
     ],
     technologies: [
       "JavaScript",
@@ -93,15 +107,29 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Model the document workflow",
-        body: "Designed normalised PostgreSQL schemas, migrations, indexes, and relational workflows for documents, parties, and shipments.",
+        body: "Model documents, parties, shipments, and their line items in PostgreSQL. The invoice view and XML export both use the persisted payable total. When the total differs from the sum of the lines, the export represents the difference as an allowance or charge.",
       },
       {
         title: "Connect the application",
-        body: "Built REST APIs and a React interface for trade documents and parcel-tracking workflows.",
+        body: "Use REST APIs to create, edit, and export records. Validate invoice XML against the UBL 2.1 schema and show parcel updates through a separate tracking flow with distinct provider and demo modes.",
       },
       {
         title: "Support reliable delivery",
-        body: "Used Jest, Supertest, Docker, GitHub Actions, Railway CI/CD, and Agile workflows throughout delivery.",
+        body: "Use a dedicated test database to check transaction rollback, account isolation, invoice totals, and XML output. Browser tests follow the workflow from sign-in to editing, downloads, shipment references, and undoing document removal.",
+      },
+    ],
+    takeaways: [
+      "Working across planning, the API, and the database gave me practice turning a workflow into rules I could test. An invoice total has to survive creation, edits, and export consistently. An XML schema check covers the shape of the file, while rules for regulated e-invoicing would need their own validation.",
+      "The integration tests taught me to check what actually persisted after a request, including what happened when a write failed or another account tried to read a document. Browser tests then checked whether a user could finish the same workflow from the interface.",
+    ],
+    references: [
+      {
+        label: "Document workflows and API",
+        href: "https://github.com/amancodeshere/TradeDocNavigator#features-and-integration-limits",
+      },
+      {
+        label: "Database integration tests",
+        href: "https://github.com/amancodeshere/TradeDocNavigator/blob/main/tests/application.test.js",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/TradeDocNavigator",
@@ -117,8 +145,8 @@ export const projects: Project[] = [
     summary:
       "An NLP pipeline that turns raw job-ad HTML into structured information about salary, experience, education, and role requirements.",
     description: [
-      "This project explored domain-specific information extraction from job advertisements, converting raw HTML into structured JSON fields.",
-      "The work compared a CRF baseline with fine-tuned GPT-2 and GPT-3.5 models. Weights & Biases supported experiment tracking, hyperparameter sweeps, model versioning, and reproducible comparisons.",
+      "A job advertisement reads like prose, even when someone wants to compare it field by field with other listings. This project explored how to extract salary, experience, education, and role requirements from raw advertisement HTML and return them as structured JSON.",
+      "The extraction task involved deciding what each field meant before comparing models. Experience can appear as a number of years or as a broader description of seniority, for example. Both can be useful to a reader, but they are different kinds of evidence for a downstream system.",
     ],
     technologies: [
       "Python",
@@ -138,16 +166,20 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Extract useful fields",
-        body: "Structure salary, experience, education, and role requirements from job-ad content.",
+        body: "Frame extraction around a defined set of fields and an output that another program can read. HTML is the input, so the pipeline has to account for the difference between the page’s structure and the text that describes the role.",
       },
       {
         title: "Compare modelling approaches",
-        body: "Benchmark traditional sequence and classification baselines against fine-tuned language models.",
+        body: "Compare a conditional random field baseline with fine-tuned GPT-2 and GPT-3.5 models. A sequence labelling approach tags spans in the text, while a language model can represent the extracted information in a generated response.",
       },
       {
         title: "Track experiments",
-        body: "Use Weights & Biases to record sweeps, model versions, and comparisons reproducibly.",
+        body: "Use Weights & Biases to record hyperparameter sweeps and model versions. Keeping the run configuration with each result helps make model comparisons reproducible.",
       },
+    ],
+    takeaways: [
+      "This work gave me practice defining the extraction target before choosing a model. A useful review asks whether the output can be parsed, whether the field means what the schema says it means, and whether its value is supported by the advertisement.",
+      "Benchmarking and experiment tracking also gave me a way to separate a modelling choice from the conditions under which it was tested. A saved run can be revisited alongside its configuration when a result needs explaining or reproducing.",
     ],
     githubNote:
       "Notebooks and project work cannot be shared because they use confidential SEEK datasets.",
@@ -162,8 +194,8 @@ export const projects: Project[] = [
     summary:
       "A deep-learning pipeline for classifying breast ultrasound images and segmenting lesions.",
     description: [
-      "The project applies computer vision to breast ultrasound images, with preprocessing, augmentation, and reproducible data splits supporting both classification and segmentation tasks.",
-      "The pipeline combines a ResNet classifier with U-Net and DeepLabV3 segmentation models. Evaluation included accuracy, sensitivity, and intersection over union (IoU).",
+      "Our team built this research prototype to explore two questions about breast ultrasound images. Can a model classify the whole image as normal, benign, or malignant? Can a second model outline the lesion at pixel level? Both questions use the same scans, but they need different labels and different ways to assess errors.",
+      "The team used a labelled ultrasound dataset containing images and lesion masks. My work included the ResNet classification pipeline and work with U-Net and DeepLabV3 for segmentation. The team report compares those approaches with other models on the same project dataset.",
     ],
     technologies: [
       "Python",
@@ -171,6 +203,7 @@ export const projects: Project[] = [
       "NumPy",
       "Computer Vision",
       "ResNet",
+      "VGG-19",
       "U-Net",
       "DeepLabV3",
     ],
@@ -182,15 +215,25 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Prepare the data",
-        body: "Use preprocessing, augmentation, and reproducible dataset splits for model development.",
+        body: "Keep images aligned with their masks during resizing and preprocessing. Separate training, validation, and test data, and apply rotations, scaling, and flips only to the training split.",
       },
       {
         title: "Classify images",
-        body: "Implement a ResNet-based classifier for ultrasound image categories.",
+        body: "Train models to assign one class to the image. The team compared ResNet-50 with VGG-19 and used validation F1 to guide the choice, with VGG-19 performing slightly better on that comparison.",
       },
       {
         title: "Segment lesions",
-        body: "Explore U-Net and DeepLabV3 architectures and evaluate segmentation with IoU.",
+        body: "Train U-Net variants and DeepLabV3 to predict masks, then assess their overlap with annotated masks using intersection over union and Dice. Compare a single model with combinations of model outputs.",
+      },
+    ],
+    takeaways: [
+      "Working on both tasks gave me practice matching a metric to the question. An image classifier can choose the correct category without locating the lesion. In segmentation, even a visually plausible outline can miss part of the annotated region, so mask overlap and the example predictions tell complementary stories.",
+      "The report records an IoU of 0.528 for standard U-Net and 0.617 for DeepLabV3, the strongest single segmentation model in that comparison. One ensemble reached 0.645 while a different combination scored 0.488. Those results gave me a concrete example of why a more complex approach needs to earn its place against the baseline. They describe a dataset experiment in a research prototype.",
+    ],
+    references: [
+      {
+        label: "Team report and model comparisons",
+        href: "https://github.com/amancodeshere/Breast-Cancer-Classification-and-Segmentation-Using-Deep-Learning-on-Ultrasound-Images/blob/main/Breast%20Cancer%20Ultrasound%20Image%20Classification%20and%20Segmentation%20Final%20Report.pdf",
       },
     ],
     githubUrl:
@@ -208,8 +251,8 @@ export const projects: Project[] = [
     summary:
       "A hybrid recommendation system combining recipe content features with user–item collaborative filtering.",
     description: [
-      "The recommender combines content-based and collaborative filtering to suggest recipes using recipes, ratings, reviews, ingredients, and metadata from Kaggle and Hugging Face datasets.",
-      "TF-IDF features and cosine similarity support content matching, while a user–item matrix provides collaborative signals. The project was evaluated with Precision@K and Recall@K.",
+      "I built ChefGPT to explore how a recipe recommender can make useful suggestions from the ingredients and preferences it has. Someone with a rating history gives the system evidence about their tastes. A new user may only have a recipe or ingredient in mind, so the project also needed a way to match from the content itself.",
+      "The ingredients, recipe descriptions, categories, reviews, and ratings came from public datasets on Kaggle and Hugging Face. Combining them was part of the modelling work. The same concept was sometimes stored as a list in one source and as text in another, and rating records carried different information from recipe records.",
     ],
     technologies: [
       "Python",
@@ -231,15 +274,25 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Combine recipe data",
-        body: "Bring together recipes, ratings, reviews, ingredients, and metadata from multiple public datasets.",
+        body: "Parse list-like strings into structured fields, clean missing values, and standardise ingredient names and units before bringing the sources together. Build ingredient and category features for recipes with usable content.",
       },
       {
         title: "Represent recipe content",
-        body: "Use TF-IDF and cosine similarity to find recipes with similar ingredients and descriptive features.",
+        body: "Turn ingredient and category terms into TF-IDF vectors. Use cosine similarity to find nearby recipes in that representation, giving the system a starting point when it has no rating history for a user.",
       },
       {
         title: "Blend recommendations",
-        body: "Combine content-based matching with collaborative filtering based on a user–item matrix.",
+        body: "Build a user–recipe rating matrix for collaborative filtering. Combine rating-based and content-based signals and inspect the top results with Precision@K, Recall@K, and sample recommendations.",
+      },
+    ],
+    takeaways: [
+      "Building both paths made cold start a concrete design problem for me. Ratings can express preferences that ingredients alone miss, but the ratings matrix has little to work with for a new user. Recipe text provides a usable starting point, and the shortlist can become more personal once rating history exists.",
+      "The project also made the connection between data cleaning and recommendation quality tangible. If two ingredient names refer to the same thing, treating them as unrelated terms changes the similarity score. That gave me practice looking upstream when a shortlist feels wrong and looking at individual recommendations alongside ranking metrics.",
+    ],
+    references: [
+      {
+        label: "Data preparation and recommendation notebook",
+        href: "https://github.com/amancodeshere/chefGPT/blob/main/Recipe_Recommender_System.ipynb",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/chefGPT",
@@ -256,8 +309,8 @@ export const projects: Project[] = [
     summary:
       "A real-time multiplayer quiz platform with live sessions, synchronized host and player state, and scoring.",
     description: [
-      "Toohak supports concurrent players, live quiz sessions, question delivery, response capture, and scoring.",
-      "Session-based game management and WebSocket synchronization coordinate host and player state transitions, while REST APIs support quiz creation and scoring. The project used Jest, Git workflows, peer review, documentation, and CI practices.",
+      "Toohak was built to let a host run a quiz with multiple players in one live session. The host needs to advance questions, while players need to see the same question, submit a response, and see the score at the right point in the round.",
+      "Building the multiplayer workflow meant treating a quiz as a shared sequence of states. The host and player have different screens and actions, but both views depend on which question is active and where the session is in the round. That coordination is the core of the project.",
     ],
     technologies: [
       "JavaScript",
@@ -275,16 +328,20 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Manage quiz sessions",
-        body: "Use session-based game management to handle hosts, players, questions, responses, and scoring.",
+        body: "Use session-based game management to connect hosts, players, questions, responses, and scores. Think about transitions such as moving from question delivery to collecting responses and showing the result.",
       },
       {
         title: "Synchronize live play",
-        body: "Use WebSockets to coordinate host and player state transitions during a session.",
+        body: "Use WebSockets for live updates between Express and the React interfaces. A persistent connection lets players receive a host-driven state change as it happens, without repeatedly refreshing the page.",
       },
       {
         title: "Provide quiz APIs",
-        body: "Expose REST APIs for quiz creation and scoring, with Jest and CI practices supporting maintainability.",
+        body: "Use REST APIs for quiz creation and scoring. Support the JavaScript and TypeScript codebase with Jest, peer review, shared documentation, and continuous integration.",
       },
+    ],
+    takeaways: [
+      "This project gave me practice reasoning about a feature from several clients’ perspectives at once. A question transition makes sense only when the host and players agree on the active question and the actions that are available. Thinking through that sequence makes it easier to write a clear interface contract.",
+      "It also gave me practice choosing how clients communicate. An explicit request makes sense for creating a quiz, while shared session updates need to reach connected players as state changes. Tests and code review helped make those expectations understandable to the rest of the team.",
     ],
     githubNote: "Source code cannot be shared due to UNSW policy.",
     role: "Developer",
@@ -298,8 +355,8 @@ export const projects: Project[] = [
     summary:
       "An honours thesis investigating how NLP can map UNSW research publications to the 17 United Nations Sustainable Development Goals.",
     description: [
-      "This honours thesis is developing a multi-label classification system to identify which of the 17 UN Sustainable Development Goals are relevant to UNSW research publications, using research paper abstracts.",
-      "The research pipeline covers dataset collection, preprocessing, model benchmarking, and refinement, while investigating deep-learning and language-model approaches.",
+      "My honours thesis asks how abstracts can help map UNSW research publications to the 17 United Nations Sustainable Development Goals. One publication can contribute to more than one goal, so the task is to predict a set of relevant labels rather than force each abstract into one category.",
+      "Part of the thesis is building trustworthy comparisons before refining the models. The public repository includes experiments on SDGi report passages alongside the broader research-abstract objective. Those passages give me a labelled benchmark on which to study splitting, model selection, and multi-label evaluation.",
     ],
     technologies: [
       "Python",
@@ -316,15 +373,29 @@ export const projects: Project[] = [
     approach: [
       {
         title: "Prepare research abstracts",
-        body: "Build a dataset and preprocessing pipeline for scientific publication abstracts.",
+        body: "Prepare publication text and goal labels for multi-label modelling. In the report-based benchmark, keep passages from each source report in one split to reduce overlap in wording and context across training and evaluation.",
       },
       {
         title: "Benchmark models",
-        body: "Compare multi-label NLP approaches and refine models for identifying relevant SDGs.",
+        body: "Fine-tune six pretrained encoders, including BERT, SciBERT, and multilingual XLM-RoBERTa, with shared settings. Use validation loss to select checkpoints and reserve the test split for evaluation.",
       },
       {
-        title: "Investigate language models",
-        body: "Explore deep-learning and language-model methods for assigning multiple goals to research text.",
+        title: "Evaluate complete label sets",
+        body: "Measure precision, recall, and F1 across passages, and report exact match for predicting the entire set of goals correctly. Compare models within the English-only and all-language splits separately.",
+      },
+    ],
+    takeaways: [
+      "The split design was a methodological improvement I could make before changing a model. Adjacent passages can share vocabulary and context, so grouping by report changes what the benchmark tests. The preparation notes also keep an open limitation visible: translations and differently named versions can still land in different splits.",
+      "A model can recover most of the relevant goals and still miss exact match if it adds or omits one label. That distinction has helped me think more carefully about what counts as a useful prediction. The report-passage baselines use one training seed, and the two language settings have different test sets, so I use those results as starting points for the ongoing thesis work.",
+    ],
+    references: [
+      {
+        label: "Report grouping and dataset preparation",
+        href: "https://github.com/amancodeshere/multi-label_classify_sdg/tree/main/sdgi_report_grouped",
+      },
+      {
+        label: "Multi-label benchmark results",
+        href: "https://github.com/amancodeshere/multi-label_classify_sdg/blob/main/base-lines-sdgi-report-grouped/summary/report_grouped_test_results.md",
       },
     ],
     githubUrl: "https://github.com/amancodeshere/multi-label_classify_sdg",
