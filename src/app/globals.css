@@ -342,8 +342,7 @@ svg {
   display: grid;
   grid-template: repeat(4, 1fr) / repeat(3, 1fr);
   height: 100vh;
-  margin: calc(-1 * clamp(64px, 8vw, 120px)) 0
-    calc(-100vh + clamp(64px, 8vw, 120px));
+  margin: 0 0 -100vh;
   color: rgba(168, 217, 226, 0.15);
   font: 900 clamp(100px, 24vw, 300px)/0.78 var(--display);
   letter-spacing: -0.05em;
@@ -356,12 +355,11 @@ svg {
 .work-heading {
   position: relative;
   z-index: 2;
+}
+.work-heading-links {
   display: flex;
-  justify-content: flex-end;
-  align-items: end;
-  min-height: 48px;
-  margin: 0 0 26px;
-  gap: clamp(18px, 3vw, 36px);
+  flex-wrap: wrap;
+  gap: 12px;
 }
 .work-heading a {
   display: inline-flex;
@@ -499,14 +497,14 @@ svg {
 .experience-section {
   background: var(--ocean);
 }
-.experience-section .section-heading {
+.section-heading {
   display: flex;
   justify-content: space-between;
   align-items: end;
   gap: 24px;
   margin-bottom: 30px;
 }
-.experience-section h2 {
+.section-heading h2 {
   margin: 0;
   color: var(--ice);
   font: 700 clamp(30px, 3.5vw, 44px)/1.15 var(--body);
@@ -1045,10 +1043,6 @@ svg {
     margin: 0;
     font-size: 15vw;
   }
-  .work-heading {
-    min-height: 0;
-    margin-bottom: 21px;
-  }
   .project-list {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1064,7 +1058,7 @@ svg {
   .project-row:nth-child(even) {
     transform: none;
   }
-  .experience-section .section-heading {
+  .section-heading {
     align-items: start;
     flex-direction: column;
   }

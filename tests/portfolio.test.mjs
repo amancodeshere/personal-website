@@ -39,6 +39,10 @@ for (const [path, evidence] of cases) {
     if (path === "/") {
       assert.match(html, /data-ocean-surface="home"/);
       assert.match(html, /data-ocean-mode="home"/);
+      assert.match(
+        html,
+        /<h2>Experience<\/h2>[\s\S]*<h2 id="work-title">Projects<\/h2>/,
+      );
     } else {
       assert.doesNotMatch(
         html,
