@@ -4,16 +4,18 @@ import controls from "../components/layout/InteractiveControls.module.css";
 import { SiteHeader } from "../components/layout/SiteHeader";
 import { SiteFooter } from "../components/layout/SiteFooter";
 
+const siteTitle = "Aman Sharma | Software Engineering and Machine Learning";
+
 export const metadata: Metadata = {
   title: {
-    default: "Aman Sharma — Software & Machine Learning",
-    template: "%s — Aman Sharma",
+    default: siteTitle,
+    template: "%s | Aman Sharma",
   },
   description:
     "The work, research, and experience of Aman Sharma, a software engineering student at UNSW Sydney.",
   icons: { icon: "/icon.svg" },
   openGraph: {
-    title: "Aman Sharma — Software & Machine Learning",
+    title: siteTitle,
     description:
       "Engineering at the intersection of software, machine learning, and research.",
     type: "website",

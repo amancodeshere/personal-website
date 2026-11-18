@@ -340,7 +340,7 @@ export const projects: Project[] = [
 export const sunswimExperience = {
   caseStudyHref: "/experience/sunswim",
   company: "sUNSWim Robotics, UNSW",
-  role: "Software Engineer – Perception",
+  role: "Perception Software Engineer",
   location: "Sydney, Australia",
   period: "May 2026 – Present",
   description:

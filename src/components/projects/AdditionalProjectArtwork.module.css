@@ -7,7 +7,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Side A — lyric themes become a compact, legible listening profile. */
+/* Side A turns lyric themes into a compact listening profile. */
 .music {
   --music-ink: #322b29;
   --music-muted: #75675f;
@@ -222,7 +222,7 @@
   color: #5e4b40;
 }
 
-/* AwesomeDEP — packet observation, persisted event, and operator alert path. */
+/* AwesomeDEP shows packet observation, event storage, and operator alerts. */
 .security {
   --sec-deep: var(--deep);
   --sec-ocean: var(--ocean);
@@ -453,7 +453,7 @@
   font-size: 10px;
 }
 
-/* Battlecode — remembered grid and a route that reasons about its own body. */
+/* Battlecode maps a remembered grid and a route that accounts for its own body. */
 .battle {
   --battle-ink: #e3ead5;
   --battle-muted: #b8c9ac;
@@ -613,7 +613,7 @@
   font-size: 10px;
 }
 
-/* Botfluencer — replayable fixture observations with an explicit no-op boundary. */
+/* Botfluencer replays fixture observations without taking external actions. */
 .bot {
   --bot-ink: #e9e7df;
   --bot-muted: #bcc5bf;
