@@ -182,7 +182,7 @@ The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked
 
 The homepage and Experience index use the same linked sUNSWim feature, with a validation frame beside the role, period, and article link. The image stacks above the copy on narrow screens. The Experience index follows the feature with the other roles and education.
 
-The article pairs a natural-case DM Sans display heading with a Georgia introduction and a full validation frame. A chapter list sits alongside the article on wide screens and moves into the reading flow on mobile. Technical prose uses a narrower measure than the figures. The detection frames and sample dashboard have editorial captions and open at full resolution. The mission workflow uses three labelled stages that stack on narrow screens.
+The article uses the same Barlow Condensed display headings, Georgia introduction, and DM Sans body as the project detail pages. The hero pairs the introduction with a full validation frame. A chapter list sits alongside the article on wide screens and moves into the reading flow on mobile. Technical prose uses a narrower measure than the figures. The detection frames and sample dashboard have editorial captions and open at full resolution. The mission workflow uses three labelled stages that stack on narrow screens.
 
 ### Contact Invitation
 

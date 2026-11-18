@@ -20,6 +20,9 @@
   --serif: Georgia, "Times New Roman", serif;
   --display: "Barlow Condensed", Impact, sans-serif;
   --body: "DM Sans", Arial, sans-serif;
+  --project-title-type: 600 clamp(21px, 2.1vw, 28px) / 1.25 var(--body);
+  --detail-summary-type: 400 clamp(17px, 2vw, 24px) / 1.45 var(--serif);
+  --detail-section-type: 800 clamp(42px, 6vw, 72px) / 0.88 var(--display);
   --frame: clamp(16px, 2.7vw, 42px);
 }
 * {
@@ -464,7 +467,7 @@ svg {
 .project-row-copy > h3 {
   margin: 5px 0 0;
   color: var(--ice);
-  font: 600 clamp(21px, 2.1vw, 28px)/1.25 var(--body);
+  font: var(--project-title-type);
   letter-spacing: -0.015em;
 }
 .project-row-copy > h3 a:hover {
@@ -678,7 +681,7 @@ svg {
   max-width: 62ch;
   margin: 22px 0 0;
   color: var(--muted);
-  font: 400 clamp(17px, 2vw, 24px)/1.45 var(--serif);
+  font: var(--detail-summary-type);
 }
 .project-detail > .project-art {
   margin: 22px 0 44px;
@@ -742,7 +745,7 @@ svg {
 .timeline-section > h2 {
   margin: 0 0 24px;
   color: var(--ice);
-  font: 800 clamp(42px, 6vw, 72px)/0.88 var(--display);
+  font: var(--detail-section-type);
   letter-spacing: -0.025em;
   text-transform: uppercase;
 }

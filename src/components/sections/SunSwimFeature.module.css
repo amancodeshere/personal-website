@@ -24,9 +24,8 @@
 .title {
   margin: 0;
   color: var(--ice);
-  font-size: clamp(28px, 4.2vw, 58px);
-  line-height: 1.03;
-  letter-spacing: -0.04em;
+  font: var(--project-title-type);
+  letter-spacing: -0.015em;
 }
 
 .role {
