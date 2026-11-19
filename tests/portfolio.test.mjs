@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 const base = process.env.TEST_BASE_URL ?? "http://localhost:3000";
+const thesisProjectPath = "/projects/abstract-2-sdg";
 const cases = [
   ["/", "Aman Sharma"],
   ["/projects", "JobForge"],
@@ -13,7 +14,7 @@ const cases = [
   ["/projects/breast-cancer-ultrasound", "DeepLabV3"],
   ["/projects/hybrid-recipe-recommender", "Precision@K"],
   ["/projects/toohak", "WebSocket"],
-  ["/projects/abstract-2-sdg", "Aditya Joshi"],
+  [thesisProjectPath, "Aditya Joshi"],
   ["/projects/music-rec", "1,500 songs"],
   ["/projects/data-exfiltration-prevention", "Scapy"],
   ["/projects/sudo-win", "C++20"],
@@ -31,11 +32,13 @@ for (const [path, evidence] of cases) {
     assert.match(html, /<title>[^<]+<\/title>/);
     assert.ok(html.includes(evidence), `Missing evidence: ${evidence}`);
     assert.match(html, /<main[\s>]/);
-    assert.doesNotMatch(
-      html,
-      /<figcaption[\s>]/,
-      "Project image caption bars must not render",
-    );
+    if (path !== thesisProjectPath) {
+      assert.doesNotMatch(
+        html,
+        /<figcaption[\s>]/,
+        "Project image caption bars must not render",
+      );
+    }
     if (path === "/") {
       assert.match(html, /data-ocean-surface="home"/);
       assert.match(html, /data-ocean-mode="home"/);
@@ -62,11 +65,13 @@ for (const [path, evidence] of cases) {
         /project-index-backdrop|data-ocean-mode="index"/,
         "Individual project pages must keep their plain reading background",
       );
-      assert.match(
-        html,
-        /<h2>Why it was built<\/h2>[\s\S]*<h2>How it came together<\/h2>[\s\S]*<h2>What I took forward<\/h2>/,
-        "Every project needs a rationale, an approach, and a reflection",
-      );
+      if (path !== thesisProjectPath) {
+        assert.match(
+          html,
+          /<h2>Why it was built<\/h2>[\s\S]*<h2>How it came together<\/h2>[\s\S]*<h2>What I took forward<\/h2>/,
+          "Project details need a rationale, an approach, and a reflection",
+        );
+      }
       if (
         ![
           "/projects/toohak",
@@ -144,7 +149,7 @@ test("project image assets ship with the standalone application", async () => {
 
 test("Abstract 2 SDG is discoverable as both research experience and a project", async () => {
   const experiencePath = "/experience/abstract-2-sdg";
-  const projectPath = "/projects/abstract-2-sdg";
+  const projectPath = thesisProjectPath;
   const [home, experienceIndex, projectIndex, experience, project] =
     await Promise.all(
       ["/", "/experience", "/projects", experiencePath, projectPath].map(
@@ -171,10 +176,22 @@ test("Abstract 2 SDG is discoverable as both research experience and a project",
   for (const page of [home, projectIndex, experience]) {
     assert.ok(page.includes(`href="${projectPath}"`));
   }
-  assert.ok(experience.includes("UNSW Honours Thesis Researcher"));
-  assert.ok(experience.includes("90.31%"));
-  assert.ok(experience.includes("62.03%"));
-  assert.ok(project.includes("75.35%"));
+  const featureLabel = 'aria-label="Read the Abstract 2 SDG case study"';
+  assert.equal(home.split(featureLabel).length - 1, 2);
+  assert.equal(experienceIndex.split(featureLabel).length - 1, 1);
+  assert.equal(projectIndex.split(featureLabel).length - 1, 1);
+
+  for (const page of [experience, project]) {
+    assert.ok(page.includes("UNSW Honours Thesis Researcher"));
+    assert.ok(page.includes('href="/projects/abstract-2-sdg-results.webp"'));
+    assert.match(
+      page,
+      /id="literature-review"[\s\S]*id="benchmark"[\s\S]*id="experiments"[\s\S]*id="unsw-evaluation"[\s\S]*id="thesis-b"/,
+    );
+    for (const result of ["90.31%", "62.03%", "75.35%"]) {
+      assert.ok(page.includes(result));
+    }
+  }
 
   const legacy = await fetch(
     new URL("/projects/unsw-sdg-research-classification", base),

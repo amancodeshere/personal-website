@@ -483,6 +483,10 @@ svg {
 .catalogue-list .project-row:nth-child(even) {
   transform: none;
 }
+.project-feature {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
 
 /* Experience and direct contact */
 .experience-section {
@@ -503,17 +507,9 @@ svg {
 .experience-feature {
   margin: 22px 0 clamp(64px, 9vw, 120px);
 }
-.experience-research {
-  margin-top: 25px;
-}
-.experience-research h3 {
-  margin: 0;
-  font: 700 26px/1.1 var(--display);
-}
-.experience-research p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
+.experience-features {
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
 }
 .experience-case-link {
   display: inline-flex;

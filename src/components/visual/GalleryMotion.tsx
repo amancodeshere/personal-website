@@ -17,7 +17,7 @@ export function GalleryMotion({
     if (!element) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const cards = Array.from(
-      element.querySelectorAll<HTMLElement>(".project-row"),
+      element.querySelectorAll<HTMLElement>(".project-row, .project-feature"),
     );
     const letters = Array.from(
       element

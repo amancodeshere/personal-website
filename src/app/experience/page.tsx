@@ -5,7 +5,8 @@ import {
   experiences,
   sunswimExperience,
 } from "../../content/portfolio";
-import { SunSwimFeature } from "../../components/sections/SunSwimFeature";
+import { abstractToSdgExperience } from "../../content/abstract-2-sdg";
+import { ExperienceFeatures } from "../../components/sections/ExperienceFeatures";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -26,13 +27,16 @@ export default function ExperiencePage() {
         </div>
       </header>
       <section className="experience-feature" aria-label="Featured experience">
-        <SunSwimFeature heading="h2" />
+        <ExperienceFeatures heading="h2" />
       </section>
       <section className="timeline-section">
         <h2>Other experience.</h2>
         <div className="timeline">
           {experiences
-            .filter((item) => item !== sunswimExperience)
+            .filter(
+              (item) =>
+                item !== sunswimExperience && item !== abstractToSdgExperience,
+            )
             .map((item) => (
               <article key={item.company}>
                 <div className="timeline-date">{item.period}</div>

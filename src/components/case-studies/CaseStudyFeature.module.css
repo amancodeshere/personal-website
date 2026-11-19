@@ -76,6 +76,11 @@
   object-position: 50% 54%;
 }
 
+.artwork[data-fit="contain"] img {
+  object-fit: contain;
+  object-position: center;
+}
+
 @media (max-width: 640px) {
   .feature {
     grid-template-columns: 1fr;
@@ -85,6 +90,16 @@
     grid-row: 1;
     min-height: 0;
     aspect-ratio: 16 / 9;
+  }
+
+  .artwork[data-fit="contain"] {
+    aspect-ratio: auto;
+  }
+
+  .artwork[data-fit="contain"] img {
+    position: static;
+    display: block;
+    height: auto;
   }
 }
 

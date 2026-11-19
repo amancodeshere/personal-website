@@ -7,6 +7,8 @@ import {
   portfolioProjects,
 } from "../../../content/project-visibility";
 import { ProjectArtwork } from "../../../components/projects/ProjectArtwork";
+import { AbstractToSdgCaseStudy } from "../../../components/case-studies/AbstractToSdgCaseStudy";
+import { abstractToSdgProject } from "../../../content/abstract-2-sdg";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -36,6 +38,22 @@ export default async function ProjectPage({
   const navigationProjects = isGame ? gameProjects : portfolioProjects;
   const index = navigationProjects.findIndex((item) => item.slug === slug);
   const next = navigationProjects[(index + 1) % navigationProjects.length];
+  const nextProject = (
+    <Link className="next-project" href={`/projects/${next.slug}`}>
+      <span>NEXT PROJECT</span>
+      <b>{next.shortTitle}</b>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 12h16m-7-7 7 7-7 7" />
+      </svg>
+    </Link>
+  );
+
+  if (slug === abstractToSdgProject.slug) {
+    return (
+      <AbstractToSdgCaseStudy section="projects" nextProject={nextProject} />
+    );
+  }
+
   return (
     <article className="project-detail frame-x">
       <div className="detail-breadcrumb">
@@ -152,13 +170,7 @@ export default async function ProjectPage({
           </dl>
         </section>
       )}
-      <Link className="next-project" href={`/projects/${next.slug}`}>
-        <span>NEXT PROJECT</span>
-        <b>{next.shortTitle}</b>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 12h16m-7-7 7 7-7 7" />
-        </svg>
-      </Link>
+      {nextProject}
     </article>
   );
 }

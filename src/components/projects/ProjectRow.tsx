@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Project } from "../../types/portfolio";
+import { abstractToSdgProject } from "../../content/abstract-2-sdg";
+import { AbstractToSdgFeature } from "../case-studies/AbstractToSdgFeature";
 import { ProjectArtwork } from "./ProjectArtwork";
 
 export function ProjectRow({
@@ -9,6 +11,14 @@ export function ProjectRow({
   project: Project;
   index: number;
 }) {
+  if (project.slug === abstractToSdgProject.slug) {
+    return (
+      <article className="project-feature">
+        <AbstractToSdgFeature section="projects" />
+      </article>
+    );
+  }
+
   return (
     <article className="project-row">
       <Link

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { profile } from "../../../content/portfolio";
 import { sunswim } from "../../../content/sunswim";
-import { CaseStudyFigure } from "../CaseStudyFigure";
-import styles from "../case-study.module.css";
+import { CaseStudyFigure } from "../../../components/case-studies/CaseStudyFigure";
+import styles from "../../../components/case-studies/case-study.module.css";
 
 const {
   experience,

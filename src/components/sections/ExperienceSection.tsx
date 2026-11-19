@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  abstractToSdgExperience,
-  thesisTitle,
-} from "../../content/abstract-2-sdg";
-import { SunSwimFeature } from "./SunSwimFeature";
+import { ExperienceFeatures } from "./ExperienceFeatures";
 
 export function ExperienceSection() {
   return (
@@ -17,20 +13,7 @@ export function ExperienceSection() {
           </svg>
         </Link>
       </div>
-      <SunSwimFeature />
-      <article className="experience-research">
-        <h3>
-          <Link
-            className="experience-case-link"
-            href={abstractToSdgExperience.caseStudyHref}
-          >
-            {thesisTitle}
-          </Link>
-        </h3>
-        <p>
-          {abstractToSdgExperience.role} · {abstractToSdgExperience.period}
-        </p>
-      </article>
+      <ExperienceFeatures />
     </section>
   );
 }

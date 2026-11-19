@@ -1,4 +1,5 @@
 import type { Experience, Project } from "../types/portfolio";
+import { projectMedia } from "./project-media";
 
 const slug = "abstract-2-sdg";
 export const thesisTitle = "Abstract 2 SDG";
@@ -6,6 +7,15 @@ const role = "UNSW Honours Thesis Researcher";
 const period = "Sep 2026 – Present";
 export const thesisSupervisor = "Dr Aditya Joshi";
 export const thesisProjectHref = `/projects/${slug}`;
+
+const resultsMedia = projectMedia["abstract-2-sdg"];
+
+export const abstractToSdgCover = {
+  ...resultsMedia.image,
+  width: 1343,
+  height: 844,
+  caption: resultsMedia.caption,
+};
 
 export const abstractToSdgExperience = {
   caseStudyHref: `/experience/${slug}`,
