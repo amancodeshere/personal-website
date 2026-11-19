@@ -1,3 +1,7 @@
+import {
+  abstractToSdgExperience,
+  abstractToSdgProject,
+} from "./abstract-2-sdg";
 import { additionalProjects } from "./additional-projects";
 import type { Experience, Project } from "../types/portfolio";
 
@@ -347,64 +351,7 @@ export const projects: Project[] = [
     role: "Developer",
     visual: "quiz",
   },
-  {
-    slug: "unsw-sdg-research-classification",
-    title: "Multi-Label NLP Classification of Research Publications",
-    shortTitle: "Research to SDGs",
-    category: "Research",
-    summary:
-      "An honours thesis investigating how NLP can map UNSW research publications to the 17 United Nations Sustainable Development Goals.",
-    description: [
-      "My honours thesis asks how abstracts can help map UNSW research publications to the 17 United Nations Sustainable Development Goals. One publication can contribute to more than one goal, so the task is to predict a set of relevant labels rather than force each abstract into one category.",
-      "Part of the thesis is building trustworthy comparisons before refining the models. The public repository includes experiments on SDGi report passages alongside the broader research-abstract objective. Those passages give me a labelled benchmark on which to study splitting, model selection, and multi-label evaluation.",
-    ],
-    technologies: [
-      "Python",
-      "NLP",
-      "Multi-label classification",
-      "Deep learning",
-      "Language models",
-    ],
-    highlights: [
-      { label: "Institution", value: "UNSW" },
-      { label: "Supervisor", value: "Dr Aditya Joshi" },
-      { label: "Labels", value: "17 UN Sustainable Development Goals" },
-    ],
-    approach: [
-      {
-        title: "Prepare research abstracts",
-        body: "Prepare publication text and goal labels for multi-label modelling. In the report-based benchmark, keep passages from each source report in one split to reduce overlap in wording and context across training and evaluation.",
-      },
-      {
-        title: "Benchmark models",
-        body: "Fine-tune six pretrained encoders, including BERT, SciBERT, and multilingual XLM-RoBERTa, with shared settings. Use validation loss to select checkpoints and reserve the test split for evaluation.",
-      },
-      {
-        title: "Evaluate complete label sets",
-        body: "Measure precision, recall, and F1 across passages, and report exact match for predicting the entire set of goals correctly. Compare models within the English-only and all-language splits separately.",
-      },
-    ],
-    takeaways: [
-      "The split design was a methodological improvement I could make before changing a model. Adjacent passages can share vocabulary and context, so grouping by report changes what the benchmark tests. The preparation notes also keep an open limitation visible: translations and differently named versions can still land in different splits.",
-      "A model can recover most of the relevant goals and still miss exact match if it adds or omits one label. That distinction has helped me think more carefully about what counts as a useful prediction. The report-passage baselines use one training seed, and the two language settings have different test sets, so I use those results as starting points for the ongoing thesis work.",
-    ],
-    references: [
-      {
-        label: "Report grouping and dataset preparation",
-        href: "https://github.com/amancodeshere/multi-label_classify_sdg/tree/main/sdgi_report_grouped",
-      },
-      {
-        label: "Multi-label benchmark results",
-        href: "https://github.com/amancodeshere/multi-label_classify_sdg/blob/main/base-lines-sdgi-report-grouped/summary/report_grouped_test_results.md",
-      },
-    ],
-    githubUrl: "https://github.com/amancodeshere/multi-label_classify_sdg",
-    githubNote:
-      "The public repository describes classification of research abstracts with UN Sustainable Development Goals.",
-    status: "Sep 2026 – Present",
-    role: "Honours thesis researcher · Supervisor: Dr Aditya Joshi",
-    visual: "research",
-  },
+  abstractToSdgProject,
   ...additionalProjects,
 ];
 
@@ -426,6 +373,7 @@ export const sunswimExperience = {
 
 export const experiences: Experience[] = [
   sunswimExperience,
+  abstractToSdgExperience,
   {
     company: "Global Exchange",
     role: "Customer Service Representative",

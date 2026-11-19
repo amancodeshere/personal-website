@@ -9,7 +9,7 @@ export type ProjectMedia = {
     | "repository-figure"
     | "interface-study"
     | "workflow-study"
-    | "research-study";
+    | "research-figure";
   title: string;
   caption: string;
   source?: string;
@@ -76,11 +76,17 @@ export const projectMedia = {
     title: "Live quiz player",
     caption: "Interface study · synchronized quiz player",
   },
-  "unsw-sdg-research-classification": {
-    kind: "research-study",
-    title: "Research abstract classification",
-    caption: "Research study · example abstract mapped across the 17 UN SDGs",
-    source: "Goal names and colors · UN Sustainable Development Goals",
+  "abstract-2-sdg": {
+    kind: "research-figure",
+    title: "SDG classification results on 43 UNSW research texts",
+    caption: "Thesis A seminar · F1 and exact match on UNSW research texts",
+    source: "Abstract 2 SDG Thesis A Seminar, slide 22",
+    image: {
+      src: "/projects/abstract-2-sdg-results.webp",
+      alt: "Selected model results on 43 UNSW research texts. GPT-4o mini led with 75.35% F1, SciBERT led the encoders with 69.73% F1, and English-trained XLM-RoBERTa led exact match with 30.23%.",
+      aspectRatio: "1343 / 844",
+      fit: "contain",
+    },
   },
   "music-rec": {
     kind: "interface-study",

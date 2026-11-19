@@ -1,4 +1,8 @@
 import Link from "next/link";
+import {
+  abstractToSdgExperience,
+  thesisTitle,
+} from "../../content/abstract-2-sdg";
 import { SunSwimFeature } from "./SunSwimFeature";
 
 export function ExperienceSection() {
@@ -14,6 +18,19 @@ export function ExperienceSection() {
         </Link>
       </div>
       <SunSwimFeature />
+      <article className="experience-research">
+        <h3>
+          <Link
+            className="experience-case-link"
+            href={abstractToSdgExperience.caseStudyHref}
+          >
+            {thesisTitle}
+          </Link>
+        </h3>
+        <p>
+          {abstractToSdgExperience.role} · {abstractToSdgExperience.period}
+        </p>
+      </article>
     </section>
   );
 }

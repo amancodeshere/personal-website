@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   education,
   experiences,
@@ -18,7 +19,8 @@ export default function ExperiencePage() {
         <h1>Experience</h1>
         <div className="intro-foot">
           <p>
-            Software engineering, robotics, teaching, and customer-facing work.
+            Software engineering, robotics, research, teaching, and
+            customer-facing work.
           </p>
           <span>SYDNEY / REMOTE</span>
         </div>
@@ -45,6 +47,14 @@ export default function ExperiencePage() {
                       <li key={highlight}>{highlight}</li>
                     ))}
                   </ul>
+                  {item.caseStudyHref && (
+                    <Link
+                      className="experience-case-link"
+                      href={item.caseStudyHref}
+                    >
+                      Read the case study
+                    </Link>
+                  )}
                 </div>
               </article>
             ))}

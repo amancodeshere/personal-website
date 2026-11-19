@@ -57,8 +57,6 @@ export function ProjectArtwork({
           <RecipeStudy photoSrc={media.image?.src} />
         ) : project.visual === "quiz" && mappedMedia ? (
           <QuizStudy />
-        ) : project.visual === "research" && mappedMedia ? (
-          <ResearchStudy />
         ) : mappedMedia ? (
           <AdditionalProjectArtwork visual={project.visual} />
         ) : (
@@ -203,71 +201,6 @@ function RecipeStudy({ photoSrc }: { photoSrc?: string }) {
           <small>Shared reader signals</small>
         </article>
       </div>
-    </div>
-  );
-}
-
-function ResearchStudy() {
-  return (
-    <div className={styles.research}>
-      <header>
-        <b>Research abstract</b>
-        <span>Multi-label classification</span>
-      </header>
-      <div className={styles.abstract}>
-        <small>EXAMPLE ABSTRACT</small>
-        <p>
-          “This study examines how urban planning can improve access to public
-          transport and essential services across growing cities.”
-        </p>
-      </div>
-      <div className={styles.labelFlow}>
-        <span>Candidate labels</span>
-        <i>→</i>
-        <b>UN Sustainable Development Goals</b>
-      </div>
-      <div className={styles.goalGrid}>
-        <Goal code="01" name="No poverty" color="#e5243b" />
-        <Goal code="02" name="Zero hunger" color="#dda63a" />
-        <Goal code="03" name="Good health" color="#4c9f38" />
-        <Goal code="04" name="Quality education" color="#c5192d" />
-        <Goal code="05" name="Gender equality" color="#ff3a21" />
-        <Goal code="06" name="Clean water" color="#26bde2" />
-        <Goal code="07" name="Clean energy" color="#fcc30b" />
-        <Goal code="08" name="Decent work" color="#a21942" />
-        <Goal code="09" name="Industry & innovation" color="#fd6925" />
-        <Goal code="10" name="Reduced inequalities" color="#dd1367" />
-        <Goal code="11" name="Sustainable cities" color="#fd9d24" selected />
-        <Goal code="12" name="Responsible consumption" color="#bf8b2e" />
-        <Goal code="13" name="Climate action" color="#3f7e44" />
-        <Goal code="14" name="Life below water" color="#0a97d9" />
-        <Goal code="15" name="Life on land" color="#56c02b" />
-        <Goal code="16" name="Peace & justice" color="#00689d" />
-        <Goal code="17" name="Partnerships" color="#19486a" />
-      </div>
-      <footer>Example candidate label · Goal 11</footer>
-    </div>
-  );
-}
-
-function Goal({
-  code,
-  name,
-  color,
-  selected = false,
-}: {
-  code: string;
-  name: string;
-  color: string;
-  selected?: boolean;
-}) {
-  return (
-    <div
-      className={`${styles.goal} ${selected ? styles.goalSelected : ""}`}
-      style={{ "--goal-color": color } as CSSProperties}
-    >
-      <b>{code}</b>
-      <span>{name}</span>
     </div>
   );
 }

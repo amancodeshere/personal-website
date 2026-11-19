@@ -91,6 +91,11 @@ export default async function ProjectPage({
               </p>
             </div>
           )}
+          {project.experienceHref && (
+            <Link href={project.experienceHref}>
+              READ MY RESEARCH EXPERIENCE
+            </Link>
+          )}
         </div>
       </div>
       <section className="detail-story">

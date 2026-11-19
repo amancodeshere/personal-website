@@ -13,7 +13,7 @@ const cases = [
   ["/projects/breast-cancer-ultrasound", "DeepLabV3"],
   ["/projects/hybrid-recipe-recommender", "Precision@K"],
   ["/projects/toohak", "WebSocket"],
-  ["/projects/unsw-sdg-research-classification", "Aditya Joshi"],
+  ["/projects/abstract-2-sdg", "Aditya Joshi"],
   ["/projects/music-rec", "1,500 songs"],
   ["/projects/data-exfiltration-prevention", "Scapy"],
   ["/projects/sudo-win", "C++20"],
@@ -127,6 +127,7 @@ test("project image assets ship with the standalone application", async () => {
     "/projects/midnight-run.webp",
     "/projects/sudo-win-battlecode-board.webp",
     "/projects/ctn-official-competition.webp",
+    "/projects/abstract-2-sdg-results.webp",
   ];
   await Promise.all(
     paths.map(async (path) => {
@@ -138,6 +139,51 @@ test("project image assets ship with the standalone application", async () => {
         `Empty project image: ${path}`,
       );
     }),
+  );
+});
+
+test("Abstract 2 SDG is discoverable as both research experience and a project", async () => {
+  const experiencePath = "/experience/abstract-2-sdg";
+  const projectPath = "/projects/abstract-2-sdg";
+  const [home, experienceIndex, projectIndex, experience, project] =
+    await Promise.all(
+      ["/", "/experience", "/projects", experiencePath, projectPath].map(
+        async (path) => {
+          const response = await fetch(new URL(path, base));
+          assert.equal(response.status, 200, path);
+          return response.text();
+        },
+      ),
+    );
+
+  for (const page of [
+    home,
+    experienceIndex,
+    projectIndex,
+    experience,
+    project,
+  ]) {
+    assert.ok(page.includes("Abstract 2 SDG"));
+  }
+  for (const page of [home, experienceIndex, project]) {
+    assert.ok(page.includes(`href="${experiencePath}"`));
+  }
+  for (const page of [home, projectIndex, experience]) {
+    assert.ok(page.includes(`href="${projectPath}"`));
+  }
+  assert.ok(experience.includes("UNSW Honours Thesis Researcher"));
+  assert.ok(experience.includes("90.31%"));
+  assert.ok(experience.includes("62.03%"));
+  assert.ok(project.includes("75.35%"));
+
+  const legacy = await fetch(
+    new URL("/projects/unsw-sdg-research-classification", base),
+    { redirect: "manual" },
+  );
+  assert.equal(legacy.status, 308);
+  assert.equal(
+    new URL(legacy.headers.get("location"), base).pathname,
+    projectPath,
   );
 });
 

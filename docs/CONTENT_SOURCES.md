@@ -17,7 +17,7 @@ The PDFs were read for this task and are not copied into the website or reposito
 | Breast Cancer Classification and Segmentation | ML CV | [Full-title public repository](https://github.com/amancodeshere/Breast-Cancer-Classification-and-Segmentation-Using-Deep-Learning-on-Ultrasound-Images) | The account also has a shorter repository variant; the full-title repository was selected. CV details provide the models and evaluation measures shown. |
 | Hybrid Recipe Recommendation System | Both CVs | [amancodeshere/chefGPT](https://github.com/amancodeshere/chefGPT) | README identifies the repository as “Recipe Recommender System - ChefGPT” and describes its hybrid recommendation approach. |
 | Toohak: Real-Time Quiz Game Platform | SWE CV | Not available to share | The project owner confirmed that source code cannot be shared due to UNSW policy. The portfolio describes the project without source or deployment links. |
-| Multi-Label NLP Classification of Research Publications | Both CVs (Honours Thesis) | [amancodeshere/multi-label_classify_sdg](https://github.com/amancodeshere/multi-label_classify_sdg) | Public repository description identifies research-abstract classification with UN SDGs. CV supplies current thesis scope and supervisor. |
+| Abstract 2 SDG | Honours thesis repo, Codex thesis chats and Thesis A seminar (5 Nov 2026) | [amancodeshere/multi-label_classify_sdg](https://github.com/amancodeshere/multi-label_classify_sdg) | Report audit, grouped SDGi benchmark and UNSW transfer evaluation. The UNSW catalogue and author-review flow are Thesis B proposals. |
 
 ## Additional project source mapping
 

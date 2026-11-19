@@ -15,6 +15,7 @@ export type Project = {
   githubUrl?: string;
   githubNote?: string;
   liveUrl?: string;
+  experienceHref?: string;
   status?: string;
   role: string;
   visual:
