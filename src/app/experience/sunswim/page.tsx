@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { profile } from "../../../content/portfolio";
 import { sunswim } from "../../../content/sunswim";
-import styles from "./page.module.css";
+import { CaseStudyFigure } from "../CaseStudyFigure";
+import styles from "../case-study.module.css";
 
 const {
   experience,
@@ -25,38 +25,6 @@ export const metadata: Metadata = {
     "Aman Sharma’s sUNSWim Robotics field notes on underwater object detection, ROS 2 mission control and the qualifier operator dashboard.",
   alternates: { canonical: experience.caseStudyHref },
 };
-
-type CaseStudyImage =
-  | typeof cover
-  | typeof dashboard
-  | typeof diagnostics
-  | (typeof evaluation)[number];
-
-function Figure({
-  figure,
-  sizes,
-  preload = false,
-}: {
-  figure: CaseStudyImage;
-  sizes: string;
-  preload?: boolean;
-}) {
-  return (
-    <figure className={styles.figure}>
-      <a href={figure.src} aria-label={`View full image. ${figure.caption}`}>
-        <Image
-          src={figure.src}
-          alt={figure.alt}
-          width={figure.width}
-          height={figure.height}
-          sizes={sizes}
-          preload={preload}
-        />
-      </a>
-      <figcaption>{figure.caption}</figcaption>
-    </figure>
-  );
-}
 
 export default function SunSwimPage() {
   return (
@@ -81,7 +49,7 @@ export default function SunSwimPage() {
               {experience.role} at {title}
             </p>
           </div>
-          <Figure
+          <CaseStudyFigure
             figure={cover}
             sizes="(max-width: 760px) 94vw, (max-width: 1290px) 46vw, 600px"
             preload
@@ -117,7 +85,7 @@ export default function SunSwimPage() {
               </p>
               <div className={styles.evaluation}>
                 {evaluation.map((figure) => (
-                  <Figure
+                  <CaseStudyFigure
                     key={figure.src}
                     figure={figure}
                     sizes="(max-width: 580px) 94vw, (max-width: 1000px) 44vw, 440px"
@@ -176,7 +144,7 @@ export default function SunSwimPage() {
                 camera detections and position estimates. Saved-run replay lets
                 us revisit what the operator saw at a specific point in a test.
               </p>
-              <Figure figure={dashboard} sizes={dashboardImageSizes} />
+              <CaseStudyFigure figure={dashboard} sizes={dashboardImageSizes} />
               <p>
                 One of the details I care most about is showing where an
                 estimate comes from. When camera tracking drops out, the
@@ -191,7 +159,10 @@ export default function SunSwimPage() {
                 shows when the vehicle switched from searching for the gate to
                 aligning with it and then approaching it.
               </p>
-              <Figure figure={diagnostics} sizes={dashboardImageSizes} />
+              <CaseStudyFigure
+                figure={diagnostics}
+                sizes={dashboardImageSizes}
+              />
             </section>
 
             <section
