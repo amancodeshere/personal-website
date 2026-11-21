@@ -1,5 +1,5 @@
 .study {
-  background: var(--deep);
+  background: var(--opening-light), var(--deep);
 }
 
 .container {

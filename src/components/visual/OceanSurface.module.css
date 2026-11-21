@@ -17,7 +17,12 @@
 }
 
 .surface[data-ocean-surface="home"] {
-  background: linear-gradient(#0a3853, #09354a 30%, #062b40 65%, #041f32);
+  background: linear-gradient(
+    var(--surface-water),
+    #09354a 30%,
+    #062b40 65%,
+    var(--deep-water)
+  );
 }
 
 .surface[data-ocean-surface="home"] .backdrop {
@@ -51,4 +56,15 @@
   margin-top: 8px;
   padding: 8px 10px 10px;
   background: #0b3b55;
+}
+
+.surface[data-ocean-surface="home"] :global(.about-section) {
+  background: radial-gradient(
+    ellipse at 18% -12%,
+    rgb(101 216 201 / 13%),
+    transparent 58%
+  );
+}
+.surface[data-ocean-surface="home"] :global(.contact-section) {
+  background: linear-gradient(transparent, var(--deep-water) 85%);
 }
