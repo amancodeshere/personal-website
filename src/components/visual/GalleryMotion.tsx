@@ -17,7 +17,7 @@ export function GalleryMotion({
     if (!element) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const cards = Array.from(
-      element.querySelectorAll<HTMLElement>(".project-row, .project-feature"),
+      element.querySelectorAll<HTMLElement>(".project-row"),
     );
     const letters = Array.from(
       element
@@ -66,16 +66,16 @@ export function GalleryMotion({
         const link = card.querySelector<HTMLElement>(".project-visual-link");
         link?.style.setProperty(
           "--gallery-tilt",
-          `${relative * direction * 8}deg`,
+          `${relative * direction * 2}deg`,
         );
         link?.style.setProperty(
           "--gallery-roll",
-          `${relative * direction * -2.2}deg`,
+          `${relative * direction * -0.4}deg`,
         );
         link?.style.setProperty("--gallery-lift", `${relative * -20}px`);
         link?.style.setProperty(
           "--gallery-travel",
-          `${relative * direction * 58}px`,
+          `${relative * direction * 8}px`,
         );
         link?.style.setProperty(
           "--gallery-scale",

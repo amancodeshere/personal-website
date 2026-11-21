@@ -78,11 +78,7 @@ export function ProjectCatalogue({
               </h2>
               <div className="project-list catalogue-list">
                 {group.projects.map((project) => (
-                  <ProjectRow
-                    key={project.slug}
-                    project={project}
-                    index={projects.indexOf(project)}
-                  />
+                  <ProjectRow key={project.slug} project={project} />
                 ))}
               </div>
             </section>

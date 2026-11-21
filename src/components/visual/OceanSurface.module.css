@@ -17,7 +17,7 @@
 }
 
 .surface[data-ocean-surface="home"] {
-  background: #0a3853;
+  background: linear-gradient(#0a3853, #09354a 30%, #062b40 65%, #041f32);
 }
 
 .surface[data-ocean-surface="home"] .backdrop {
@@ -25,7 +25,8 @@
   top: 0;
   height: 100svh;
   margin-bottom: -100svh;
-  opacity: 0.4;
+  opacity: 0.3;
+  mask-image: linear-gradient(90deg, black, transparent 45% 55%, black);
 }
 
 .surface[data-ocean-surface="home"] .backdrop :global(.ocean-field) {

@@ -49,7 +49,11 @@ export function ProjectArtwork({
             alt={media.image.alt}
             style={{ objectFit: media.image.fit }}
             fill
-            sizes={compact ? "(max-width: 760px) 100vw, 75vw" : "100vw"}
+            sizes={
+              compact
+                ? "(max-width: 760px) 100vw, 50vw"
+                : "(max-width: 999px) 100vw, 62vw"
+            }
           />
         ) : project.visual === "nlp" && mappedMedia ? (
           <ExtractionStudy />

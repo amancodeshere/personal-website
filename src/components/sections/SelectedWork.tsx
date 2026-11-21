@@ -32,8 +32,8 @@ export function SelectedWork() {
         ))}
       </div>
       <GalleryMotion className="project-list home-project-list">
-        {portfolioProjects.map((project, index) => (
-          <ProjectRow key={project.slug} project={project} index={index} />
+        {portfolioProjects.map((project) => (
+          <ProjectRow key={project.slug} project={project} />
         ))}
       </GalleryMotion>
     </section>

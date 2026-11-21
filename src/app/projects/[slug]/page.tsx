@@ -68,11 +68,13 @@ export default async function ProjectPage({
           {String(navigationProjects.length).padStart(2, "0")}
         </span>
       </div>
-      <header className="detail-heading">
-        <h1>{project.title}</h1>
-        <p className="detail-summary">{project.summary}</p>
-      </header>
-      <ProjectArtwork project={project} />
+      <div className="project-opening">
+        <header className="detail-heading">
+          <h1>{project.title}</h1>
+          <p className="detail-summary">{project.summary}</p>
+        </header>
+        <ProjectArtwork project={project} />
+      </div>
       <ProjectOverview project={project} />
       <section className="detail-story">
         <h2>Why it was built</h2>

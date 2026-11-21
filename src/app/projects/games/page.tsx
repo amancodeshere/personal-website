@@ -27,11 +27,7 @@ export default function GamesPage() {
         <section className="catalogue-group" aria-label="Game projects">
           <div className="project-list catalogue-list">
             {gameProjects.map((project) => (
-              <ProjectRow
-                key={project.slug}
-                project={project}
-                index={projects.indexOf(project)}
-              />
+              <ProjectRow key={project.slug} project={project} />
             ))}
           </div>
         </section>
