@@ -69,13 +69,13 @@
 .controls :global(.menu-toggle),
 .controls :global(.primary-nav a),
 .controls :global(.header-social) {
-  background: rgba(8, 47, 73, 0.52);
+  background: rgba(4, 47, 87, 0.52);
 }
 
 .controls :global(.work-heading a),
 .controls :global(.text-link),
 .controls :global(.detail-links > a) {
-  background: rgba(8, 47, 73, 0.46);
+  background: rgba(4, 47, 87, 0.46);
 }
 
 .controls :global(.filter-bar button:hover),
@@ -87,7 +87,7 @@
 .controls :global(.text-link:hover),
 .controls :global(.detail-links > a:hover) {
   border-color: var(--cyan);
-  background-color: rgba(103, 212, 226, 0.16);
+  background-color: rgba(122, 216, 255, 0.16);
   color: var(--ice);
   box-shadow:
     0 7px 15px rgba(0, 13, 24, 0.28),
@@ -106,7 +106,7 @@
 }
 
 .controls :global(.primary-nav a[aria-current="page"]) {
-  border-color: rgba(103, 212, 226, 0.48);
+  border-color: rgba(122, 216, 255, 0.48);
   color: var(--ice);
   box-shadow:
     0 4px 10px rgba(0, 13, 24, 0.2),

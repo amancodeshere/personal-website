@@ -13,7 +13,7 @@ function drawScene(
   for (let i = 0; i < 68; i++) {
     const x = ((i * 0.618034 + t * 0.002) % 1) * w;
     const y = ((i * 0.4137 + t * 0.0014) % 1) * h;
-    ctx.fillStyle = i % 7 === 0 ? "#8ad3c8" : "#39757d";
+    ctx.fillStyle = i % 7 === 0 ? "#9adfff" : "#377ca6";
     ctx.beginPath();
     ctx.arc(x, y, i % 3 === 0 ? 1.3 : 0.75, 0, Math.PI * 2);
     ctx.fill();
@@ -39,7 +39,7 @@ function drawScene(
       ctx.translate(x, y);
       ctx.scale(school ? -scale : scale, scale);
       ctx.rotate(Math.cos(t * 0.45 + i * 0.3) * 0.09);
-      ctx.fillStyle = school ? "#285560" : "#437e87";
+      ctx.fillStyle = school ? "#25618d" : "#5193ba";
       ctx.beginPath();
       ctx.moveTo(12, 0);
       ctx.quadraticCurveTo(4, -6, -7, -1);
@@ -63,9 +63,9 @@ function drawScene(
   ctx.rotate(-0.24 + Math.sin(t * 0.25) * 0.09);
   const wing = Math.sin(t * 1.1) * 14;
   const skin = ctx.createLinearGradient(0, -52, 0, 48);
-  skin.addColorStop(0, "#538c91");
-  skin.addColorStop(0.48, "#245866");
-  skin.addColorStop(1, "#123a48");
+  skin.addColorStop(0, "#65a8cb");
+  skin.addColorStop(0.48, "#296b99");
+  skin.addColorStop(1, "#144571");
   ctx.fillStyle = skin;
   ctx.beginPath();
   ctx.moveTo(31, -4);

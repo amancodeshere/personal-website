@@ -263,21 +263,21 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
       <defs>
         <linearGradient id={gradientId} x1="0" x2="1" y1="0" y2="1">
           <stop
-            stopColor="#8fe5ec"
+            stopColor="#a3e5ff"
             stopOpacity={
               mode === "index" ? ".48" : mode === "home" ? ".3" : ".24"
             }
           />
           <stop
             offset=".48"
-            stopColor="#67d4e2"
+            stopColor="#60caff"
             stopOpacity={
               mode === "index" ? ".96" : mode === "home" ? ".68" : ".84"
             }
           />
           <stop
             offset="1"
-            stopColor="#b9f1f4"
+            stopColor="#ccf2ff"
             stopOpacity={
               mode === "index" ? ".52" : mode === "home" ? ".34" : ".28"
             }

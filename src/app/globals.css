@@ -8,23 +8,23 @@
 @import "@fontsource/dm-sans/latin-700.css";
 
 :root {
-  --surface-water: #083446;
-  --deep-water: #031821;
+  --surface-water: #015489;
+  --deep-water: #032347;
   --opening-light: radial-gradient(
     ellipse min(72vw, 58rem) 28rem at 10% 0%,
-    rgb(83 218 205 / 18%),
+    rgb(40 170 234 / 32%),
     transparent 85%
   );
-  --ink: #e3f3f5;
-  --muted: #a5c2cb;
-  --faint: #759ba8;
-  --ocean: #062632;
-  --deep: #041d29;
-  --panel: #0d3743;
+  --ink: #e6f4ff;
+  --muted: #bfdaea;
+  --faint: #94b8cf;
+  --ocean: #06345b;
+  --deep: #042747;
+  --panel: #0a416b;
   --line: rgba(195, 230, 237, 0.23);
   --line-strong: rgba(195, 230, 237, 0.43);
-  --cyan: #67d4e2;
-  --ice: #effafb;
+  --cyan: #7ad8ff;
+  --ice: #f3fbff;
   --type-family: "DM Sans", Arial, sans-serif;
   --type-artwork: "Barlow Condensed", Impact, sans-serif;
   --type-body: 400 1rem / 1.7 var(--type-family);
@@ -146,7 +146,7 @@ svg {
 .primary-nav a[aria-current="location"],
 .header-social:hover {
   color: var(--ice);
-  background: rgba(103, 212, 226, 0.07);
+  background: rgba(122, 216, 255, 0.07);
 }
 .header-social {
   gap: 7px;
@@ -211,12 +211,12 @@ svg {
   background:
     radial-gradient(
       ellipse 75vw 23rem at 15% var(--surface-depth),
-      rgb(41 106 110 / 24%),
+      rgb(11 130 201 / 25%),
       transparent
     ),
     linear-gradient(
       var(--surface-water) var(--surface-depth),
-      #062733 calc(var(--surface-depth) + 16rem),
+      #013b6b calc(var(--surface-depth) + 16rem),
       var(--deep-water) calc(var(--surface-depth) + 52rem)
     );
 }
@@ -237,8 +237,8 @@ svg {
   z-index: -1;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 15% -20%, #437e84, transparent 63%),
-    linear-gradient(130deg, #105064, #082f46 68%, #06283c);
+    radial-gradient(ellipse at 58% -18%, #1fabe2, transparent 72%),
+    linear-gradient(145deg, #074d75, #047cbb 48%, #013667);
 }
 .hero-art::before {
   content: "";
@@ -256,11 +256,11 @@ svg {
   background: conic-gradient(
     from 90deg at 10% -36%,
     transparent 0deg 30deg,
-    rgb(168 248 225 / 19%) 36deg,
+    rgb(183 239 255 / 25%) 36deg,
     transparent 44deg 51deg,
-    rgb(132 232 218 / 28%) 57deg,
+    rgb(145 225 255 / 34%) 57deg,
     transparent 65deg 71deg,
-    rgb(163 240 225 / 17%) 76deg,
+    rgb(195 240 255 / 22%) 76deg,
     transparent 83deg
   );
   mask-image: linear-gradient(black, rgb(0 0 0 / 72%) 60%, transparent);
@@ -489,8 +489,8 @@ svg {
 .project-visual-link {
   display: block;
   overflow: hidden;
-  border: 1px solid #346473;
-  border-top-color: #80b9ba;
+  border: 1px solid #316b91;
+  border-top-color: #84c2e4;
   background: var(--panel);
   transform: perspective(1200px)
     translate3d(var(--gallery-travel, 0px), var(--gallery-lift, 0px), 0)
@@ -816,7 +816,7 @@ svg {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at center, rgb(6 42 65 / 72%), transparent 68%),
+    radial-gradient(ellipse at center, rgb(2 42 84 / 69%), transparent 68%),
     linear-gradient(to bottom, transparent 36%, var(--surface-water));
 }
 .detail-overview {
@@ -1291,11 +1291,11 @@ svg {
   aspect-ratio: 1;
   margin-right: 4px;
   color: var(--ice);
-  border: 1px solid #6ba8b0;
-  border-top-color: #b0e2dd;
+  border: 1px solid #79b6d9;
+  border-top-color: #c1eaff;
   background: radial-gradient(
     ellipse at 30% 10%,
-    rgb(108 228 221 / 12%),
+    rgb(116 210 255 / 12%),
     transparent 65%
   );
   border-radius: 50%;
@@ -1363,7 +1363,7 @@ svg {
   z-index: -1;
   background:
     var(--opening-light),
-    linear-gradient(160deg, #093541, var(--deep-water) 68%);
+    linear-gradient(160deg, #054775, var(--deep-water) 68%);
 }
 .interior-water .pelagic-scene {
   position: absolute;
