@@ -18,10 +18,10 @@
       "line-strong": { "role": "neutral", "displayName": "Strong Rule", "canonical": "rgba(195, 230, 237, 0.43)", "tonalRamp": ["rgba(195,230,237,.08)", "rgba(195,230,237,.13)", "rgba(195,230,237,.2)", "rgba(195,230,237,.31)", "rgba(195,230,237,.43)", "rgba(195,230,237,.55)", "rgba(195,230,237,.7)", "rgba(195,230,237,.86)"] }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Oversized Barlow Condensed name strip and strongest page headings." },
-      "headline": { "displayName": "Headline", "purpose": "Section, project, and interior-page headings in Barlow Condensed." },
+      "display": { "displayName": "Display", "purpose": "Large DM Sans name strip and page titles." },
+      "headline": { "displayName": "Headline", "purpose": "Shared DM Sans section headings across the portfolio." },
       "body": { "displayName": "Body", "purpose": "Navigation, project details, and reading text in DM Sans." },
-      "editorial": { "displayName": "Editorial", "purpose": "Centered About statement and longer editorial summaries in Georgia." },
+      "editorial": { "displayName": "Editorial", "purpose": "Centered DM Sans About statement with a cyan italic accent." },
       "label": { "displayName": "Label", "purpose": "Compact metadata, category, and location." }
     },
     "shadows": [],
@@ -84,16 +84,16 @@
     {
       "name": "Name Strip",
       "kind": "custom",
-      "description": "Monumental uppercase name strip below the hero current field.",
-      "html": "<div class=\"ds-name-strip\"><h1>AMAN SHARMA</h1></div>",
-      "css": ".ds-name-strip { padding: 12px 0 8px; border-bottom: 1px solid rgba(195,230,237,.23); } .ds-name-strip h1 { margin: 0; color: #effafb; font: 900 clamp(84px, 17.2vw, 286px)/.76 'Barlow Condensed', Impact, sans-serif; letter-spacing: -.045em; white-space: nowrap; }"
+      "description": "Large name strip below the hero current field.",
+      "html": "<div class=\"ds-name-strip\"><h1>Aman Sharma</h1></div>",
+      "css": ".ds-name-strip { padding: 12px 0 8px; border-bottom: 1px solid rgba(195,230,237,.23); } .ds-name-strip h1 { margin: 0; color: #effafb; font: 700 clamp(2.75rem, 1.45rem + 7.6vw, 8rem)/1.04 'DM Sans', Arial, sans-serif; letter-spacing: -.035em; overflow-wrap: anywhere; }"
     },
     {
       "name": "Centered About Panel",
       "kind": "custom",
       "description": "Compact centered editorial statement between the name strip and work stage.",
-      "html": "<section class=\"ds-about\"><h2>ABOUT</h2><p>I’m a software engineering student at UNSW, building across <em>software and machine learning.</em></p></section>",
-      "css": ".ds-about { width: min(100%, 700px); margin: 0 auto; padding: clamp(30px, 5vw, 62px) clamp(22px, 5vw, 64px); border-inline: 1px solid rgba(195,230,237,.43); background: #062a41; text-align: center; } .ds-about h2 { margin: 0 0 22px; color: #effafb; font: 700 12px/1 'DM Sans', Arial, sans-serif; letter-spacing: .09em; text-transform: uppercase; } .ds-about p { margin: 0; color: #effafb; font: 400 clamp(27px, 3.3vw, 42px)/1.28 Georgia, 'Times New Roman', serif; } .ds-about em { color: #67d4e2; font-style: normal; }"
+      "html": "<section class=\"ds-about\"><h2>About</h2><p>I’m a software engineering student at UNSW, building across <em>software and machine learning.</em></p></section>",
+      "css": ".ds-about { width: min(100%, 700px); margin: 0 auto; padding: clamp(30px, 5vw, 62px) clamp(22px, 5vw, 64px); border-inline: 1px solid rgba(195,230,237,.43); background: #062a41; text-align: center; } .ds-about h2 { margin: 0 0 22px; color: #effafb; font: 700 clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem)/1.16 'DM Sans', Arial, sans-serif; letter-spacing: -.025em; } .ds-about p { margin: 0; color: #effafb; font: 500 clamp(1.5rem, 1.2rem + 1.2vw, 2.375rem)/1.35 'DM Sans', Arial, sans-serif; text-wrap: balance; } .ds-about em { color: #67d4e2; }"
     },
     {
       "name": "Project Media Frame",
@@ -108,15 +108,15 @@
       "kind": "custom",
       "description": "Three-column period, role, and organization row separated by fine rules.",
       "html": "<article class=\"ds-experience\"><span>May 2026 – Present</span><b>Software Engineer – Perception</b><span>sUNSWim Robotics, UNSW</span></article>",
-      "css": ".ds-experience { display: grid; grid-template-columns: minmax(110px,.6fr) 1.1fr 1fr; align-items: baseline; gap: 20px; padding: 15px 0; border-top: 1px solid rgba(195,230,237,.23); border-bottom: 1px solid rgba(195,230,237,.23); color: #a5c2cb; font: 400 11px/1.5 'DM Sans', Arial, sans-serif; } .ds-experience b { color: #effafb; font-size: 15px; font-weight: 500; }"
+      "css": ".ds-experience { display: grid; grid-template-columns: minmax(110px,.6fr) 1.1fr 1fr; align-items: baseline; gap: 20px; padding: 15px 0; border-top: 1px solid rgba(195,230,237,.23); border-bottom: 1px solid rgba(195,230,237,.23); color: #a5c2cb; font: 400 .8125rem/1.5 'DM Sans', Arial, sans-serif; } .ds-experience b { color: #effafb; font-size: 1.125rem; font-weight: 600; }"
     },
     {
       "name": "Radial Contact Invitation",
       "kind": "custom",
       "refersTo": "contact-invitation",
       "description": "Large mail link with a pale circle that expands on hover or keyboard focus.",
-      "html": "<a class=\"ds-contact-invitation\" href=\"mailto:amancodinghere@gmail.com\"><h2>LET’S TALK.</h2><span aria-hidden=\"true\">↗</span></a>",
-      "css": ".ds-contact-invitation { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; gap: 24px; overflow: hidden; padding: 20px 0; color: #effafb; text-decoration: none; } .ds-contact-invitation::before { position: absolute; inset: 0; z-index: -1; background: #effafb; clip-path: circle(0% at 88% 50%); content: ''; transition: clip-path .7s cubic-bezier(.16,1,.3,1); } .ds-contact-invitation:hover::before, .ds-contact-invitation:focus-visible::before { clip-path: circle(115% at 88% 50%); } .ds-contact-invitation h2 { margin: 0; font: 900 clamp(76px,16vw,240px)/.7 'Barlow Condensed',Impact,sans-serif; letter-spacing: -.06em; transition: color .25s; } .ds-contact-invitation span { display: grid; place-items: center; width: clamp(90px,16vw,220px); aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; font-size: clamp(28px,5vw,60px); transition: color .25s,transform .7s cubic-bezier(.16,1,.3,1); } .ds-contact-invitation:hover h2, .ds-contact-invitation:focus-visible h2, .ds-contact-invitation:hover span, .ds-contact-invitation:focus-visible span { color: #082f49; } .ds-contact-invitation:hover span, .ds-contact-invitation:focus-visible span { transform: rotate(45deg); }"
+      "html": "<a class=\"ds-contact-invitation\" href=\"mailto:amancodinghere@gmail.com\"><h2>Let’s talk.</h2><span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-contact-invitation { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; gap: 24px; overflow: hidden; padding: 20px 0; color: #effafb; text-decoration: none; } .ds-contact-invitation::before { position: absolute; inset: 0; z-index: -1; background: #effafb; clip-path: circle(0% at 88% 50%); content: ''; transition: clip-path .7s cubic-bezier(.16,1,.3,1); } .ds-contact-invitation:hover::before, .ds-contact-invitation:focus-visible::before { clip-path: circle(115% at 88% 50%); } .ds-contact-invitation h2 { margin: 0; font: 700 clamp(2.25rem, 1.35rem + 5vw, 6rem)/1.06 'DM Sans', Arial, sans-serif; letter-spacing: -.035em; transition: color .25s; } .ds-contact-invitation span { display: grid; place-items: center; width: clamp(90px,16vw,220px); aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; font-size: clamp(28px,5vw,60px); transition: color .25s,transform .7s cubic-bezier(.16,1,.3,1); } .ds-contact-invitation:hover h2, .ds-contact-invitation:focus-visible h2, .ds-contact-invitation:hover span, .ds-contact-invitation:focus-visible span { color: #082f49; } .ds-contact-invitation:hover span, .ds-contact-invitation:focus-visible span { transform: rotate(45deg); }"
     }
   ]
 }

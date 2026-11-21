@@ -1,10 +1,9 @@
-@import "@fontsource/barlow-condensed/700.css";
-@import "@fontsource/barlow-condensed/800.css";
-@import "@fontsource/barlow-condensed/900.css";
-@import "@fontsource/dm-sans/400.css";
-@import "@fontsource/dm-sans/500.css";
-@import "@fontsource/dm-sans/600.css";
-@import "@fontsource/dm-sans/700.css";
+@import "@fontsource/barlow-condensed/latin-900.css";
+@import "@fontsource/dm-sans/latin-400.css";
+@import "@fontsource/dm-sans/latin-500.css";
+@import "@fontsource/dm-sans/latin-500-italic.css";
+@import "@fontsource/dm-sans/latin-600.css";
+@import "@fontsource/dm-sans/latin-700.css";
 
 :root {
   --ink: #e3f3f5;
@@ -17,12 +16,23 @@
   --line-strong: rgba(195, 230, 237, 0.43);
   --cyan: #67d4e2;
   --ice: #effafb;
-  --serif: Georgia, "Times New Roman", serif;
-  --display: "Barlow Condensed", Impact, sans-serif;
-  --body: "DM Sans", Arial, sans-serif;
-  --project-title-type: 600 clamp(21px, 2.1vw, 28px) / 1.25 var(--body);
-  --detail-summary-type: 400 clamp(17px, 2vw, 24px) / 1.45 var(--serif);
-  --detail-section-type: 800 clamp(42px, 6vw, 72px) / 0.88 var(--display);
+  --type-family: "DM Sans", Arial, sans-serif;
+  --type-artwork: "Barlow Condensed", Impact, sans-serif;
+  --type-body: 400 1rem / 1.7 var(--type-family);
+  --type-meta: 400 0.8125rem / 1.5 var(--type-family);
+  --type-label: 600 0.75rem / 1.5 var(--type-family);
+  --type-control: 600 0.875rem / 1.4 var(--type-family);
+  --type-subheading: 600 1.125rem / 1.35 var(--type-family);
+  --type-card-title: 600 clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem) / 1.25
+    var(--type-family);
+  --type-section-title: 700 clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem) / 1.16
+    var(--type-family);
+  --type-page-title: 700 clamp(2.75rem, 1.65rem + 4.5vw, 6rem) / 1.06
+    var(--type-family);
+  --type-lede: 400 clamp(1.125rem, 1rem + 0.55vw, 1.375rem) / 1.55
+    var(--type-family);
+  --type-contact-title: 700 clamp(2.25rem, 1.35rem + 5vw, 6rem) / 1.06
+    var(--type-family);
   --frame: clamp(16px, 2.7vw, 42px);
 }
 * {
@@ -37,8 +47,7 @@ body {
   overflow-x: clip;
   color: var(--ink);
   background: var(--ocean);
-  font: 16px/1.7 var(--body);
-  -webkit-font-smoothing: antialiased;
+  font: var(--type-body);
 }
 a {
   color: inherit;
@@ -100,12 +109,13 @@ svg {
   line-height: 1.2;
 }
 .brand-name b {
-  font: 700 14px/1.2 var(--body);
+  font: var(--type-control);
+  font-weight: 700;
 }
 .brand-name span {
   margin-top: 5px;
   color: var(--muted);
-  font-size: 12px;
+  font: var(--type-meta);
 }
 .primary-nav {
   display: flex;
@@ -118,7 +128,6 @@ svg {
   padding-inline: clamp(12px, 1.8vw, 24px);
 
   color: var(--muted);
-  font-size: 14px;
   transition:
     color 0.18s,
     background 0.18s;
@@ -153,7 +162,7 @@ svg {
 }
 .site-footer > span {
   color: var(--muted);
-  font-size: 13px;
+  font: var(--type-meta);
 }
 .footer-links {
   display: flex;
@@ -164,7 +173,7 @@ svg {
   gap: 6px;
   align-items: center;
   color: var(--muted);
-  font-size: 13px;
+  font: var(--type-meta);
 }
 .footer-links a:hover,
 .back-top:hover {
@@ -184,7 +193,7 @@ svg {
   align-items: center;
   gap: 8px;
   color: var(--muted);
-  font-size: 12px;
+  font: var(--type-meta);
 }
 
 /* Home: current field and title strip */
@@ -233,7 +242,8 @@ svg {
 .hero h1 {
   margin: 0;
   color: var(--ice);
-  font: 700 clamp(48px, 9.6vw, 148px)/1.06 var(--body);
+  font: 700 clamp(2.75rem, 1.45rem + 7.6vw, 8rem) / 1.04 var(--type-family);
+  overflow-wrap: anywhere;
   letter-spacing: -0.035em;
 }
 .hero h1 span {
@@ -246,10 +256,12 @@ svg {
   min-height: 60px;
   gap: 18px;
   color: var(--muted);
-  font-size: 13px;
+  font: var(--type-meta);
 }
 .hero-meta > span:first-child {
   color: var(--ice);
+  font: var(--type-body);
+  font-weight: 500;
 }
 .hero-meta svg,
 .text-link svg {
@@ -283,23 +295,25 @@ svg {
 .about-copy h2 {
   margin: 0 0 22px;
   color: var(--ice);
-  font: 700 clamp(30px, 3.5vw, 44px)/1.15 var(--body);
+  font: var(--type-section-title);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 .about-lead {
   margin: 0;
   color: var(--ice);
-  font: 500 clamp(26px, 3.1vw, 38px)/1.4 var(--body);
+  font: 500 clamp(1.5rem, 1.2rem + 1.2vw, 2.375rem) / 1.35 var(--type-family);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 .about-lead em {
   color: var(--cyan);
-  font-weight: 400;
 }
 .about-body {
   max-width: 62ch;
   margin: 22px auto 0;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
+  text-wrap: pretty;
 }
 .about-body p {
   margin: 0;
@@ -313,9 +327,6 @@ svg {
   gap: 10px;
   margin-top: 22px;
   color: var(--ice);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
 }
 
 /* Work stage: images remain in ordinary document flow */
@@ -335,8 +346,8 @@ svg {
   height: 100vh;
   margin: 0 0 -100vh;
   color: rgba(168, 217, 226, 0.15);
-  font: 900 clamp(100px, 24vw, 300px)/0.78 var(--display);
-  letter-spacing: -0.05em;
+  font: 900 clamp(100px, 24vw, 300px)/0.78 var(--type-artwork);
+  letter-spacing: -0.04em;
   pointer-events: none;
 }
 .work-letter-wall span {
@@ -358,16 +369,14 @@ svg {
   gap: 10px;
   margin-bottom: 8px;
   color: var(--ice);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
 }
 .work-heading a:hover {
   color: var(--cyan);
 }
 .work-heading a > span {
   color: var(--muted);
-  font-size: 9px;
+  font: var(--type-meta);
+  font-variant-numeric: tabular-nums;
 }
 .work-heading a svg {
   width: 16px;
@@ -448,7 +457,7 @@ svg {
   gap: 10px;
   align-items: center;
   color: var(--muted);
-  font-size: 12px;
+  font: var(--type-meta);
 }
 .project-row-meta > span:first-child {
   color: var(--cyan);
@@ -456,7 +465,9 @@ svg {
 .project-row-copy > h3 {
   margin: 5px 0 0;
   color: var(--ice);
-  font: var(--project-title-type);
+  font: var(--type-card-title);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
   letter-spacing: -0.015em;
 }
 .project-row-copy > h3 a:hover {
@@ -466,8 +477,6 @@ svg {
   max-width: 48ch;
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
 }
 .tag-list,
 .project-row .text-link {
@@ -502,7 +511,9 @@ svg {
 .section-heading h2 {
   margin: 0;
   color: var(--ice);
-  font: 700 clamp(30px, 3.5vw, 44px)/1.15 var(--body);
+  font: var(--type-section-title);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 .experience-feature {
   margin: 22px 0 clamp(64px, 9vw, 120px);
@@ -533,12 +544,13 @@ svg {
   align-items: center;
   gap: 18px;
   color: var(--muted);
-  font-size: 11px;
+  font: var(--type-meta);
 }
 .contact-section h2 {
   margin: clamp(28px, 4vw, 56px) 0;
   color: var(--ice);
-  font: 700 clamp(44px, 7vw, 110px)/1.05 var(--body);
+  font: var(--type-contact-title);
+  overflow-wrap: anywhere;
   letter-spacing: -0.035em;
 }
 .contact-section h2 em {
@@ -550,10 +562,12 @@ svg {
   align-items: center;
   gap: 13px;
   color: var(--ice);
-  font-size: clamp(18px, 2.4vw, 31px);
+  font: var(--type-subheading);
+  overflow-wrap: anywhere;
 }
 .contact-email svg {
   width: 26px;
+  flex: 0 0 auto;
   fill: none;
   stroke: var(--cyan);
   stroke-width: 1.4;
@@ -579,23 +593,39 @@ svg {
 .page-intro {
   padding: clamp(66px, 10vw, 140px) 0 32px;
 }
+.project-index-content .page-intro {
+  position: relative;
+  isolation: isolate;
+}
+.project-index-content .page-intro::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(-1 * var(--frame));
+  background: linear-gradient(
+    transparent,
+    rgb(8 47 73 / 85%) 26% 87%,
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+}
 .page-note {
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font: var(--type-label);
+  letter-spacing: 0.06em;
 }
 .page-intro h1,
 .not-found h1 {
   margin: 0;
   color: var(--ice);
-  font: 900 clamp(65px, 12vw, 165px)/0.78 var(--display);
+  font: var(--type-page-title);
   letter-spacing: -0.04em;
-  text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 .page-intro h1 em,
 .not-found h1 em {
   color: var(--cyan);
-  font-style: normal;
+  font-weight: 500;
 }
 .intro-foot {
   display: flex;
@@ -608,12 +638,13 @@ svg {
   max-width: 52ch;
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font: var(--type-lede);
+  text-wrap: pretty;
 }
 .intro-foot span {
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font: var(--type-label);
+  letter-spacing: 0.06em;
 }
 .catalogue-group {
   margin-top: clamp(40px, 5vw, 72px);
@@ -623,7 +654,9 @@ svg {
   padding-top: 18px;
 
   color: var(--ice);
-  font: 700 clamp(30px, 3.5vw, 44px)/1.15 var(--body);
+  font: var(--type-section-title);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 .filter-bar {
   display: flex;
@@ -639,7 +672,6 @@ svg {
   border: 1px solid var(--line);
   background: var(--ocean);
   color: var(--muted);
-  font-size: 11px;
   cursor: pointer;
 }
 .filter-bar button:hover,
@@ -661,16 +693,17 @@ svg {
   display: flex;
   gap: 9px;
   align-items: center;
+  flex-wrap: wrap;
   margin: 0 0 30px;
   color: var(--muted);
-  font-size: 11px;
+  font: var(--type-meta);
 }
 .detail-breadcrumb a:hover {
   color: var(--ice);
 }
 .detail-index {
   color: var(--cyan);
-  font-size: 11px;
+  font-variant-numeric: tabular-nums;
 }
 .detail-heading {
   padding: 0 0 30px;
@@ -678,35 +711,36 @@ svg {
 .detail-heading h1 {
   margin: 0;
   color: var(--ice);
-  font: 900 clamp(60px, 11vw, 145px)/0.8 var(--display);
+  max-width: 24ch;
+  font: var(--type-page-title);
   letter-spacing: -0.04em;
-  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 .detail-summary {
-  max-width: 62ch;
+  max-width: 60ch;
   margin: 22px 0 0;
   color: var(--muted);
-  font: var(--detail-summary-type);
+  font: var(--type-lede);
+  text-wrap: pretty;
 }
 .project-detail > .project-art {
   margin: 22px 0 44px;
 }
 .detail-overview {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
   padding: 23px 0;
 }
 .meta-label {
   color: var(--cyan);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font: var(--type-label);
+  letter-spacing: 0.06em;
 }
 .detail-overview > div > p {
   margin: 7px 0 0;
   color: var(--ink);
-  font-size: 13px;
 }
 .detail-tags {
   display: flex;
@@ -718,13 +752,13 @@ svg {
   padding: 2px 6px;
   border: 1px solid var(--line);
   color: var(--muted);
-  font-size: 10px;
+  font: var(--type-meta);
+  overflow-wrap: anywhere;
 }
 .detail-links > a {
   display: inline-block;
   margin: 7px 12px 0 0;
   color: var(--ice);
-  font-size: 12px;
 }
 .detail-links > a span {
   color: var(--muted);
@@ -732,7 +766,7 @@ svg {
 .repository-note {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 11px;
+  font: var(--type-meta);
 }
 .repository-note a {
   color: var(--cyan);
@@ -750,15 +784,16 @@ svg {
 .timeline-section > h2 {
   margin: 0 0 24px;
   color: var(--ice);
-  font: var(--detail-section-type);
+  font: var(--type-section-title);
   letter-spacing: -0.025em;
-  text-transform: uppercase;
+  text-wrap: balance;
 }
 .detail-story > div {
-  max-width: 70ch;
+  max-width: 68ch;
 }
 .detail-story p {
-  margin: 0 0 15px;
+  margin: 0 0 1em;
+  text-wrap: pretty;
 }
 .detail-story p:last-child {
   margin-bottom: 0;
@@ -776,7 +811,7 @@ svg {
   min-height: 44px;
   align-items: center;
   color: var(--cyan);
-  font-size: 14px;
+  font: var(--type-control);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -788,19 +823,19 @@ svg {
 }
 .approach-list article > span {
   color: var(--cyan);
-  font-size: 11px;
+  font: var(--type-meta);
+  font-variant-numeric: tabular-nums;
 }
 .approach-list h3 {
   margin: 0;
   color: var(--ice);
-  font-size: 16px;
-  font-weight: 600;
+  font: var(--type-subheading);
 }
 .approach-list p {
   max-width: 66ch;
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 15px;
+  text-wrap: pretty;
 }
 .detail-highlights dl {
   margin: 0;
@@ -813,12 +848,11 @@ svg {
 }
 .detail-highlights dt {
   color: var(--muted);
-  font-size: 12px;
+  font: var(--type-meta);
 }
 .detail-highlights dd {
   margin: 0;
   color: var(--ice);
-  font-size: 13px;
 }
 .next-project {
   display: flex;
@@ -829,14 +863,15 @@ svg {
 }
 .next-project > span {
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font: var(--type-label);
+  letter-spacing: 0.06em;
 }
 .next-project > b {
   margin-top: 5px;
   color: var(--ice);
-  font: 800 clamp(32px, 5vw, 57px)/1 var(--display);
-  text-transform: uppercase;
+  font: var(--type-section-title);
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
 }
 .next-project svg {
   position: absolute;
@@ -860,9 +895,9 @@ svg {
   max-width: 68ch;
 }
 .about-page-copy > div:last-child p {
-  margin: 0 0 16px;
+  margin: 0 0 1em;
   color: var(--muted);
-  font: 400 18px/1.75 var(--serif);
+  text-wrap: pretty;
 }
 .about-page-copy > div:last-child p:last-child {
   margin-bottom: 0;
@@ -882,20 +917,19 @@ svg {
 .education-list h3 {
   margin: 0;
   color: var(--ice);
-  font-size: 15px;
+  font: var(--type-subheading);
 }
 .education-list p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 12px;
 }
 .education-list > article > span,
 .education-list time {
   color: var(--muted);
-  font-size: 11px;
+  font: var(--type-meta);
 }
 .education-list time {
-  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 .skill-groups article {
   display: grid;
@@ -906,8 +940,7 @@ svg {
 .skill-groups h3 {
   margin: 0;
   color: var(--ice);
-  font-size: 13px;
-  font-weight: 600;
+  font: var(--type-subheading);
 }
 .skill-groups article > div {
   display: flex;
@@ -916,7 +949,8 @@ svg {
 }
 .skill-groups article > div span {
   color: var(--muted);
-  font-size: 12px;
+  font: var(--type-control);
+  font-weight: 400;
 }
 .timeline-section {
   padding-top: 60px;
@@ -929,17 +963,19 @@ svg {
 }
 .timeline-date {
   color: var(--cyan);
-  font-size: 11px;
+  font: var(--type-meta);
+  font-variant-numeric: tabular-nums;
 }
 .timeline-main h3 {
   margin: 0;
   color: var(--ice);
-  font: 700 25px/1.1 var(--display);
+  font: var(--type-card-title);
+  letter-spacing: -0.015em;
 }
 .timeline-company {
   margin: 6px 0 14px;
   color: var(--muted);
-  font-size: 12px;
+  font: var(--type-meta);
 }
 .timeline-company span {
   color: var(--cyan);
@@ -947,19 +983,19 @@ svg {
 .timeline-description {
   max-width: 68ch;
   color: var(--muted);
-  font-size: 13px;
+  text-wrap: pretty;
 }
 .timeline-main ul {
   max-width: 68ch;
   padding-left: 18px;
   color: var(--muted);
-  font-size: 12px;
+  text-wrap: pretty;
 }
 .timeline-main li {
   padding: 3px 0;
 }
 .timeline-main .experience-case-link {
-  font-size: 14px;
+  font: var(--type-control);
 }
 .not-found {
   min-height: 68vh;
@@ -989,7 +1025,6 @@ svg {
     background: transparent;
     color: var(--ice);
     cursor: pointer;
-    font-size: 11px;
   }
   .menu-toggle svg {
     width: 18px;
@@ -1072,9 +1107,6 @@ svg {
     align-items: start;
     flex-direction: column;
   }
-  .contact-top {
-    font-size: 12px;
-  }
   .contact-bottom {
     align-items: start;
     flex-direction: column;
@@ -1086,11 +1118,11 @@ svg {
     align-items: start;
     flex-direction: column;
   }
-  .page-intro h1 {
-    font-size: clamp(60px, 16vw, 112px);
-  }
   .detail-overview {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .detail-links {
+    grid-column: 1 / -1;
   }
   .education-list article {
     grid-template-columns: 1fr auto;
@@ -1135,24 +1167,16 @@ svg {
   }
 }
 
-.detail-heading h1,
-.project-row-copy > h3 {
-  overflow-wrap: anywhere;
-}
-@media (max-width: 760px) {
-  .detail-heading h1 {
-    font-size: clamp(44px, 14vw, 96px);
-  }
-}
-
 /* A radial invitation mirrors the reference's closing circle without hiding contact details. */
 .contact-invitation {
+  --orbit-size: clamp(90px, 16vw, 220px);
+  --orbit-gap: 24px;
   position: relative;
   isolation: isolate;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: var(--orbit-gap);
   margin-block: clamp(28px, 4vw, 56px);
   padding-block: 20px;
   overflow: hidden;
@@ -1178,7 +1202,7 @@ svg {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  width: clamp(90px, 16vw, 220px);
+  width: var(--orbit-size);
   aspect-ratio: 1;
   margin-right: 4px;
   color: var(--ice);
@@ -1206,10 +1230,8 @@ svg {
 }
 @media (max-width: 760px) {
   .contact-invitation {
-    gap: 12px;
-  }
-  .contact-orbit {
-    width: clamp(62px, 17vw, 110px);
+    --orbit-gap: 12px;
+    --orbit-size: clamp(62px, 17vw, 110px);
   }
 }
 
@@ -1220,8 +1242,10 @@ svg {
   inset: 0;
   display: flex;
   align-items: center;
+  padding-inline-end: calc(var(--orbit-size) + var(--orbit-gap) + 4px);
   color: var(--ocean);
-  font: 700 clamp(44px, 7vw, 110px)/1.05 var(--body);
+  font: var(--type-contact-title);
+  overflow-wrap: anywhere;
   letter-spacing: -0.035em;
   clip-path: circle(0% at 88% 50%);
   transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);

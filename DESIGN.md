@@ -17,37 +17,71 @@ colors:
 typography:
   display:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "clamp(48px, 9.6vw, 148px)"
+    fontSize: "clamp(2.75rem, 1.45rem + 7.6vw, 8rem)"
+    fontWeight: 700
+    lineHeight: 1.04
+    letterSpacing: "-0.035em"
+  page-title:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(2.75rem, 1.65rem + 4.5vw, 6rem)"
     fontWeight: 700
     lineHeight: 1.06
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.04em"
+  case-study-title:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(2.5rem, 1.4rem + 3.5vw, 5rem)"
+    fontWeight: 700
+    lineHeight: 1.06
+    letterSpacing: "-0.04em"
   headline:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "clamp(30px, 3.5vw, 44px)"
+    fontSize: "clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem)"
     fontWeight: 700
-    lineHeight: 1.15
+    lineHeight: 1.16
+    letterSpacing: "-0.025em"
   project-title:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "clamp(21px, 2.1vw, 28px)"
+    fontSize: "clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem)"
     fontWeight: 600
     lineHeight: 1.25
+  subheading:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.35
   body:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "16px"
+    fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.7
+  lede:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(1.125rem, 1rem + 0.55vw, 1.375rem)"
+    fontWeight: 400
+    lineHeight: 1.55
   editorial:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "clamp(26px, 3.1vw, 38px)"
+    fontSize: "clamp(1.5rem, 1.2rem + 1.2vw, 2.375rem)"
     fontWeight: 500
-    lineHeight: 1.4
+    lineHeight: 1.35
+  contact-title:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "clamp(2.25rem, 1.35rem + 5vw, 6rem)"
+    fontWeight: 700
+    lineHeight: 1.06
+  metadata:
+    fontFamily: "DM Sans, Arial, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.5
   label:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "12px"
-    fontWeight: 500
+    fontSize: "0.75rem"
+    fontWeight: 600
+    lineHeight: 1.5
   control:
     fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "14px"
+    fontSize: "0.875rem"
     fontWeight: 600
     lineHeight: 1.4
 rounded:
@@ -95,7 +129,7 @@ The current carries into the project stage: a repeated W/O/R/K wall stays behind
 **Key Characteristics:**
 
 - Deep ocean surfaces, icy text, and cyan signals without decorative separator bars.
-- Friendly DM Sans headings and readable body text; condensed letters remain in decorative artwork and interior editorial headings.
+- DM Sans headings and prose with cyan italics at select editorial moments and condensed lettering in the work artwork.
 - Current lines and scroll-linked image motion give the page a single sense of movement.
 - Real project media and clearly labelled studies carry the subject matter.
 
@@ -128,21 +162,13 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 
 ## Typography
 
-**Landing and Gallery Font:** DM Sans (with Arial, sans-serif fallbacks)<br />
-**Body Font:** DM Sans (with Arial, sans-serif fallbacks)  
-**Editorial Font:** Georgia (with Times New Roman, serif fallbacks)
+DM Sans carries titles, prose, and controls in their written case. Cyan DM Sans Medium Italic gives the homepage statement, split case-study titles, and error heading a distinct voice. Barlow Condensed Black sets the decorative W/O/R/K wall. Authored project diagrams keep their own text styling.
 
-**Character:** DM Sans gives the landing page and project catalogue an open voice with natural casing and comfortable leading. Barlow Condensed remains in decorative lettering and interior editorial headings; Georgia remains in longer interior summaries.
-
-### Hierarchy
-
-- **Hero** (700, 48–148px, 1.06 leading): Natural-case name with room to wrap.
-- **Topic / section** (700, 30–44px, 1.15 leading): Larger than project titles at every breakpoint.
-- **Project title** (600, 21–28px, 1.25 leading): Natural case; no compressed mobile override.
-- **Controls** (600, 14px, 1.4 leading): Raised surfaces with a minimum 44px target.
-- **Body** (400, 16px, 1.7 leading): Landing prose with a 62ch reading measure.
-- **About lead** (500, 26–38px, 1.4 leading): Centered DM Sans statement.
-- **Metadata** (400–500, 12–13px): Categories, dates, and supporting text.
+- **Display** uses 700 weight for the name strip and contact invitation. Interior titles range from 44–96px, with a 40–80px scale where a case-study title shares a row with media.
+- **Headings** use 28–44px for sections, 20–28px for project and feature titles, and 18px for smaller subheadings at the default browser text size.
+- **Reading** uses 16px DM Sans with 1.7 leading and a measure of approximately 62–68ch. Ledes use 18–22px with 1.55 leading. The centered homepage statement uses 24–38px.
+- **Interface text** uses 14px semibold controls, 13px supporting metadata, and 12px semibold labels. Tabular numerals align dates, indexes, and comparison values.
+- **Font delivery** uses self-hosted Latin subsets and swap loading. Type sizes use rem-based bounds to respond to the reader’s text size.
 
 ## Layout
 
@@ -168,7 +194,7 @@ The header has a compact nameplate and individually spaced Projects/About/Experi
 
 The SVG current field spans the viewport above a readable natural-case name. Its lines drift and respond to pointer movement. The hero keeps the full name as the dominant typographic element, with the engineering tagline and Sydney location below.
 
-The Projects and Games indexes use a shared ocean surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). Topic headings sit directly on the currents; compact ocean backplates fit the project titles instead of filling each card's width. Filters retain their readable surfaces. A quieter shared field runs behind the home About, work, Experience, and Contact sections. Its transparent section surfaces reveal the same current language without adding an animation instance to each section. Individual project details retain their plain ocean background.
+The Projects and Games indexes use a shared ocean surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). The Projects and Games introductions use a soft ocean-blue backdrop to keep the headings and supporting text readable against the currents; compact ocean backplates fit the project titles instead of filling each card's width. Filters retain their readable surfaces. A quieter shared field runs behind the home About, work, Experience, and Contact sections. Its transparent section surfaces reveal the same current language without adding an animation instance to each section. Individual project details retain their plain ocean background.
 
 ### About Panel
 
@@ -182,7 +208,7 @@ The home stage puts the repeating W/O/R/K wall behind alternating, scroll-linked
 
 The homepage and Experience index use the same linked sUNSWim feature, with a validation frame beside the role, period, and article link. The image stacks above the copy on narrow screens. The Experience index follows the feature with the other roles and education.
 
-The article uses the same Barlow Condensed display headings, Georgia introduction, and DM Sans body as the project detail pages. The hero pairs the introduction with a full validation frame. A chapter list sits alongside the article on wide screens and moves into the reading flow on mobile. Technical prose uses a narrower measure than the figures. The detection frames and sample dashboard have editorial captions and open at full resolution. The mission workflow uses three labelled stages that stack on narrow screens.
+The article shares the project detail typography, with a narrower title scale beside the hero image and a cyan italic accent. The hero pairs the introduction with a full validation frame. A chapter list sits alongside the article on wide screens and moves into the reading flow on mobile. Technical prose uses a narrower measure than the figures. The detection frames and sample dashboard have editorial captions and open at full resolution. The mission workflow uses three labelled stages that stack on narrow screens.
 
 ### Contact Invitation
 

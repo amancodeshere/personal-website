@@ -109,7 +109,7 @@ for (const [slug, reason] of [
   test(`${slug} respects the owner's source-sharing restriction`, async () => {
     const html = await (await fetch(new URL(`/projects/${slug}`, base))).text();
     assert.ok(html.includes(reason));
-    assert.doesNotMatch(html, /VIEW SOURCE ON GITHUB|OPEN LIVE PROJECT/);
+    assert.doesNotMatch(html, /view source on github|open live project/i);
     assert.doesNotMatch(
       html,
       /href="https:\/\/github\.com\/amancodeshere\/(?:Toohak|toohak|job-advertisement-extraction)"/,

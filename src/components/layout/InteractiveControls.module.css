@@ -24,9 +24,7 @@
   padding: 12px 14px;
   border: 1px solid rgba(195, 230, 237, 0.28);
   border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.4;
+  font: var(--type-control);
   box-shadow:
     0 4px 10px rgba(0, 13, 24, 0.2),
     inset 0 1px 0 rgba(239, 250, 251, 0.14);

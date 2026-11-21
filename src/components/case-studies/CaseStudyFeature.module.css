@@ -24,13 +24,15 @@
 .title {
   margin: 0;
   color: var(--ice);
-  font: var(--project-title-type);
+  font: var(--type-card-title);
   letter-spacing: -0.015em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .role {
   margin: 13px 0 0;
-  font-size: 13px;
+  font: var(--type-meta);
   color: var(--muted);
 }
 
@@ -45,8 +47,7 @@
   gap: 10px;
   margin-top: 23px;
   color: var(--cyan);
-  font-size: 14px;
-  font-weight: 700;
+  font: var(--type-control);
 }
 
 .action svg {

@@ -89,7 +89,7 @@ export default async function ProjectPage({
           <span className="meta-label">LINKS</span>
           {project.liveUrl && (
             <a href={project.liveUrl} target="_blank" rel="noreferrer">
-              OPEN LIVE PROJECT{" "}
+              Open live project{" "}
               <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M4 12 12 4M5 4h7v7" />
               </svg>
@@ -97,7 +97,7 @@ export default async function ProjectPage({
           )}
           {project.githubUrl ? (
             <a href={project.githubUrl} target="_blank" rel="noreferrer">
-              VIEW SOURCE ON GITHUB{" "}
+              View source on GitHub{" "}
               <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M4 12 12 4M5 4h7v7" />
               </svg>
@@ -111,7 +111,7 @@ export default async function ProjectPage({
           )}
           {project.experienceHref && (
             <Link href={project.experienceHref}>
-              READ MY RESEARCH EXPERIENCE
+              Read my research experience
             </Link>
           )}
         </div>

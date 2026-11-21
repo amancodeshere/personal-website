@@ -13,8 +13,7 @@
   min-height: 44px;
   align-items: center;
   gap: 9px;
-  font-size: 14px;
-  font-weight: 600;
+  font: var(--type-control);
   color: var(--cyan);
 }
 
@@ -46,30 +45,32 @@
 .hero h1 {
   margin: 0;
   color: var(--ice);
-  font: 900 clamp(44px, 8.5vw, 112px)/0.84 var(--display);
+  font: var(--type-page-title);
+  font-size: clamp(2.5rem, 1.4rem + 3.5vw, 5rem);
   letter-spacing: -0.04em;
-  text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 
 .hero h1 span {
   display: block;
   color: var(--cyan);
+  font-style: italic;
+  font-weight: 500;
 }
 
 .lede {
   max-width: 42ch;
   margin: 22px 0 0;
   color: var(--muted);
-  font: var(--detail-summary-type);
+  font: var(--type-lede);
   text-wrap: pretty;
 }
 
 .byline {
   margin: clamp(20px, 4vw, 48px) 0 0;
   color: var(--ice);
-  font-size: 14px;
-  font-weight: 600;
+  font: var(--type-control);
+  font-variant-numeric: tabular-nums;
 }
 
 .byline span {
@@ -80,7 +81,7 @@
 .role {
   margin: 3px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font: var(--type-meta);
 }
 
 .figure {
@@ -109,8 +110,7 @@
 .story .figureNote {
   margin: 12px 0 0;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
+  font: var(--type-meta);
 }
 
 .editorial {
@@ -130,7 +130,7 @@
 .contents p {
   margin: 0 0 9px;
   color: var(--muted);
-  font-size: 13px;
+  font: var(--type-label);
 }
 
 .contents a {
@@ -138,7 +138,7 @@
   min-height: 44px;
   align-items: center;
   color: var(--ice);
-  font-size: 14px;
+  font: var(--type-control);
 }
 
 .story > section {
@@ -150,9 +150,8 @@
   max-width: 22ch;
   margin: 0 0 20px;
   color: var(--ice);
-  font: var(--detail-section-type);
+  font: var(--type-section-title);
   letter-spacing: -0.025em;
-  text-transform: uppercase;
   text-wrap: balance;
 }
 
@@ -192,12 +191,12 @@
 
 .flow strong {
   color: var(--cyan);
-  font-size: 17px;
+  font: var(--type-subheading);
 }
 
 .flow span {
   color: var(--ink);
-  font-size: 14px;
+  font: var(--type-body);
 }
 
 .story > .reflections {
@@ -248,10 +247,6 @@
 
   .heroCopy {
     padding-bottom: 0;
-  }
-
-  .hero h1 {
-    font-size: clamp(44px, 14vw, 96px);
   }
 }
 
