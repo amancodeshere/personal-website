@@ -237,8 +237,8 @@ svg {
   z-index: -1;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 58% -18%, #1fabe2, transparent 72%),
-    linear-gradient(145deg, #074d75, #047cbb 48%, #013667);
+    radial-gradient(ellipse 76% 24% at 53% 0%, #48bfe7, transparent 100%),
+    linear-gradient(175deg, #1183b5 0%, #085a8b 24%, #034371 64%, #013667);
 }
 .hero-art::before {
   content: "";
@@ -482,6 +482,16 @@ svg {
   min-width: 0;
 }
 @media (min-width: 761px) {
+  .project-list > .project-row {
+    display: grid;
+    align-self: stretch;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .project-visual-link {
+    align-self: center;
+  }
   .project-row:has([data-authored-study]) .project-visual-link {
     width: 88%;
   }
@@ -1164,6 +1174,12 @@ svg {
   .back-top {
     display: none;
   }
+  .home-seascape {
+    --surface-depth: clamp(20rem, 52svh, 30rem);
+  }
+  .hero {
+    padding-block: 3rem 4rem;
+  }
   .hero-meta {
     flex-direction: column;
   }
@@ -1390,4 +1406,14 @@ svg {
 }
 .marine-gallery > .pelagic-scene {
   mask-image: linear-gradient(transparent, black 12%, black 86%, transparent);
+}
+
+/* A clear water lane for the ray between the heading and the first feature. */
+.marine-gallery .experience-section > .section-heading {
+  margin-bottom: clamp(5rem, 9vw, 8rem);
+}
+@media (max-width: 760px) {
+  .home-project-list {
+    row-gap: 3rem;
+  }
 }
