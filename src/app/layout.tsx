@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { InteriorWater } from "../components/visual/InteriorWater";
 import controls from "../components/layout/InteractiveControls.module.css";
 import { SiteHeader } from "../components/layout/SiteHeader";
 import { SiteFooter } from "../components/layout/SiteFooter";
@@ -29,7 +30,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={controls.controls}>
         <SiteHeader />
-        <main id="main-content">{children}</main>
+        <main id="main-content">
+          <InteriorWater />
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>

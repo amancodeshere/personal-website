@@ -1,3 +1,4 @@
+import { PelagicScene } from "../components/visual/PelagicScene";
 import { Hero } from "../components/sections/Hero";
 import { AboutSection } from "../components/sections/AboutSection";
 import { SelectedWork } from "../components/sections/SelectedWork";
@@ -11,8 +12,11 @@ export default function HomePage() {
       <Hero />
       <OceanSurface mode="home">
         <AboutSection />
-        <ExperienceSection />
-        <SelectedWork />
+        <div className="marine-gallery">
+          <PelagicScene />
+          <ExperienceSection />
+          <SelectedWork />
+        </div>
         <ContactSection />
       </OceanSurface>
     </>

@@ -1,4 +1,3 @@
-import { PelagicScene } from "../visual/PelagicScene";
 import Link from "next/link";
 import {
   portfolioProjects,
@@ -10,7 +9,6 @@ import { GalleryMotion } from "../visual/GalleryMotion";
 export function SelectedWork() {
   return (
     <section className="work-section" id="work" aria-labelledby="work-title">
-      <PelagicScene />
       <header className="section-heading work-heading">
         <h2 id="work-title">Projects</h2>
         <div className="work-heading-links">

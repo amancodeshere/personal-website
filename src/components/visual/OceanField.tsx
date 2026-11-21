@@ -151,7 +151,13 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
         x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
       );
     };
+    const heroArt = svg.closest<HTMLElement>(".hero-art");
     const clearPointer = () => {
+      if (heroArt && pointer.current.active) {
+        heroArt.style.removeProperty("--beam-x");
+        heroArt.style.removeProperty("--beam-angle");
+        heroArt.style.removeProperty("--beam-strength");
+      }
       pointer.current.active = false;
     };
     const onPointerMove = (event: PointerEvent) => {
@@ -170,6 +176,20 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
       ) {
         clearPointer();
         return;
+      }
+      if (heroArt) {
+        const bounds = heroArt.getBoundingClientRect();
+        const horizontal = (x - bounds.left) / bounds.width;
+        const vertical = (y - bounds.top) / bounds.height;
+        heroArt.style.setProperty("--beam-x", `${(horizontal - 0.25) * 42}%`);
+        heroArt.style.setProperty(
+          "--beam-angle",
+          `${(horizontal - 0.5) * 20 + vertical * 5}deg`,
+        );
+        heroArt.style.setProperty(
+          "--beam-strength",
+          String(1 - vertical * 0.32),
+        );
       }
       const matrix = svg.getScreenCTM();
       if (!matrix) {
@@ -205,6 +225,7 @@ export function OceanField({ mode = "hero" }: { mode?: OceanFieldMode }) {
     };
     const onMotionPreference = () => {
       if (reduced.matches) {
+        clearPointer();
         pointer.current.active = false;
         pointer.current.energy = 0;
         if (frame) cancelAnimationFrame(frame);

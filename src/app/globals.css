@@ -18,9 +18,9 @@
   --ink: #e3f3f5;
   --muted: #a5c2cb;
   --faint: #759ba8;
-  --ocean: #082f49;
-  --deep: #062a41;
-  --panel: #0b3b55;
+  --ocean: #062632;
+  --deep: #041d29;
+  --panel: #0d3743;
   --line: rgba(195, 230, 237, 0.23);
   --line-strong: rgba(195, 230, 237, 0.43);
   --cyan: #67d4e2;
@@ -231,6 +231,13 @@ svg {
   inset: -6%;
   pointer-events: none;
   transform-origin: 18% 0;
+  translate: var(--beam-x, 0%) 0;
+  rotate: var(--beam-angle, 0deg);
+  opacity: var(--beam-strength, 1);
+  transition:
+    translate 450ms ease-out,
+    rotate 450ms ease-out,
+    opacity 450ms ease-out;
   background: conic-gradient(
     from 90deg at 10% -36%,
     transparent 0deg 30deg,
@@ -386,12 +393,17 @@ svg {
 
   isolation: isolate;
 }
+.marine-gallery {
+  isolation: isolate;
+}
+.marine-gallery > section {
+  position: relative;
+}
 .pelagic-scene {
   position: sticky;
   top: 0;
   display: block;
-  width: calc(100% + 2 * var(--frame));
-  margin-inline: calc(-1 * var(--frame));
+  width: 100%;
   height: 100svh;
   margin-bottom: -100svh;
   pointer-events: none;
@@ -464,7 +476,7 @@ svg {
   overflow: hidden;
   border: 1px solid #346473;
   border-top-color: #80b9ba;
-  background: #0b3b55;
+  background: var(--panel);
   transform: perspective(1200px)
     translate3d(var(--gallery-travel, 0px), var(--gallery-lift, 0px), 0)
     rotateY(var(--gallery-tilt, 0deg)) rotateZ(var(--gallery-roll, 0deg))
@@ -577,7 +589,7 @@ svg {
 }
 .contact-section {
   padding: clamp(45px, 7vw, 92px) var(--frame) clamp(52px, 8vw, 104px);
-  background: #0b3b55;
+  background: var(--panel);
 }
 .contact-top,
 .contact-bottom {
@@ -1323,4 +1335,34 @@ svg {
 .contact-invitation:hover h2,
 .contact-invitation:focus-visible h2 {
   color: var(--ice);
+}
+
+#main-content {
+  position: relative;
+  isolation: isolate;
+}
+.interior-water {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    var(--opening-light),
+    linear-gradient(160deg, #093541, var(--deep-water) 68%);
+}
+.interior-water .pelagic-scene {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  margin: 0;
+  opacity: 0.48;
+  mask-image: linear-gradient(90deg, #000 0%, #0003 16% 78%, #000 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-art::before {
+    translate: none;
+    rotate: none;
+    opacity: 1;
+  }
 }
