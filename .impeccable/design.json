@@ -18,8 +18,8 @@
       "line-strong": { "role": "neutral", "displayName": "Strong Rule", "canonical": "rgba(195, 230, 237, 0.43)", "tonalRamp": ["rgba(195,230,237,.08)", "rgba(195,230,237,.13)", "rgba(195,230,237,.2)", "rgba(195,230,237,.31)", "rgba(195,230,237,.43)", "rgba(195,230,237,.55)", "rgba(195,230,237,.7)", "rgba(195,230,237,.86)"] }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Large DM Sans name strip and page titles." },
-      "headline": { "displayName": "Headline", "purpose": "Shared DM Sans section headings across the portfolio." },
+      "display": { "displayName": "Display", "purpose": "Centered Rubik Wet Paint homepage name and DM Sans page titles." },
+      "headline": { "displayName": "Headline", "purpose": "Shared Barlow Condensed section headings across the portfolio." },
       "body": { "displayName": "Body", "purpose": "Navigation, project details, and reading text in DM Sans." },
       "editorial": { "displayName": "Editorial", "purpose": "Centered DM Sans About statement with a cyan italic accent." },
       "label": { "displayName": "Label", "purpose": "Compact metadata, category, and location." }
@@ -84,9 +84,9 @@
     {
       "name": "Name Strip",
       "kind": "custom",
-      "description": "Large name strip below the hero current field.",
+      "description": "Centered name over the animated current field.",
       "html": "<div class=\"ds-name-strip\"><h1>Aman Sharma</h1></div>",
-      "css": ".ds-name-strip { padding: 12px 0 8px; border-bottom: 1px solid rgba(195,230,237,.23); } .ds-name-strip h1 { margin: 0; color: #effafb; font: 700 clamp(2.75rem, 1.45rem + 7.6vw, 8rem)/1.04 'DM Sans', Arial, sans-serif; letter-spacing: -.035em; overflow-wrap: anywhere; }"
+      "css": ".ds-name-strip { text-align: center; } .ds-name-strip h1 { margin: 0; color: #effafb; font: 400 clamp(2.5rem, 9.7vw, 9rem)/1.14 'Rubik Wet Paint', 'DM Sans', sans-serif; overflow-wrap: anywhere; }"
     },
     {
       "name": "Centered About Panel",

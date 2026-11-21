@@ -1,3 +1,5 @@
+@import "@fontsource/rubik-wet-paint/latin-400.css";
+@import "@fontsource/barlow-condensed/latin-700.css";
 @import "@fontsource/barlow-condensed/latin-900.css";
 @import "@fontsource/dm-sans/latin-400.css";
 @import "@fontsource/dm-sans/latin-500.css";
@@ -26,7 +28,7 @@
   --type-card-title: 600 clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem) / 1.25
     var(--type-family);
   --type-section-title: 700 clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem) / 1.16
-    var(--type-family);
+    var(--type-artwork);
   --type-page-title: 700 clamp(2.75rem, 1.65rem + 4.5vw, 6rem) / 1.06
     var(--type-family);
   --type-lede: 400 clamp(1.125rem, 1rem + 0.55vw, 1.375rem) / 1.55
@@ -198,14 +200,21 @@ svg {
 
 /* Home: current field and title strip */
 .hero {
-  background: var(--ocean);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: clamp(26rem, 65svh, 48rem);
+  padding-block: 5rem;
+  position: relative;
+  isolation: isolate;
+  text-align: center;
 }
 .hero-art {
-  height: clamp(245px, 40vh, 380px);
-  margin-inline: calc(-1 * var(--frame));
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   overflow: hidden;
-  position: relative;
-  background: #0a3a55;
+  background: radial-gradient(ellipse at center, #104962, var(--deep) 78%);
 }
 .ocean-field {
   position: absolute;
@@ -237,24 +246,24 @@ svg {
   vector-effect: non-scaling-stroke;
 }
 .hero-title-wrap {
-  padding: 12px 0 8px;
+  max-width: 100%;
 }
 .hero h1 {
   margin: 0;
   color: var(--ice);
-  font: 700 clamp(2.75rem, 1.45rem + 7.6vw, 8rem) / 1.04 var(--type-family);
+  font:
+    400 clamp(2.5rem, 9.7vw, 9rem) / 1.14 "Rubik Wet Paint",
+    var(--type-family);
+  text-wrap: balance;
   overflow-wrap: anywhere;
-  letter-spacing: -0.035em;
-}
-.hero h1 span {
-  display: block;
 }
 .hero-meta {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  min-height: 60px;
-  gap: 18px;
+  gap: 0.4rem 1.5rem;
+  margin-top: 1.5rem;
   color: var(--muted);
   font: var(--type-meta);
 }
@@ -728,6 +737,8 @@ svg {
   margin: 22px 0 44px;
 }
 .detail-overview {
+  font: var(--type-control);
+  font-weight: 400;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
@@ -735,7 +746,8 @@ svg {
 }
 .meta-label {
   color: var(--cyan);
-  font: var(--type-label);
+  display: block;
+  font-weight: 600;
   letter-spacing: 0.06em;
 }
 .detail-overview > div > p {
@@ -749,15 +761,20 @@ svg {
   margin-top: 7px;
 }
 .detail-tags span {
-  padding: 2px 6px;
+  padding: 4px 8px;
   border: 1px solid var(--line);
   color: var(--muted);
-  font: var(--type-meta);
   overflow-wrap: anywhere;
+}
+.detail-links {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 7px;
 }
 .detail-links > a {
   display: inline-block;
-  margin: 7px 12px 0 0;
+  margin: 0;
   color: var(--ice);
 }
 .detail-links > a span {
@@ -766,7 +783,6 @@ svg {
 .repository-note {
   margin-top: 10px;
   color: var(--muted);
-  font: var(--type-meta);
 }
 .repository-note a {
   color: var(--cyan);
@@ -1065,15 +1081,8 @@ svg {
   .back-top {
     display: none;
   }
-  .hero-art {
-    height: 34vh;
-    min-height: 210px;
-  }
   .hero-meta {
-    min-height: 56px;
-  }
-  .hero-meta .scroll-note {
-    display: none;
+    flex-direction: column;
   }
   .about-section {
     min-height: 0;

@@ -16,11 +16,10 @@ colors:
   line-strong: "rgba(195, 230, 237, 0.43)"
 typography:
   display:
-    fontFamily: "DM Sans, Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 1.45rem + 7.6vw, 8rem)"
-    fontWeight: 700
-    lineHeight: 1.04
-    letterSpacing: "-0.035em"
+    fontFamily: "Rubik Wet Paint, DM Sans, sans-serif"
+    fontSize: "clamp(2.5rem, 9.7vw, 9rem)"
+    fontWeight: 400
+    lineHeight: 1.14
   page-title:
     fontFamily: "DM Sans, Arial, sans-serif"
     fontSize: "clamp(2.75rem, 1.65rem + 4.5vw, 6rem)"
@@ -34,7 +33,7 @@ typography:
     lineHeight: 1.06
     letterSpacing: "-0.04em"
   headline:
-    fontFamily: "DM Sans, Arial, sans-serif"
+    fontFamily: "Barlow Condensed, DM Sans, sans-serif"
     fontSize: "clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem)"
     fontWeight: 700
     lineHeight: 1.16
@@ -162,19 +161,19 @@ The palette moves between blue-black ocean surfaces and a brighter blue stage, w
 
 ## Typography
 
-DM Sans carries titles, prose, and controls in their written case. Cyan DM Sans Medium Italic gives the homepage statement, split case-study titles, and error heading a distinct voice. Barlow Condensed Black sets the decorative W/O/R/K wall. Authored project diagrams keep their own text styling.
+DM Sans carries titles, prose, and controls in their written case. Cyan DM Sans Medium Italic gives the homepage statement, split case-study titles, and error heading a distinct voice. Barlow Condensed Bold sets section headings, and Black sets the decorative W/O/R/K wall. Authored project diagrams keep their own text styling.
 
-- **Display** uses 700 weight for the name strip and contact invitation. Interior titles range from 44–96px, with a 40–80px scale where a case-study title shares a row with media.
+- **Display** pairs a Rubik Wet Paint wordmark with a DM Sans Bold contact invitation. Interior titles range from 44–96px, with a 40–80px scale where a case-study title shares a row with media.
 - **Headings** use 28–44px for sections, 20–28px for project and feature titles, and 18px for smaller subheadings at the default browser text size.
 - **Reading** uses 16px DM Sans with 1.7 leading and a measure of approximately 62–68ch. Ledes use 18–22px with 1.55 leading. The centered homepage statement uses 24–38px.
-- **Interface text** uses 14px semibold controls, 13px supporting metadata, and 12px semibold labels. Tabular numerals align dates, indexes, and comparison values.
+- **Interface text** uses 14px semibold controls, 13px supporting metadata, and 12px semibold labels. Project overview labels, roles, technologies, source notes, and actions all use the 14px control size. Tabular numerals align dates, indexes, and comparison values.
 - **Font delivery** uses self-hosted Latin subsets and swap loading. Type sizes use rem-based bounds to respond to the reader’s text size.
 
 ## Layout
 
 The site uses consistent horizontal spacing of `clamp(16px, 2.7vw, 42px)` and fluid section padding. Whitespace separates sections and list rows. The header uses individually raised links; mobile navigation opens below the header and remains keyboard operable.
 
-The home sequence is a full-width current field, large name strip, centered About panel, compact experience feature, scrolling project stage, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The landing layout also remains readable at 320px.
+The home sequence is a full-width current field with a centered name, centered About panel, compact experience feature, scrolling project stage, and radial contact invitation. The W/O/R/K wall is sticky and fills the viewport behind the alternating project media. The seven-category registry feeds a default archive of 11 projects across six non-game categories; a visible Games topic link leads to a separate route with two game cards. Non-game details link and advance within the 11-project collection; game details use the Games breadcrumb and advance within the two-game collection. Below 760px, both archive and home work become a single full-width column, the letter wall becomes static, and images remain in document flow. The landing layout also remains readable at 320px.
 
 ## Elevation & Depth
 
@@ -190,9 +189,9 @@ Controls use a gentle 6px corner radius; project media keeps its existing frame.
 
 The header has a compact nameplate and individually spaced Projects/About/Experience/Contact controls plus GitHub. Active and hovered links brighten against ocean surfaces. At 760px and below, expose the Menu/Close control and its expanded state; preserve Escape-to-close and visible keyboard focus.
 
-### Hero Current and Name Strip
+### Hero Current and Wordmark
 
-The SVG current field spans the viewport above a readable natural-case name. Its lines drift and respond to pointer movement. The hero keeps the full name as the dominant typographic element, with the engineering tagline and Sydney location below.
+The SVG current field runs behind the centered wordmark and its supporting text. Its lines drift and respond to pointer movement. The hero keeps the full name as the dominant typographic element, with the engineering tagline and Sydney location below.
 
 The Projects and Games indexes use a shared ocean surface for a fixed, full-viewport field with brighter cyan currents (43 paths with 33 samples each, updated at roughly 30ms intervals). The Projects and Games introductions use a soft ocean-blue backdrop to keep the headings and supporting text readable against the currents; compact ocean backplates fit the project titles instead of filling each card's width. Filters retain their readable surfaces. A quieter shared field runs behind the home About, work, Experience, and Contact sections. Its transparent section surfaces reveal the same current language without adding an animation instance to each section. Individual project details retain their plain ocean background.
 

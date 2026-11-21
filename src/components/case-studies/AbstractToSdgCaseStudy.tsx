@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProjectOverview } from "../projects/ProjectOverview";
 import type { ReactNode } from "react";
 import {
   abstractToSdgCover,
@@ -66,6 +67,8 @@ export function AbstractToSdgCaseStudy({
             preload
           />
         </header>
+
+        {isProject && <ProjectOverview project={project} />}
 
         <div className={layout.editorial}>
           <nav className={layout.contents} aria-label="In this case study">
