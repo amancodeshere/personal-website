@@ -8,7 +8,7 @@ import { OceanSurface } from "../components/visual/OceanSurface";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="home-seascape">
       <Hero />
       <OceanSurface mode="home">
         <AboutSection />
@@ -19,6 +19,6 @@ export default function HomePage() {
         </div>
         <ContactSection />
       </OceanSurface>
-    </>
+    </div>
   );
 }

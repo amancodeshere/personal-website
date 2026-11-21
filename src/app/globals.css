@@ -167,7 +167,7 @@ svg {
   justify-content: space-between;
   gap: 24px;
 
-  background: var(--deep);
+  background: var(--deep-water);
 }
 .site-footer > span {
   color: var(--muted);
@@ -205,18 +205,33 @@ svg {
   font: var(--type-meta);
 }
 
-/* Home: current field and title strip */
+/* A single water column spans the hero, About, and the deeper sections. */
+.home-seascape {
+  --surface-depth: clamp(26rem, 65svh, 48rem);
+  background:
+    radial-gradient(
+      ellipse 75vw 23rem at 15% var(--surface-depth),
+      rgb(41 106 110 / 24%),
+      transparent
+    ),
+    linear-gradient(
+      var(--surface-water) var(--surface-depth),
+      #062733 calc(var(--surface-depth) + 16rem),
+      var(--deep-water) calc(var(--surface-depth) + 52rem)
+    );
+}
 .hero {
   display: grid;
   align-content: center;
   justify-items: center;
-  min-height: clamp(26rem, 65svh, 48rem);
+  min-height: var(--surface-depth);
   padding-block: 5rem;
   position: relative;
   isolation: isolate;
   text-align: center;
 }
 .hero-art {
+  mask-image: linear-gradient(black 52%, transparent 100%);
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -741,7 +756,6 @@ svg {
   opacity: 0.7;
 }
 .project-detail {
-  background-image: var(--opening-light);
   padding-top: 34px;
 }
 .detail-breadcrumb {
@@ -1365,4 +1379,15 @@ svg {
     rotate: none;
     opacity: 1;
   }
+}
+
+/* Blend each interior water column into the common footer. */
+#main-content:has(.interior-water)::after {
+  content: "";
+  display: block;
+  height: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(transparent, var(--deep-water));
+}
+.marine-gallery > .pelagic-scene {
+  mask-image: linear-gradient(transparent, black 12%, black 86%, transparent);
 }

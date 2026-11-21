@@ -16,14 +16,6 @@
   z-index: 0;
 }
 
-.surface[data-ocean-surface="home"] {
-  background: linear-gradient(
-    var(--surface-water),
-    #062733 16rem,
-    var(--deep-water) 52rem
-  );
-}
-
 .surface[data-ocean-surface="home"] .backdrop {
   position: sticky;
   top: 0;
@@ -35,6 +27,7 @@
 
 .surface[data-ocean-surface="home"] .backdrop :global(.ocean-field) {
   touch-action: auto;
+  mask-image: linear-gradient(transparent, black 16%, black 84%, transparent);
 }
 
 .surface[data-ocean-surface="home"] :global(.about-section),
@@ -50,16 +43,9 @@
   max-width: 100%;
   margin-top: 8px;
   padding: 8px 10px 10px;
-  background: #0b3b55;
+  background: var(--panel);
 }
 
-.surface[data-ocean-surface="home"] :global(.about-section) {
-  background: radial-gradient(
-    ellipse at 18% -12%,
-    rgb(101 216 201 / 13%),
-    transparent 58%
-  );
-}
 .surface[data-ocean-surface="home"] :global(.contact-section) {
   background: linear-gradient(transparent, var(--deep-water) 85%);
 }
