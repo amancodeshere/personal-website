@@ -8,7 +8,7 @@
 @import "@fontsource/dm-sans/latin-700.css";
 
 :root {
-  --surface-water: #0b4357;
+  --surface-water: #083446;
   --deep-water: #031821;
   --opening-light: radial-gradient(
     ellipse min(72vw, 58rem) 28rem at 10% 0%,
@@ -386,22 +386,15 @@ svg {
 
   isolation: isolate;
 }
-.work-letter-wall {
+.pelagic-scene {
   position: sticky;
   top: 0;
-  z-index: 0;
-  display: grid;
-  grid-template: repeat(4, 1fr) / repeat(3, 1fr);
-  height: 100vh;
-  margin: 0 0 -100vh;
-  color: rgba(168, 217, 226, 0.15);
-  font: 900 clamp(100px, 24vw, 300px)/0.78 var(--type-artwork);
-  letter-spacing: -0.04em;
+  display: block;
+  width: calc(100% + 2 * var(--frame));
+  margin-inline: calc(-1 * var(--frame));
+  height: 100svh;
+  margin-bottom: -100svh;
   pointer-events: none;
-}
-.work-letter-wall span {
-  display: grid;
-  place-items: center;
 }
 .work-heading {
   position: relative;
@@ -798,7 +791,7 @@ svg {
   pointer-events: none;
   background:
     radial-gradient(ellipse at center, rgb(6 42 65 / 72%), transparent 68%),
-    linear-gradient(to bottom, transparent 60%, var(--surface-water));
+    linear-gradient(to bottom, transparent 36%, var(--surface-water));
 }
 .detail-overview {
   font: var(--type-control);
@@ -1154,13 +1147,6 @@ svg {
   .about-copy {
     padding: 35px 19px;
   }
-  .work-letter-wall {
-    position: relative;
-    top: auto;
-    height: 32vh;
-    margin: 0;
-    font-size: 15vw;
-  }
   .project-list {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1235,8 +1221,7 @@ svg {
 }
 
 @media (max-width: 760px), (prefers-reduced-motion: reduce) {
-  .project-visual-link,
-  .work-letter-wall span {
+  .project-visual-link {
     transform: none !important;
   }
 }

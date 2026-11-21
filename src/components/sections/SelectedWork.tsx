@@ -1,3 +1,4 @@
+import { PelagicScene } from "../visual/PelagicScene";
 import Link from "next/link";
 import {
   portfolioProjects,
@@ -9,6 +10,7 @@ import { GalleryMotion } from "../visual/GalleryMotion";
 export function SelectedWork() {
   return (
     <section className="work-section" id="work" aria-labelledby="work-title">
+      <PelagicScene />
       <header className="section-heading work-heading">
         <h2 id="work-title">Projects</h2>
         <div className="work-heading-links">
@@ -26,11 +28,6 @@ export function SelectedWork() {
           </Link>
         </div>
       </header>
-      <div className="work-letter-wall" aria-hidden="true">
-        {[..."WWWOOORRRKKK"].map((letter, index) => (
-          <span key={index}>{letter}</span>
-        ))}
-      </div>
       <GalleryMotion className="project-list home-project-list">
         {portfolioProjects.map((project) => (
           <ProjectRow key={project.slug} project={project} />

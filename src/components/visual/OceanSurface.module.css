@@ -19,9 +19,8 @@
 .surface[data-ocean-surface="home"] {
   background: linear-gradient(
     var(--surface-water),
-    #09354a 30%,
-    #062b40 65%,
-    var(--deep-water)
+    #062733 16rem,
+    var(--deep-water) 52rem
   );
 }
 
@@ -43,10 +42,6 @@
 .surface[data-ocean-surface="home"] :global(.experience-section),
 .surface[data-ocean-surface="home"] :global(.contact-section) {
   background: transparent;
-}
-
-.surface[data-ocean-surface="home"] :global(.work-letter-wall) {
-  color: rgba(168, 217, 226, 0.09);
 }
 
 .surface[data-ocean-surface="home"]

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-/** Media moves through the typographic stage with the visitor's own scrolling. */
+/** Media moves through the gallery with the visitor's own scrolling. */
 export function GalleryMotion({
   className,
   children,
@@ -19,11 +19,6 @@ export function GalleryMotion({
     const cards = Array.from(
       element.querySelectorAll<HTMLElement>(".project-row"),
     );
-    const letters = Array.from(
-      element
-        .closest(".work-section")
-        ?.querySelectorAll<HTMLElement>(".work-letter-wall span") ?? [],
-    );
     let frame = 0;
     const clear = () => {
       cards.forEach((card) => {
@@ -36,7 +31,6 @@ export function GalleryMotion({
           "--gallery-scale",
         ].forEach((property) => link?.style.removeProperty(property));
       });
-      letters.forEach((letter) => letter.style.removeProperty("transform"));
     };
     const update = () => {
       frame = 0;
@@ -47,14 +41,6 @@ export function GalleryMotion({
       const height = window.innerHeight;
       const bounds = element.getBoundingClientRect();
       if (bounds.bottom < 0 || bounds.top > height) return;
-      const progress = (height - bounds.top) / Math.max(height, bounds.height);
-      letters.forEach((letter, index) => {
-        const row = Math.floor(index / 3);
-        const direction = row % 2 ? -1 : 1;
-        const x = Math.sin(progress * 4 + row * 0.7) * direction * 42;
-        const y = Math.sin(progress * 5 + index * 0.7) * 12;
-        letter.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
-      });
       cards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
         if (rect.bottom < -100 || rect.top > height + 100) return;
