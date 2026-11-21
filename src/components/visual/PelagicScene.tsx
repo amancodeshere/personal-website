@@ -2,6 +2,28 @@
 
 import { useEffect, useRef } from "react";
 
+function drawFish(ctx: CanvasRenderingContext2D, tailPhase: number) {
+  ctx.beginPath();
+  ctx.moveTo(12, 0);
+  ctx.quadraticCurveTo(4, -6, -7, -1);
+  const tail = 3 + Math.sin(tailPhase) * 1.5;
+  ctx.lineTo(-14, -tail);
+  ctx.lineTo(-12, tail);
+  ctx.lineTo(-7, 1);
+  ctx.quadraticCurveTo(4, 5, 12, 0);
+  ctx.fill();
+}
+
+// Each fish keeps its own course as the canvas resizes or resumes.
+const roamers = Array.from({ length: 24 }, (_, i) => ({
+  start: (0.13 + i * 0.618034) % 1,
+  depth: (0.41 + i * 0.754878) % 1,
+  speed: 9 + ((i * 17) % 25),
+  size: 0.55 + ((i * 7) % 13) / 12,
+  direction: i % 3 === 0 ? -1 : 1,
+  phase: i * 2.39996,
+}));
+
 function drawScene(
   ctx: CanvasRenderingContext2D,
   w: number,
@@ -18,6 +40,23 @@ function drawScene(
     ctx.beginPath();
     ctx.arc(x, y, i % 3 === 0 ? 1.3 : 0.75, 0, Math.PI * 2);
     ctx.fill();
+  }
+  const count = Math.min(roamers.length, Math.max(12, Math.round(w / 56)));
+  for (let i = 0; i < count; i++) {
+    const fish = roamers[i];
+    const span = w + 64;
+    const distance = (fish.start * span + t * fish.speed) % span;
+    const x = fish.direction > 0 ? distance - 32 : w + 32 - distance;
+    const drift = t * (0.12 + fish.size * 0.09) + fish.phase;
+    const y = h * (0.06 + 0.88 * fish.depth) + Math.sin(drift) * 15;
+    const scale = fish.size * Math.min(1, w / 760 + 0.2);
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(fish.direction * scale, scale);
+    ctx.rotate(Math.cos(drift) * 0.16);
+    ctx.fillStyle = fish.size > 1 ? "#518bb0" : "#2e6182";
+    drawFish(ctx, t * (3 + fish.size) + fish.phase);
+    ctx.restore();
   }
   // Two loosely spaced schools cross at different speeds and depths.
   for (let school = 0; school < 2; school++) {
@@ -44,15 +83,7 @@ function drawScene(
       ctx.scale(school ? -scale : scale, scale);
       ctx.rotate(Math.cos(t * 0.45 + i * 0.3) * 0.09);
       ctx.fillStyle = school ? "#25618d" : "#5193ba";
-      ctx.beginPath();
-      ctx.moveTo(12, 0);
-      ctx.quadraticCurveTo(4, -6, -7, -1);
-      const tail = 3 + Math.sin(t * 5 + phase) * 1.5;
-      ctx.lineTo(-14, -tail);
-      ctx.lineTo(-12, tail);
-      ctx.lineTo(-7, 1);
-      ctx.quadraticCurveTo(4, 5, 12, 0);
-      ctx.fill();
+      drawFish(ctx, t * 5 + phase);
       ctx.restore();
     }
   }
