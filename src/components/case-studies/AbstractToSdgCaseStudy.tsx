@@ -89,11 +89,19 @@ export function AbstractToSdgCaseStudy({
             >
               <h2 id="literature-heading">How many goals fit one paper?</h2>
               <p>
-                The UN has 17 Sustainable Development Goals. As I read the
-                abstracts, I kept finding papers like the Hobart housing study.
-                In 32 of the 43 UNSW texts, I could point to evidence for more
-                than one goal. A catalogue that picked just one would make some
-                of that work harder to find.
+                I read 35 UNSW journal abstracts and eight summaries from the
+                university’s sustainability showcase. For each text, I recorded
+                which of the 17 UN goals it supported and why. I wrote down
+                those reasons before looking at any model’s answer, so I could
+                come back to the evidence when we disagreed.
+              </p>
+              <p>
+                One Western NSW study tested a solar-powered unit for treating
+                wastewater. Clean Water was an obvious fit. I also tagged it
+                under Clean Energy because the authors compared solar power with
+                mains power and measured a 27% power saving. Across the
+                collection, 32 of the 43 texts had evidence for more than one
+                goal.
               </p>
             </section>
             <section id="benchmark" aria-labelledby="benchmark-heading">
@@ -102,18 +110,27 @@ export function AbstractToSdgCaseStudy({
                 I started with 7,350 passages from sustainability reports in
                 English, French and Spanish. Nearly every passage in the
                 original test set came from a report the models could also see
-                during training. I regrouped the passages so the test measured
-                how well a model handled a whole new report.
+                during training. Two chapters of the same annual report can use
+                familiar language even when they describe different work. I
+                traced passages back to their source reports and kept each
+                report together. That gave me a way to test the models on
+                writing from reports they had never trained on.
               </p>
             </section>
             <section id="experiments" aria-labelledby="experiments-heading">
               <h2 id="experiments-heading">From reports to research papers</h2>
               <p>
-                I trained six model families and compared them with language
-                models given the same tagging instructions. Then I took the
-                comparison to UNSW, using 35 paper abstracts and eight research
-                showcase summaries. I scored how closely each model’s
-                suggestions matched my hand-assigned goals.
+                I compared two ways to suggest goals. First, I trained six
+                families of models on labelled report passages, once using
+                English alone and once using all three languages. Then I gave
+                nine language models the same written instructions and asked
+                them to assign goals without showing them any examples.
+              </p>
+              <p>
+                I took the two strongest language models from that first test
+                and compared them with the trained models on the same 43 UNSW
+                texts. For each paper, I checked which of my tags a model found,
+                which it missed and which extra goals it suggested.
               </p>
             </section>
             <section id="unsw-evaluation" aria-labelledby="transfer-heading">
@@ -147,8 +164,16 @@ export function AbstractToSdgCaseStudy({
               <p>
                 On the UNSW texts, SciBERT scored 69.73% and GPT-4o mini reached
                 75.35%. Each suggested the complete set of goals for just 12 of
-                the 43 texts. That result shaped the catalogue design. A
-                researcher should be able to check the tags on their own work.
+                the 43 texts.
+              </p>
+              <p>
+                The Hobart teacher housing paper showed what a missed tag would
+                mean for a reader. All three multilingual models I examined for
+                that paper recognised its link to education. Only one also
+                picked up Sustainable Cities and Communities. In the catalogue,
+                someone browsing by that goal could miss the paper entirely.
+                That’s why I designed the author review to let researchers add a
+                missing goal as easily as remove a mistaken one.
               </p>
             </section>
             <section id="thesis-b" aria-labelledby="next-phase-heading">
