@@ -8,6 +8,41 @@ const period = "Sep 2026 – Present";
 export const thesisSupervisor = "Dr Aditya Joshi";
 export const thesisProjectHref = `/projects/${slug}`;
 
+export const thesisReportHref = "/research/abstract-2-sdg/thesis-a-report.pdf";
+
+export const catalogueDiagrams = [
+  {
+    title: "Finding one paper under two goals",
+    description:
+      "A reader browsing Quality Education or Sustainable Cities and Communities would find the Hobart housing paper on either page. Both listings would lead to the same publication, which would count once in the university total.",
+    src: "/research/abstract-2-sdg/reader-sequence.webp",
+    width: 2342,
+    height: 854,
+    alt: "Reader sequence showing two goal pages leading to the same publisher record.",
+    caption: "Figure 4.1 · Reader sequence",
+  },
+  {
+    title: "Giving authors a say",
+    description:
+      "When a new paper arrives, the catalogue would suggest goals from its abstract. A verified author could follow a review link to confirm the suggestions, remove a goal or add one the model missed.",
+    src: "/research/abstract-2-sdg/author-review.webp",
+    width: 1995,
+    height: 974,
+    alt: "Author review sequence from importing a paper to showing its reviewed goals.",
+    caption: "Figure 4.2 · Author review sequence",
+  },
+  {
+    title: "Keeping a correction after an update",
+    description:
+      "OpenAlex supplies the publication record. The catalogue would keep the model’s suggestions and the author’s decision separately. If a later import updates the title or a new model suggests different goals, readers would still see the author’s reviewed tags.",
+    src: "/research/abstract-2-sdg/publication-data-flow.webp",
+    width: 1022,
+    height: 1308,
+    alt: "Data flow tracing a publication from OpenAlex through prediction and author review to the public goal pages.",
+    caption: "Figure 4.3 · Publication data flow",
+  },
+];
+
 const resultsMedia = projectMedia["abstract-2-sdg"];
 
 export const abstractToSdgCover = {
@@ -24,7 +59,7 @@ export const abstractToSdgExperience = {
   location: "Sydney, Australia",
   period,
   description:
-    "Abstract 2 SDG investigates how research abstracts can be mapped to one or more of the 17 UN Sustainable Development Goals.",
+    "I hand-labelled 43 UNSW research texts and tested whether AI could identify the Sustainable Development Goals each one supports.",
   highlights: [
     "Rebuilt the SDGi benchmark so passages from each inferred source report stayed in one split.",
     "Evaluated 12 fine-tuned encoder variants and zero-shot language models on report passages and a 43-text UNSW evaluation set.",
@@ -40,7 +75,7 @@ export const abstractToSdgProject = {
   shortTitle: thesisTitle,
   category: "Research",
   summary:
-    "A multi-label NLP system for mapping UNSW research abstracts to the United Nations Sustainable Development Goals.",
+    "Can a reader find a UNSW paper under every sustainability goal it supports? I tested how well AI could suggest those goals and designed a way for authors to review them.",
   description: [
     "A single paper can contribute to several Sustainable Development Goals. Research on access to public transport, for example, could also address inequality. For my UNSW honours thesis, I’m investigating how to infer the relevant goals from a paper’s abstract so readers can browse research by goal and trace each tag back to the paper.",
     "The first challenge was finding out how much a benchmark on policy reports could tell me about research abstracts. I used the multilingual SDGi corpus to establish baselines, then evaluated the same checkpoints on a separate set of UNSW research texts.",

@@ -21,7 +21,11 @@ export function AbstractToSdgFeature({
       href={section === "experience" ? caseStudyHref : thesisProjectHref}
       role={role}
       period={period}
-      summary="Mapping UNSW research to the Sustainable Development Goals, from the first model experiments to a catalogue shaped by author review."
+      summary={
+        section === "experience"
+          ? abstractToSdgExperience.description
+          : "A proposed catalogue where readers can find UNSW papers by sustainability goal and authors can review the tags on their work."
+      }
       cover={abstractToSdgCover}
       heading={heading}
     />

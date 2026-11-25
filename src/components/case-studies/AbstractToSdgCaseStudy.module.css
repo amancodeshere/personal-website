@@ -51,3 +51,48 @@
 section.resources:last-child {
   margin-bottom: 0;
 }
+
+.reportLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 8px 16px;
+  border: 1px solid var(--cyan);
+  border-radius: 6px;
+  color: var(--ice);
+  font: var(--type-control);
+}
+
+.reportLink span {
+  color: var(--cyan);
+  font: var(--type-label);
+}
+
+.reportLink:hover {
+  background: var(--panel);
+}
+
+.diagram {
+  margin-top: clamp(32px, 5vw, 64px);
+}
+
+.diagram h3 {
+  margin: 0 0 8px;
+  color: var(--ice);
+  font: var(--type-card-title);
+}
+
+.diagram figure {
+  margin-top: 20px;
+}
+
+.diagram:last-child figure {
+  max-width: 640px;
+}
+
+.diagram figure img {
+  padding: clamp(8px, 1.5vw, 20px);
+  background: white;
+}
