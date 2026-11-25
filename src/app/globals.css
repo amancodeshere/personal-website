@@ -766,7 +766,14 @@ svg {
   opacity: 0.7;
 }
 .project-detail {
+  max-width: 76rem;
+  margin-inline: auto;
   padding-top: 34px;
+}
+.project-detail
+  > :is(.detail-story, .approach-section, .detail-highlights, .next-project) {
+  max-width: 68ch;
+  margin-inline: auto;
 }
 .detail-breadcrumb {
   display: flex;
